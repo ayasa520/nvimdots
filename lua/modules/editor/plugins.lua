@@ -1,6 +1,12 @@
 local editor = {}
 local conf = require('modules.editor.config')
 
+editor['Pocco81/AutoSave.nvim'] = {
+    opt = true,
+    cmd = {'ASToggle','ASOn','ASOff'},
+    events = {"InsertLeave", "TextChanged"},
+    config = conf.autosave
+}
 editor['junegunn/vim-easy-align'] = {opt = true, cmd = 'EasyAlign'}
 editor['itchyny/vim-cursorword'] = {
     opt = true,

@@ -16,6 +16,7 @@ local function load_options()
     local global_local = {
         termguicolors = true,
         mouse = "a",
+        shell = "/bin/zsh",
         errorbells = true,
         visualbell = true,
         hidden = true,

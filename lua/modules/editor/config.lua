@@ -171,6 +171,23 @@ function config.neoscroll()
         post_hook = nil -- Function to run after the scrolling animation ends
     })
 end
+function config.autosave()
+    local opts = {
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true,
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135
+    }
+    require("autosave").setup(opts)
+end
 
 function config.auto_session()
     local opts = {
@@ -178,7 +195,7 @@ function config.auto_session()
         auto_session_enable_last_session = true,
         auto_session_root_dir = sessions_dir,
         auto_session_enabled = true,
-        auto_save_enabled = true,
+        autosave_enabled = true,
         auto_restore_enabled = true,
         auto_session_suppress_dirs = nil
     }
@@ -309,10 +326,39 @@ function config.dap()
         }
     }
 
+    dap.adapters.cppdbg = {
+        type = 'executable',
+        command = '/home/rikka/.local/share/nvim/dapinstall/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7',
+      }
+    dap.configurations.cpp = {
+    {
+        name = "Launch file",
+        type = "cppdbg",
+        request = "launch",
+        program = function()
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = true,
+    },
+    {
+        name = 'Attach to gdbserver :1234',
+        type = 'cppdbg',
+        request = 'launch',
+        MIMode = 'gdb',
+        miDebuggerServerAddress = 'localhost:1234',
+        miDebuggerPath = '/home/rikka/.local/share/nvim/dapinstall/ccppr_vsc/gdb-10.2/gdb',
+        cwd = '${workspaceFolder}',
+        program = function()
+        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+    },
+    }
+
     dap.adapters.python = {
         type = 'executable',
         command = os.getenv("HOME") ..
-            '/.local/share/nvim/dapinstall/python_dbg/bin/python',
+            '/.local/share/nvim/dapinstall/python/bin/python',
         args = {'-m', 'debugpy.adapter'}
     }
     dap.configurations.python = {
