@@ -15,6 +15,9 @@ end
 
 function autocmd.load_autocmds()
     local definitions = {
+        autosave = {
+            {"VimEnter","*","ASOn"}
+        },
         packer = {
             -- {"BufWritePost", "*.lua", "lua require('core.pack').auto_compile()"}
         },

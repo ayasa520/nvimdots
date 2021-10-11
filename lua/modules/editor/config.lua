@@ -174,7 +174,7 @@ end
 function config.autosave()
     local opts = {
         enabled = true,
-        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        execution_message = "AetoSave: saved at ",
         conditions = {
             exists = true,
             filename_is_not = {},
