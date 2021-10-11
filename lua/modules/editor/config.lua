@@ -174,7 +174,7 @@ end
 function config.autosave()
     local opts = {
         enabled = true,
-        execution_message = "AetoSave: saved at ",
+        execution_message = "AutoSave: saved",
         conditions = {
             exists = true,
             filename_is_not = {},
