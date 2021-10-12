@@ -183,7 +183,7 @@ function config.autosave()
         },
         write_all_buffers = false,
         on_off_commands = true,
-        clean_command_line_interval = 0,
+        clean_command_line_interval = 3000,
         debounce_delay = 135
     }
     require("autosave").setup(opts)

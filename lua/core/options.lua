@@ -14,6 +14,7 @@ end
 
 local function load_options()
     local global_local = {
+     
         termguicolors = true,
         mouse = "a",
         shell = "/bin/zsh",
@@ -124,8 +125,33 @@ local function load_options()
             paste = {["+"] = "pbpaste", ["*"] = "pbpaste"},
             cache_enabled = 0
         }
-        vim.g.python_host_prog = '/usr/bin/python'
-        vim.g.python3_host_prog = '/usr/local/bin/python3'
+        
+        vim.g.python_host_prog = function()
+            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+            local cwd = vim.fn.getcwd()
+            if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+                return cwd .. '/venv/bin/python'
+            elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+                return cwd .. '/.venv/bin/python'
+            else
+                return '/usr/bin/python'
+            end
+        end
+        vim.g.python3_host_prog = function()
+            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+            local cwd = vim.fn.getcwd()
+            if vim.fn.executable(cwd .. '/venv/bin/python3') == 1 then
+                return cwd .. '/venv/bin/python3'
+            elseif vim.fn.executable(cwd .. '/.venv/bin/python3') == 1 then
+                return cwd .. '/.venv/bin/python3'
+            else
+                return '/usr/bin/python3'
+            end
+        end
     end
     for name, value in pairs(global_local) do vim.o[name] = value end
     bind_option(bw_local)
