@@ -13,7 +13,7 @@
 
 # Introduction
 
-![Dashboard](./shots/dashboard.png)
+![Dashboard](./shots/2021-10-13_17-25.png)
 
 ![Telescope](./shots/telescope.png)
 
