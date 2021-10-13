@@ -24,6 +24,8 @@ local plug_map = {
     ["n|<A-7>"] = map_cr("BufferLineGoToBuffer 7"):with_noremap():with_silent(),
     ["n|<A-8>"] = map_cr("BufferLineGoToBuffer 8"):with_noremap():with_silent(),
     ["n|<A-9>"] = map_cr("BufferLineGoToBuffer 9"):with_noremap():with_silent(),
+    -- clipboard-image
+    ["n|<leader>pp"] = map_cr("PasteImg"):with_silent():with_noremap():with_nowait(),
     -- Packer
     ["n|<leader>ps"] = map_cr("PackerSync"):with_silent():with_noremap()
         :with_nowait(),

@@ -1,5 +1,10 @@
 local editor = {}
 local conf = require('modules.editor.config')
+editor['ekickx/clipboard-image.nvim'] = {
+    opt = true,
+    cmd={'PasteImg'},
+    config = conf.clipboard_image
+}
 
 editor['Pocco81/AutoSave.nvim'] = {
     opt = true,
