@@ -39,6 +39,7 @@ local disable_distribution_plugins = function()
     vim.g.loaded_netrwPlugin = 1
     vim.g.loaded_netrwSettings = 1
     vim.g.loaded_netrwFileHandlers = 1
+    vim.g.did_load_filetypes = 1
 end
 
 local leader_map = function()
@@ -125,6 +126,24 @@ local dashboard_config = function()
     }
 end
 
+local clipboard_settings = function()
+    vim.cmd[[
+    let g:clipboard = {
+          \   'name': 'win32yank-wsl',
+          \   'copy': {
+          \      '+': 'win32yank.exe -i --crlf',
+          \      '*': 'win32yank.exe -i --crlf',
+          \    },
+          \   'paste': {
+          \      '+': 'win32yank.exe -o --lf',
+          \      '*': 'win32yank.exe -o --lf',
+          \   },
+          \   'cache_enabled': 0,
+          \ }
+
+    ]]
+end
+
 local load_core = function()
     local pack = require('core.pack')
     createdir()
@@ -134,6 +153,7 @@ local load_core = function()
     pack.ensure_plugins()
     neovide_config()
     dashboard_config()
+    -- clipboard_settings()
 
     require('core.options')
     require('core.mapping')

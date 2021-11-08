@@ -50,12 +50,17 @@ Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
 1. Neovim base installation for archlinux
 
 ```shell
-# gitui for tui git operations
-# ripgrep for telescope word search engine
-# fd for telescope file search engine
-# yarn for markdown preview
-# nerd-fonts-ibm-plex-mono for devicons
-sudo pacman -S git neovim gitui ripgrep fd yarn nerd-fonts-ibm-plex-mono
+# gitui required by tui git operations
+# ripgrep required by telescope word search engine
+# ripgrep required by telescope-zoxide
+# fd required by telescope file search engine
+# yarn required by markdown preview
+# nerd-fonts-ibm-plex-mono required by devicons
+sudo pacman -S git gitui zoxide ripgrep fd yarn nerd-fonts-ibm-plex-mono
+
+# nodejs, neovim-git required by copilot.
+# neovim version >= 0.6
+yay -S nodejs neovim-git
 
 # for neovim python module
 pip install neovim --user
@@ -83,7 +88,7 @@ paru goneovim
 
 4. Tools for plugins
 
-- For [nvim-lspinstall](https://github.com/kabouzeid/nvim-lspinstall#usage), you
+- For [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer#available-lsps), you
   need to install corresponding language server use it.
 
 - For [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages), all maintained parser will be installed by default.
@@ -291,30 +296,32 @@ Then you can figure out what modification makes error.
 |                 [norcalli/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua)                 |        Display detected color        |
 |                        [rhysd/accelerated-jk](https://github.com/rhysd/accelerated-jk)                        |           Accelerated j/k            |
 |                             [hrsh7th/vim-eft](https://github.com/hrsh7th/vim-eft)                             |             Enhanced f/t             |
-|                   [easymotion/vim-easymotion](https://github.com/easymotion/vim-easymotion)                   |         Powerful vim motion          |
+|                            [phaazon/hop.nvim](https://github.com/phaazon/hop.nvim)                            |      `easymotion`'s replacement      |
 |                       [karb94/neoscroll.nvim](https://github.com/karb94/neoscroll.nvim)                       |            smooth scroll             |
 |                         [vimlab/split-term](https://github.com/vimlab/split-term.vim)                         | Utilites around neovim's `:terminal` |
+|                 [akinsho/nvim-toggleterm.lua](https://github.com/akinsho/nvim-toggleterm.lua)                 |           Toggled terminal           |
+|                         [numtostr/FTerm.nvim](https://github.com/numtostr/FTerm.nvim)                         |            Float terminal            |
 
 ## Completion
 
-|                                      Name                                       |                       Effect                       |
-| :-----------------------------------------------------------------------------: | :------------------------------------------------: |
-|        [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)        |          Neovim native LSP configuration           |
-|    [kabouzeid/nvim-lspinstall](https://github.com/kabouzeid/nvim-lspinstall)    |               Manage each LSP engine               |
-|         [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim)         |             Make Nvim LSP more useful              |
-|     [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)     | Show signature when completing function parameters |
-|             [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)             |          Auto completion plugin for nvim           |
-|           [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)           |             buffer source for nvim-cmp             |
-|             [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)             |              path source for nvim-cmp              |
-|          [tzachar/cmp-tabnine](https://github.com/tzachar/cmp-tabnine)          |            tabnine source for nvim-cmp             |
-|         [hrsh7th/cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)         |              lua source for nvim-cmp               |
-|         [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)         |              lsp source for nvim-cmp               |
-|             [f3fora/cmp-spell](https://github.com/f3fora/cmp-spell)             |             spell source for nvim-cmp              |
-|     [andersevenrud/compe-tmux](https://github.com/andersevenrud/compe-tmux)     |              tmux source for nvim-cmp              |
-|     [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)     |            luasnip source for nvim-cmp             |
-|             [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)             |      snippets completion engine for nvim-cmp       |
-| [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) |            snippets source for LusSnip             |
-|        [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)        |                  Completion pairs                  |
+|                                         Name                                          |                       Effect                       |
+| :-----------------------------------------------------------------------------------: | :------------------------------------------------: |
+|           [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)           |          Neovim native LSP configuration           |
+| [williamboman/nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer) |               Manage each LSP engine               |
+|        [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim)        | Show signature when completing function parameters |
+|                [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)                |          Auto completion plugin for nvim           |
+|              [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)              |             buffer source for nvim-cmp             |
+|                [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)                |              path source for nvim-cmp              |
+|             [tzachar/cmp-tabnine](https://github.com/tzachar/cmp-tabnine)             |            tabnine source for nvim-cmp             |
+|            [hrsh7th/cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)            |              lua source for nvim-cmp               |
+|            [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)            |              lsp source for nvim-cmp               |
+|                [f3fora/cmp-spell](https://github.com/f3fora/cmp-spell)                |             spell source for nvim-cmp              |
+|        [andersevenrud/compe-tmux](https://github.com/andersevenrud/compe-tmux)        |              tmux source for nvim-cmp              |
+|        [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)        |            luasnip source for nvim-cmp             |
+|                [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)                |      snippets completion engine for nvim-cmp       |
+|    [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets)    |            snippets source for LusSnip             |
+|           [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs)           |                  Completion pairs                  |
+|                [github/copilot](https://github.com/github/copilot.vim)                |                Copilot neovim port                 |
 
 ## Lang
 
@@ -346,6 +353,7 @@ The leader key is `,`.
 |                 toggle vertical terminal                  |            `<C-\>`             |
 |                       quit terminal                       |            `<C-d>`             |
 |                 toggle floating terminal                  |            `<A-d>`             |
+|               force quit floating terminal                |           `<A-S-d>`            |
 |             open `gitui` in current directory             |          `<leader>g`           |
 |                                                           |                                |
 |               pick buffer `n`(`n`means No)                |            `<A-n>`             |
@@ -378,18 +386,21 @@ The leader key is `,`.
 |               find file in recently opened                |          `<leader>fr`          |
 |                   find file in history                    |          `<leader>fe`          |
 |            find file in current work directory            |          `<leader>ff`          |
+|            find directory recorded by `zoxide`            |          `<leader>fz`          |
 |                       find project                        |          `<leader>fp`          |
 |                        add project                        |    `<leader>fp`then`<C-A>`     |
 |                      delete project                       |    `<leader>fp`then`<C-D>`     |
 |                                                           |                                |
-|                    find one character                     |          `<leader>f`           |
 |                       find one word                       |          `<leader>w`           |
+|                    find one character                     |          `<leader>c`           |
+|                    find two characters                    |          `<leader>cc`          |
+|                     jump to one line                      |    `<leader>j`/`<leader>k`     |
 |                                                           |                                |
 |                    escape insert mode                     |              `jk`              |
 |                         neoformat                         |           `<C-A-l>`            |
 |                back to last cursor's place                |            `<C-O>`             |
-|                    jump to definition                     |              `gd`              |
-|                    show implementation                    |              `gD`              |
+|                    preview definition                     |              `gd`              |
+|                    jump to definition                     |              `gD`              |
 |                       smart rename                        |              `gr`              |
 |                  toggle last diagnostics                  |              `gt`              |
 |                   toggle lsp references                   |              `gR`              |
@@ -453,40 +464,17 @@ You can see more keybinds in `lua/core/mapping.lua` and `lua/keymap/init.lua`.
 
 # Issues
 
-1. Tabnine doesn't install automatically
+1. Clipboard for WSL2 users
 
-```shell
-cd ~/.local/share/nvim/site/pack/packer/opt/compe-tabnine
-./install.sh
-```
+Please refer to [it](https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl) and add `win32yank.exe` to your path.
 
-2. Install and configure different lsp server
+Then uncomment [this line](https://github.com/ayamir/nvimdots/blob/4ed10ccc71937cc86460f23da5ec646eec32125f/lua/core/init.lua#L147).
 
-You can find all of the servers available in
-[here](https://microsoft.github.io/language-server-protocol/implementors/servers/).
-
-You can install servers manually by different means. LSP will look your path for
-it and start it.
-
-For example (python-lsp-server):
-
-```shell
-pip install python-lsp-server --user
-```
-
-Add this line to `lua/modules/completion/lspconfig.lua`'s end.
-
-```lua
-nvim_lsp.pylsp.setup{}
-```
-
-Don't forget to remove the old server installed before.
-
-3. Wrong configuration may invoke the dialog asking for deleting all plugins
+2. Wrong configuration may invoke the dialog asking for deleting all plugins
 
 Input `n` and `<CR>`
 
-4. LSP servers don't autostart.
+3. LSP servers don't autostart.
 
 Please check [this](https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md) to make sure your directory can be detected as a working directory.
 
@@ -494,6 +482,12 @@ For example (gopls):
 
 Your root directory need a `go.mod` and your `.go` file need to be created
 first. Then LSP will autostart when you edit `.go` file next time.
+
+4. Copilot setup
+
+Make sure your github account is signed up for [copilot](https://copilot.github.com/).
+
+Then use `Copilot setup` command to setup.
 
 <a id="credit"></a>
 
@@ -507,4 +501,3 @@ first. Then LSP will autostart when you edit `.go` file next time.
 
 - [x] More documentation for how to customize.
 - [x] Backup old compiled configuration when error occurs.
-- [ ] Install script for different distros.

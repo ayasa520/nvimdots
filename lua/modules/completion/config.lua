@@ -2,8 +2,8 @@ local config = {}
 
 function config.nvim_lsp() require('modules.completion.lspconfig') end
 
-function config.saga()
-    vim.api.nvim_command("autocmd CursorHold * Lspsaga show_line_diagnostics")
+function config.lightbulb()
+    vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 end
 
 function config.cmp()
@@ -68,8 +68,9 @@ function config.cmp()
         },
         -- You can set mappings if you want
         mapping = {
-            ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-            ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+            ['<CR>'] = cmp.mapping.confirm({select = true}),
+            ['<C-p>'] = cmp.mapping.select_prev_item(),
+            ['<C-n>'] = cmp.mapping.select_next_item(),
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-e>'] = cmp.mapping.close(),
@@ -141,11 +142,12 @@ end
 
 function config.autopairs()
     require('nvim-autopairs').setup {fast_wrap = {}}
-    require("nvim-autopairs.completion.cmp").setup({
-        map_cr = true,
-        map_complete = true,
-        auto_select = true
-    })
+
+    -- If you want insert `(` after select function or method item
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    local cmp = require('cmp')
+    cmp.event:on('confirm_done',
+                 cmp_autopairs.on_confirm_done({map_char = {tex = ''}}))
 end
 
 return config

@@ -24,6 +24,11 @@ tools['nvim-telescope/telescope-frecency.nvim'] = {
     after = 'telescope.nvim',
     requires = {{'tami5/sql.nvim', opt = true}}
 }
+tools['nvim-telescope/telescope-media-files.nvim'] = {
+    opt = true,
+    after = 'telescope.nvim'
+}
+tools['jvgrootveld/telescope-zoxide'] = {opt = true, after = 'telescope.nvim'}
 tools['thinca/vim-quickrun'] = {opt = true, cmd = {'QuickRun', 'Q'}}
 tools['michaelb/sniprun'] = {
     opt = true,
@@ -46,4 +51,5 @@ tools['gelguy/wilder.nvim'] = {
     config = conf.wilder,
     requires = {{'romgrk/fzy-lua-native', after = 'wilder.nvim'}}
 }
+tools['nathom/filetype.nvim'] = {opt = false}
 return tools
