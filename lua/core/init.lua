@@ -49,10 +49,11 @@ local leader_map = function()
 end
 
 local neovide_config = function()
-    vim.cmd [[set guifont=JetBrainsMono\ Nerd\ Font:h12]]
+    vim.cmd [[set guifont=Consolas:h12]]
     vim.g.neovide_refresh_rate = 60
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_no_idle = true
+    vim.g.neovide_remember_window_size = true
     vim.g.neovide_cursor_animation_length = 0.03
     vim.g.neovide_cursor_trail_length = 0.05
     vim.g.neovide_cursor_antialiasing = true

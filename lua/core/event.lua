@@ -16,11 +16,11 @@ end
 function autocmd.load_autocmds()
     local definitions = {
         inputer = {
-             {"InsertEnter","*","silent !fcitx5-remote -o"},
-             {"InsertLeave", "*", "silent !fcitx5-remote -o"},
-             {"BufCreate", "*" , "silent !fcitx5-remote -o"},
-             {"BufEnter", "*" , "silent !fcitx5-remote -o"},
-             {"BufLeave", "*" , "silent !fcitx5-remote -o"}
+             {"InsertEnter","*","silent !fcitx5-remote -c"},
+             {"InsertLeave", "*", "silent !fcitx5-remote -c"},
+             {"BufCreate", "*" , "silent !fcitx5-remote -c"},
+             {"BufEnter", "*" , "silent !fcitx5-remote -c"},
+             {"BufLeave", "*" , "silent !fcitx5-remote -c"}
         },
         autosave = {
             {"VimEnter","*","ASOn"}
