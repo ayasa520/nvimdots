@@ -50,6 +50,8 @@ end
 
 local neovide_config = function()
     vim.cmd [[set guifont=Consolas:h12]]
+    vim.cmd [[cnoremap <C-V> <C-r>+]]
+    vim.cmd [[inoremap <C-V> <C-r>+]]
     vim.g.neovide_refresh_rate = 60
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_no_idle = true
