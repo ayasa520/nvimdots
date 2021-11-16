@@ -45,7 +45,7 @@ function autocmd.load_autocmds()
             {"BufWritePre", "*.tmp", "setlocal noundofile"},
             {"BufWritePre", "*.bak", "setlocal noundofile"},
             -- Auto format when save
-            {"BufWritePost", "*", "FormatWrite"},
+            -- {"BufWritePost", "*", "FormatWrite"},
             -- Auto change work directory
             {"BufEnter", "*", "silent! lcd %:p:h"}, -- auto place to last edit
             {
