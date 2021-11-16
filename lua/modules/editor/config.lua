@@ -224,7 +224,7 @@ function config.format()
             {
                 cmd = {
                     function(file)
-                        return string.format("clang-format -style='{BasedOnStyle: Google, IndentWidth: 4}' -i %s", file)
+                        return string.format("clang-format -style='{BasedOnStyle: Google, IndentWidth: 4, AccessModifierOffset: -4}' -i %s", file)
                     end
                 }
             }
@@ -233,7 +233,7 @@ function config.format()
             {
                 cmd = {
                     function(file)
-                        return string.format("clang-format -style='{BasedOnStyle: Google, IndentWidth: 4}' -i %s", file)
+                        return string.format("clang-format -style='{BasedOnStyle: Google, IndentWidth: 4, AccessModifierOffset: -4}' -i %s", file)
                     end
                 }
             }
