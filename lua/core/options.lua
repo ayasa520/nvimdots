@@ -1,13 +1,13 @@
-local global = require('core.global')
+local global = require("core.global")
 
 local function bind_option(options)
     for k, v in pairs(options) do
         if v == true then
-            vim.cmd('set ' .. k)
+            vim.cmd("set " .. k)
         elseif v == false then
-            vim.cmd('set no' .. k)
+            vim.cmd("set no" .. k)
         else
-            vim.cmd('set ' .. k .. '=' .. v)
+            vim.cmd("set " .. k .. "=" .. v)
         end
     end
 end
@@ -57,7 +57,7 @@ local function load_options()
         complete = ".,w,b,k",
         inccommand = "nosplit",
         grepformat = "%f:%l:%c:%m",
-        grepprg = 'rg --hidden --vimgrep --smart-case --',
+        grepprg = "rg --hidden --vimgrep --smart-case --",
         breakat = [[\ \	;:,!?]],
         startofline = false,
         whichwrap = "h,l,<,>,[,],~",
@@ -125,35 +125,12 @@ local function load_options()
             paste = {["+"] = "pbpaste", ["*"] = "pbpaste"},
             cache_enabled = 0
         }
-        
-        vim.g.python_host_prog = function()
-            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-            local cwd = vim.fn.getcwd()
-            if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-                return cwd .. '/venv/bin/python'
-            elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-                return cwd .. '/.venv/bin/python'
-            else
-                return '/usr/bin/python'
-            end
-        end
-        vim.g.python3_host_prog = function()
-            -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-            -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-            -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-            local cwd = vim.fn.getcwd()
-            if vim.fn.executable(cwd .. '/venv/bin/python3') == 1 then
-                return cwd .. '/venv/bin/python3'
-            elseif vim.fn.executable(cwd .. '/.venv/bin/python3') == 1 then
-                return cwd .. '/.venv/bin/python3'
-            else
-                return '/usr/bin/python3'
-            end
-        end
+        vim.g.python_host_prog = "/usr/bin/python"
+        vim.g.python3_host_prog = "/usr/local/bin/python3"
     end
-    for name, value in pairs(global_local) do vim.o[name] = value end
+    for name, value in pairs(global_local) do
+        vim.o[name] = value
+    end
     bind_option(bw_local)
 end
 
