@@ -284,8 +284,8 @@ function config.format()
     }
 end
 function config.vimtex()
-    vim.g.vimtex_view_general_viewer = 'zathura'
-    vim.g.vimtex_view_method = 'zathura'
+    vim.g.vimtex_view_general_viewer = 'okular'
+    -- vim.g.vimtex_view_method = 'zathura'
     vim.g.tex_flavor = 'latex'
     vim.g.vimtex_compiler_latexmk_engines = {
         _ = '-xelatex'
