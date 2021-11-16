@@ -191,7 +191,12 @@ local plug_map = {
     ["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap()
         :with_silent(),
     ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap()  
-        :with_silent()
+        :with_silent(),
+    ["n|<leader>vc"] = map_cr("VimtexCompile"):with_noremap():with_silent(),    
+    ["n|<leader>vv"] = map_cr("VimtexView"):with_noremap():with_silent(),
+    ["n|<leader>vl"] = map_cr("VimtexClean"):with_noremap():with_silent(),
+    ["n|<leader>vs"] = map_cr("VimtexStop"):with_noremap():with_silent()
+    
 };
 
 bind.nvim_load_mapping(plug_map)

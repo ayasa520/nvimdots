@@ -5,6 +5,11 @@ editor['ekickx/clipboard-image.nvim'] = {
     cmd={'PasteImg'},
     config = conf.clipboard_image
 }
+editor['lervag/vimtex'] = {
+    opt = true,
+    config = conf.vimtex,
+    ft = 'tex'
+}
 
 editor['Pocco81/AutoSave.nvim'] = {
     opt = true,
