@@ -195,7 +195,8 @@ local plug_map = {
     ["n|<leader>vc"] = map_cr("VimtexCompile"):with_noremap():with_silent(),    
     ["n|<leader>vv"] = map_cr("VimtexView"):with_noremap():with_silent(),
     ["n|<leader>vl"] = map_cr("VimtexClean"):with_noremap():with_silent(),
-    ["n|<leader>vs"] = map_cr("VimtexStop"):with_noremap():with_silent()
+    ["n|<leader>vs"] = map_cr("VimtexStop"):with_noremap():with_silent(),
+    ["n|<leader>vt"] = map_cr("VimtexTocToggle"):with_noremap():with_silent()
     
 };
 
