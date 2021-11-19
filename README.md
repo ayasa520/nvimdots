@@ -53,10 +53,11 @@ Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
 # gitui required by tui git operations
 # ripgrep required by telescope word search engine
 # ripgrep required by telescope-zoxide
+# sqlite required by telescope-frecency
 # fd required by telescope file search engine
 # yarn required by markdown preview
 # nerd-fonts-ibm-plex-mono required by devicons
-sudo pacman -S git gitui zoxide ripgrep fd yarn nerd-fonts-ibm-plex-mono
+sudo pacman -S git gitui zoxide ripgrep sqlite fd yarn nerd-fonts-ibm-plex-mono
 
 # nodejs, neovim-git required by copilot.
 # neovim version >= 0.6
@@ -67,6 +68,9 @@ pip install neovim --user
 
 # clone
 git clone https://github.com/ayamir/nvimdots ~/.config/nvim
+
+# sync plugins(maybe need multiple times)
+nvim +PackerSync
 ```
 
 2. Recommended Terminals:
@@ -243,18 +247,16 @@ Then you can figure out what modification makes error.
 
 ## UI
 
-|                                             Name                                              |                 Effect                 |
-| :-------------------------------------------------------------------------------------------: | :------------------------------------: |
-|                        [sainnhe/edge](https://github.com/sainnhe/edge)                        |          My light/dark theme           |
-|        [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)        |         For nvim-tree's icons          |
-|                [hoob3rt/lualine.nvim](https://github.com/hoob3rt/lualine.nvim)                |  Minimal, fast but customizable line   |
-|              [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)              |          Dashboard for Neovim          |
-|            [kyazdani42/nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)            |        Replacement of Nerdtree         |
-|             [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)             |        Show git status in nvim         |
-| [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) |    Show indent with different level    |
-|             [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)             |       Tab and buffer management        |
-|                 [folke/zen-mode.nvim](https://github.com/folke/zen-mode.nvim)                 |           Focus on code only           |
-|                 [folke/twilight.nvim](https://github.com/folke/twilight.nvim)                 | Highlight current block and dim others |
+|                                             Name                                              |               Effect                |
+| :-------------------------------------------------------------------------------------------: | :---------------------------------: |
+|                        [sainnhe/edge](https://github.com/sainnhe/edge)                        |         My light/dark theme         |
+|        [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)        |        For nvim-tree's icons        |
+|                [hoob3rt/lualine.nvim](https://github.com/hoob3rt/lualine.nvim)                | Minimal, fast but customizable line |
+|              [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)              |        Dashboard for Neovim         |
+|            [kyazdani42/nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)            |       Replacement of Nerdtree       |
+|             [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)             |       Show git status in nvim       |
+| [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) |  Show indent with different level   |
+|             [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)             |      Tab and buffer management      |
 
 ## Tools
 

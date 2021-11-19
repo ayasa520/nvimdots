@@ -1,7 +1,7 @@
 local config = {}
 
 function config.edge()
-    vim.cmd [[set background=dark]]
+    vim.cmd [[set background=light]]
     vim.g.edge_style = "aura"
     vim.g.edge_enable_italic = 1
     vim.g.edge_disable_italic_comment = 1
@@ -12,10 +12,18 @@ end
 function config.lualine()
     local gps = require("nvim-gps")
 
+    local function gps_content()
+        if gps.is_available() then
+            return gps.get_location()
+        else
+            return ""
+        end
+    end
+
     require("lualine").setup {
         options = {
             icons_enabled = true,
-            theme = "onedark",
+            theme = "onelight",
             disabled_filetypes = {},
             component_separators = "|",
             section_separators = {left = "", right = ""}
@@ -24,8 +32,8 @@ function config.lualine()
             lualine_a = {"mode"},
             lualine_b = {{"branch"}, {"diff"}},
             lualine_c = {
-                {gps.get_location, condition = gps.is_available},
-                {"lsp_progress"}
+                {"lsp_progress"},
+                {gps_content, cond = gps.is_available}
             },
             lualine_x = {
                 {
@@ -255,14 +263,6 @@ function config.indent_blankline()
     }
     -- because lazy load indent-blankline so need readd this autocmd
     vim.cmd("autocmd CursorMoved * IndentBlanklineRefresh")
-end
-
-function config.zen_mode()
-    require("zen-mode").setup {}
-end
-
-function config.twilight()
-    require("twilight").setup {}
 end
 
 return config
