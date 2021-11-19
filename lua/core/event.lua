@@ -84,7 +84,7 @@ function autocmd.load_autocmds()
             {"BufNewFile,BufRead", "*.toml", " setf toml"},
             {"FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0"},
             {"FileType", "go,rust", "setlocal tabstop=4 shiftwidth=4"},
-            {"FileType", "c,cpp", "setlocal tabstop=2 shiftwidth=2"},
+            {"FileType", "c,cpp", "setlocal tabstop=4 shiftwidth=4"},
             {
                 "FileType",
                 "javascript,typescript,html",
