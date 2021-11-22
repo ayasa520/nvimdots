@@ -16,6 +16,7 @@ completion["kosayoda/nvim-lightbulb"] = {
     after = "nvim-lspconfig",
     config = conf.lightbulb
 }
+completion["Jyc-Code/DoxygenToolkit.vim"] = {after = "nvim-lspconfig"}
 completion["ray-x/lsp_signature.nvim"] = {opt = true, after = "nvim-lspconfig"}
 completion["hrsh7th/nvim-cmp"] = {
     config = conf.cmp,
