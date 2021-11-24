@@ -6,7 +6,6 @@ local map_cmd = bind.map_cmd
 -- default map
 local def_map = {
     -- Vim map
-    ["n|<F3>"] = map_cr("set hls!"):with_noremap():with_silent(),
     ["n|<C-x>k"] = map_cr("bdelete"):with_noremap():with_silent(),
     ["n|<C-s>"] = map_cu("write"):with_noremap(),
     ["n|Y"] = map_cmd("y$"),
@@ -45,8 +44,7 @@ local def_map = {
     ["c|<C-h>"] = map_cmd("<BS>"):with_noremap(),
     ["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):with_noremap(),
     ["c|w!!"] = map_cmd(
-        "execute 'silent! write !sudo tee % >/dev/null' <bar> edit!"
-    ),
+        "execute 'silent! write !sudo tee % >/dev/null' <bar> edit!"),
     -- Visual
     ["v|J"] = map_cmd(":m '>+1<cr>gv=gv"),
     ["v|K"] = map_cmd(":m '<-2<cr>gv=gv"),

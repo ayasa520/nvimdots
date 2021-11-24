@@ -26,20 +26,16 @@ editor['itchyny/vim-cursorword'] = {
 editor["terrortylor/nvim-comment"] = {
     opt = false,
     config = function()
-        require("nvim_comment").setup(
-            {
-                hook = function()
-                    require("ts_context_commentstring.internal").update_commentstring(
-
-                    )
-                end
-            }
-        )
+        require("nvim_comment").setup({
+            hook = function()
+                require("ts_context_commentstring.internal").update_commentstring()
+            end
+        })
     end
 }
 editor["simrat39/symbols-outline.nvim"] = {
     opt = true,
-    cmd = {"SymbolsOutline", "SymbolsOulineOpen"},
+    cmd = {"SymbolsOutline", "SymbolsOutlineOpen"},
     config = conf.symbols_outline
 }
 editor["nvim-treesitter/nvim-treesitter"] = {
@@ -62,6 +58,10 @@ editor["p00f/nvim-ts-rainbow"] = {
     event = "BufRead"
 }
 editor["JoosepAlviste/nvim-ts-context-commentstring"] = {
+    opt = true,
+    after = "nvim-treesitter"
+}
+editor["mfussenegger/nvim-ts-hint-textobject"] = {
     opt = true,
     after = "nvim-treesitter"
 }
@@ -95,11 +95,7 @@ editor["phaazon/hop.nvim"] = {
     opt = true,
     branch = "v1",
     cmd = {
-        "HopLine",
-        "HopLineStart",
-        "HopWord",
-        "HopPattern",
-        "HopChar1",
+        "HopLine", "HopLineStart", "HopWord", "HopPattern", "HopChar1",
         "HopChar2"
     },
     config = function()
@@ -133,8 +129,7 @@ editor["rcarriga/nvim-dap-ui"] = {
     opt = false,
     config = conf.dapui,
     requires = {
-        {"mfussenegger/nvim-dap", config = conf.dap},
-        {
+        {"mfussenegger/nvim-dap", config = conf.dap}, {
             "Pocco81/DAPInstall.nvim",
             opt = true,
             cmd = {"DIInstall", "DIUninstall", "DIList"},

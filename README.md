@@ -21,11 +21,15 @@
 
 ![Gitui](./shots/gitui.png)
 
-This is my neovim's configuration.
+This is my neovim's configuration, which contains four branch.
 
 I use [packer.nvim](https://github.com/wbthomason/packer.nvim) to manage plugins.
 
-I use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) to realize code complete.
+| Branch |   Completion Solution   |
+| :----: | :---------------------: |
+|  main  | nvim-lspconfig+nvim-cmp |
+|  coq   | nvim-lspconfig+coq_nvim |
+|  coc   |        coc.nvim         |
 
 Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
 
@@ -105,8 +109,8 @@ paru goneovim
 sudo pacman -S clang
 # gofmt and goimports for golang
 go get -u golang.org/x/tools/...
-# luafmt for lua
-npm install -g lua-fmt
+# lua-format for lua
+paru -S lua-format-git
 # yapf and autopep8 for python
 pip install autopep8 yapf --user
 # rustfmt
@@ -264,7 +268,7 @@ Then you can figure out what modification makes error.
 | :-----------------------------------------------------------------------------------------------------: | :---------------------------------: |
 |                      [nvim-lua/popup.nvim](https://github.com/nvim-lua/popup.nvim)                      |     Required by telescope.nvim      |
 |                    [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)                    |     Required by telescope.nvim      |
-|                           [tami5/sql.nvim](https://github.com/tami5/sql.nvim)                           | Required by telescope-frecency.nvim |
+|                         [tami5/sqlite.lua](https://github.com/tami5/sqlite.lua)                         | Required by telescope-frecency.nvim |
 |            [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)            |     Find, Filter, Preview, Pick     |
 | [nvim-telescope/telescope-fzy-native.nvim](https://github.com/nvim-telescope/telescope-fzy-native.nvim) |      Fzy search for telescope       |
 |    [nvim-telescope/telescope-project.nvim](https://github.com/nvim-telescope/telescope-project.nvim)    |   Manage projects with telescope    |
@@ -289,6 +293,7 @@ Then you can figure out what modification makes error.
 |              [romgrk/nvim-treesitter-context](https://github.com/romgrk/nvim-treesitter-context)              |         Show current context         |
 |                        [p00f/nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow)                        |           Rainbow brackets           |
 | [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) |       Comment base on context        |
+|        [mfussenegger/nvim-ts-hint-textobject](https://github.com/mfussenegger/nvim-ts-hint-textobject)        |     Select region like hop.nvim      |
 |                           [SmiteshP/nvim-gps](https://github.com/SmiteshP/nvim-gps)                           |   Show current context in lualine    |
 |                        [andymass/vim-matchup](https://github.com/andymass/vim-matchup)                        |        Better matchup for `%`        |
 |                     [jdhao/better-escape.vim](https://github.com/jdhao/better-escape.vim)                     |       Replace `esc` with `jk`        |
@@ -398,7 +403,7 @@ The leader key is `,`.
 |                     jump to one line                      |    `<leader>j`/`<leader>k`     |
 |                                                           |                                |
 |                    escape insert mode                     |              `jk`              |
-|                         neoformat                         |           `<C-A-l>`            |
+|                      format manually                      |           `<C-A-l>`            |
 |                back to last cursor's place                |            `<C-O>`             |
 |                    preview definition                     |              `gd`              |
 |                    jump to definition                     |              `gD`              |
