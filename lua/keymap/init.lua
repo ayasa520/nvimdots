@@ -69,6 +69,7 @@ local plug_map = {
         :with_silent(),
     ["n|<Leader>g"] = map_cu("lua require('FTerm').run('gitui')"):with_noremap()
         :with_silent(),
+    ["n|<Leader>G"] = map_cu("Git"):with_noremap():with_silent(),
     -- Plugin trouble
     ["n|gt"] = map_cr("TroubleToggle"):with_noremap():with_silent(),
     ["n|gR"] = map_cr("TroubleToggle lsp_references"):with_noremap()
@@ -126,9 +127,8 @@ local plug_map = {
     -- Plugin SymbolOutline
     ["n|<A-t>"] = map_cr("SymbolsOutline"):with_noremap():with_silent(),
     -- Plugin split-term
-    ["n|<F5>"] = map_cr("Term"):with_noremap():with_silent(),
-    ["n|<C-w>t"] = map_cr("Term"):with_noremap():with_silent(),
-    ["n|<C-w>T"] = map_cr("VTerm"):with_noremap():with_silent(),
+    ["n|<F5>"] = map_cr("VTerm"):with_noremap():with_silent(),
+    ["n|<C-w>t"] = map_cr("VTerm"):with_noremap():with_silent(),
     -- Plugin MarkdownPreview
     ["n|<F12>"] = map_cr("MarkdownPreviewToggle"):with_noremap():with_silent(),
     -- Plugin auto_session
@@ -136,7 +136,7 @@ local plug_map = {
     ["n|<leader>sr"] = map_cu("RestoreSession"):with_noremap():with_silent(),
     ["n|<leader>sd"] = map_cu("DeleteSession"):with_noremap():with_silent(),
     -- Plugin SnipRun
-    ["v|r"] = map_cr("SnipRun"):with_noremap():with_silent(),
+    ["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent(),
     -- Plugin dap
     ["n|<F6>"] = map_cr("lua require('dap').continue()"):with_noremap() -- 调试 debug
         :with_silent(),

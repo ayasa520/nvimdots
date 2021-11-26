@@ -63,9 +63,10 @@ Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
 # nerd-fonts-ibm-plex-mono required by devicons
 sudo pacman -S git gitui zoxide ripgrep sqlite fd yarn nerd-fonts-ibm-plex-mono
 
+# code-minimap required by minimap.vim
 # nodejs, neovim-git required by copilot.
 # neovim version >= 0.6
-yay -S nodejs neovim-git
+yay -S nodejs neovim-git code-minimap
 
 # for neovim python module
 pip install neovim --user
@@ -261,6 +262,7 @@ Then you can figure out what modification makes error.
 |             [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)             |       Show git status in nvim       |
 | [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) |  Show indent with different level   |
 |             [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)             |      Tab and buffer management      |
+|                    [wfxr/minimap.vim](https://github.com/wfxr/minimap.vim)                    |          Show code minimap          |
 
 ## Tools
 
@@ -307,6 +309,8 @@ Then you can figure out what modification makes error.
 |                         [vimlab/split-term](https://github.com/vimlab/split-term.vim)                         | Utilites around neovim's `:terminal` |
 |                 [akinsho/nvim-toggleterm.lua](https://github.com/akinsho/nvim-toggleterm.lua)                 |           Toggled terminal           |
 |                         [numtostr/FTerm.nvim](https://github.com/numtostr/FTerm.nvim)                         |            Float terminal            |
+|                          [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive)                          |     Git operations inside neovim     |
+|                          [chentau/marks.nvim](https://github.com/chentau/marks.nvim)                          |         Manage marks easier          |
 
 ## Completion
 
@@ -351,17 +355,15 @@ The leader key is `,`.
 |                      install plugins                      |          `<leader>pi`          |
 |                      update plugins                       |          `<leader>pu`          |
 |                       clean plugins                       |          `<leader>pc`          |
-|                                                           |                                |
 |                     toggle nvim-tree                      |            `<C-n>`             |
 |                       toggle tagbar                       |            `<A-t>`             |
-|                                                           |                                |
-|                 open horizontal terminal                  |       `<C-w>t` or `<F5>`       |
-|                 toggle vertical terminal                  |            `<C-\>`             |
+|                         Terminal                          |                                |
+|                  open vertical terminal                   |       `<C-w>t` or `<F5>`       |
+|                toggle horizontal terminal                 |            `<C-\>`             |
 |                       quit terminal                       |            `<C-d>`             |
 |                 toggle floating terminal                  |            `<A-d>`             |
 |               force quit floating terminal                |           `<A-S-d>`            |
-|             open `gitui` in current directory             |          `<leader>g`           |
-|                                                           |                                |
+|                     Buffer navigation                     |                                |
 |               pick buffer `n`(`n`means No)                |            `<A-n>`             |
 |                       right buffer                        |            `<A-j>`             |
 |                        left buffer                        |            `<A-k>`             |
@@ -371,13 +373,11 @@ The leader key is `,`.
 |                force close current buffer                 |           `<A-S-q>`            |
 |                  split buffer vertically                  |            `<C-w>v`            |
 |                 split buffer horizontally                 |            `<C-w>s`            |
-|                                                           |                                |
 |                       navigate down                       |            `<C-j>`             |
 |                        navigate up                        |            `<C-k>`             |
 |                       navigate left                       |            `<C-h>`             |
 |                      navigate right                       |            `<C-l>`             |
-|                                                           |                                |
-|                 operaions in `nvim-tree`                  |                                |
+|                 Operaions in `nvim-tree`                  |                                |
 |                         new file                          |              `a`               |
 |                   remove file/directory                   |              `d`               |
 |                   rename file/directory                   |              `r`               |
@@ -397,11 +397,6 @@ The leader key is `,`.
 |                        add project                        |    `<leader>fp`then`<C-A>`     |
 |                      delete project                       |    `<leader>fp`then`<C-D>`     |
 |                                                           |                                |
-|                       find one word                       |          `<leader>w`           |
-|                    find one character                     |          `<leader>c`           |
-|                    find two characters                    |          `<leader>cc`          |
-|                     jump to one line                      |    `<leader>j`/`<leader>k`     |
-|                                                           |                                |
 |                    escape insert mode                     |              `jk`              |
 |                      format manually                      |           `<C-A-l>`            |
 |                back to last cursor's place                |            `<C-O>`             |
@@ -418,31 +413,47 @@ The leader key is `,`.
 |             toggle lsp workspace diagnostics              |          `<leader>cw`          |
 |                   toggle code quickfix                    |          `<leader>cq`          |
 |                    toggle code loclist                    |          `<leader>cl`          |
-|                                                           |                                |
+|                    Navigate in snippet                    |                                |
 |                   next snippet's block                    |            `<C-l>`             |
 |                   prev snippet's block                    |            `<C-h>`             |
-|                                                           |                                |
+|                      Code selection                       |                                |
+|                   select block manually                   |              `vm`              |
 |                 select current `()` block                 |             `vab`              |
 |                 select current `{}` block                 |             `vaB`              |
 |            select current outer function block            |             `vaf`              |
 |             select current outer class block              |             `vac`              |
 |            select current inner function block            |             `vif`              |
 |             select current inner class block              |             `vic`              |
-|                                                           |                                |
-|                move to next function begin                |              `][`              |
-|                move to prev function begin                |              `[[`              |
-|                 move to next function end                 |              `]]`              |
-|                 move to prev function end                 |              `[]`              |
-|                                                           |                                |
+|                      Cursor movement                      |                                |
+|                     jump to one line                      |    `<leader>j`/`<leader>k`     |
+|                       find one word                       |          `<leader>w`           |
+|                    find one character                     |          `<leader>c`           |
+|             find two characters below cursor              |          `<leader>cc`          |
+| find one character`x` in front of cursor in the same line |              `Fx`              |
+|   find one character`x` behind cursor in the same line    |              `fx`              |
+| find next character`x` follow direction in the same line  |              `;`               |
+|                    next function begin                    |              `][`              |
+|                    prev function begin                    |              `[[`              |
+|                     next function end                     |              `]]`              |
+|                     prev function end                     |              `[]`              |
+|              mark current place with mark`x`              |              `mx`              |
+|                      delete mark`x`                       |             `dmx`              |
+|                         next mark                         |              `m]`              |
+|                         prev mark                         |              `m[`              |
+|                   next unstage git hunk                   |              `]g`              |
+|                   prev unstage git hunk                   |              `[g`              |
+|                   next code diagnostics                   |              `g]`              |
+|                   prev code diagnostics                   |              `g[`              |
+|                       Code comment                        |                                |
 |                 toggle one line's comment                 |             `gcc`              |
 |              toggle selected lines' comment               | `<S-V>`, select area then `gc` |
-|                                                           |                                |
+|                     Markdown preview                      |                                |
 |                  toggle MarkdownPreView                   |            `<F12>`             |
-|                                                           |                                |
+|                    Session management                     |                                |
 |                   Save current session                    |          `<leader>ss`          |
 |                   Restore last session                    |          `<leader>sr`          |
 |                    Delete last session                    |          `<leader>sd`          |
-|        Debug mode only supports golang&python now         |                                |
+|        Debug mode(only supports golang&python now)        |                                |
 |                    Debug continue(run)                    |       `<leader>dr`/`F6`        |
 |                      Debug run last                       |         `<leader>drl`          |
 |                    Debug run to cursor                    |         `<leader>drc`          |
@@ -455,8 +466,8 @@ The leader key is `,`.
 |                      Debug step out                       |       `<leader>do`/`F11`       |
 |                     Debug disconnect                      |          `<leader>dd`          |
 |                      Git management                       |                                |
-|                         Prev hunk                         |              `[g`              |
-|                         Next hunk                         |              `]g`              |
+|             open `gitui` in current directory             |          `<leader>g`           |
+|                    Enter vim-fugitive                     |          `<leader>G`           |
 |                        Stage hunk                         | `<leader>hs`(`n` and `v` mode) |
 |                        Reset hunk                         | `<leader>hr`(`n` and `v` mode) |
 |                      Undo stage hunk                      |          `<leader>hu`          |

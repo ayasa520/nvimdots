@@ -137,5 +137,11 @@ editor["rcarriga/nvim-dap-ui"] = {
         }
     }
 }
+editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
+editor["chentau/marks.nvim"] = {
+    opt = true,
+    event = "BufReadPost",
+    config = conf.marks
+}
 
 return editor
