@@ -49,7 +49,7 @@ local leader_map = function()
 end
 
 local neovide_config = function()
-    vim.cmd [[set guifont=Consolas:h12]]
+    vim.cmd [[set guifont=文泉驿等宽微米黑:h12]]
     vim.cmd [[cnoremap <C-V> <C-r>+]]
     vim.cmd [[inoremap <C-V> <C-r>+]]
     vim.g.neovide_refresh_rate = 60
@@ -172,7 +172,7 @@ local load_core = function()
     require("core.event")
     pack.load_compile()
 
-    vim.cmd [[colorscheme edge]]
+    vim.cmd[[colorscheme tokyonight]] 
 end
 
 load_core()
