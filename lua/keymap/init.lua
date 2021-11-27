@@ -157,15 +157,20 @@ local plug_map = {
         :with_silent(),
     ["n|<F9>"] = map_cr("lua require('dap').step_over()"):with_noremap() -- F9 step over
         :with_silent(),
-    ["n|<leader>dv"] = map_cr("lua require('dap').step_over()"):with_noremap()
-        :with_silent(),
+    -- ["n|<leader>dv"] = map_cr("lua require('dap').step_over()"):with_noremap()
+        -- :with_silent(),
     ["n|<F10>"] = map_cr("lua require('dap').step_into()"):with_noremap()  -- F10 step into
         :with_silent(),
-    ["n|<leader>di"] = map_cr("lua require('dap').step_into()"):with_noremap() 
-        :with_silent(),
+    -- ["n|<leader>di"] = map_cr("lua require('dap').step_into()"):with_noremap() 
+        -- :with_silent(),
     ["n|<F11>"] = map_cr("lua require('dap').step_out()"):with_noremap() -- F11 step out
         :with_silent(),
-    ["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap()
+    -- ["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap()
+        -- :with_silent(),
+    --inspect variable value
+    ["n|<leader>di"] = map_cr("lua require('dap.ui.variables').hover()"):with_noremap()
+        :with_silent(),
+    ["v|<leader>di"] = map_cr("lua require('dap.ui.variables').visual_hover()"):with_noremap()
         :with_silent(),
     ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap()  
         :with_silent(),
