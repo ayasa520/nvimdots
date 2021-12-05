@@ -13,6 +13,7 @@ tools["git@github.com:nvim-telescope/telescope.nvim"] = {
 }
 tools["git@github.com:nvim-telescope/telescope-fzy-native.nvim"] = {
     opt = true,
+    run = "make",
     after = "telescope.nvim"
 }
 

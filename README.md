@@ -99,6 +99,13 @@ paru goneovim
 - For [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer#available-lsps), you
   need to install corresponding language server use it.
 
+The default html server has bug which does not support embeded
+javascript completion. So you need to install another server manually.
+
+```
+npm i -g vscode-html-languageserver-bin
+```
+
 - For [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages), all maintained parser will be installed by default.
 
 - For [format.nvim](https://github.com/sbdchd/neoformat#supported-filetypes), you
@@ -217,7 +224,7 @@ directory.
 
   modify `lua/core/options.lua`
 
-- Switch light/dark theme
+- Switch light/dark theme(if you use edge theme)
 
 ```shell
 # To light
@@ -254,6 +261,7 @@ Then you can figure out what modification makes error.
 |                                             Name                                              |               Effect                |
 | :-------------------------------------------------------------------------------------------: | :---------------------------------: |
 |                        [sainnhe/edge](https://github.com/sainnhe/edge)                        |         My light/dark theme         |
+|                     [catppuccin/nvim](https://github.com/catppuccin/nvim)                     |      A low contrast dark theme      |
 |        [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)        |        For nvim-tree's icons        |
 |                [hoob3rt/lualine.nvim](https://github.com/hoob3rt/lualine.nvim)                | Minimal, fast but customizable line |
 |              [glepnir/dashboard-nvim](https://github.com/glepnir/dashboard-nvim)              |        Dashboard for Neovim         |
@@ -499,7 +507,7 @@ For example (gopls):
 Your root directory need a `go.mod` and your `.go` file need to be created
 first. Then LSP will autostart when you edit `.go` file next time.
 
-4. Copilot setup
+4. Copilot setup.
 
 Make sure your github account is signed up for [copilot](https://copilot.github.com/).
 

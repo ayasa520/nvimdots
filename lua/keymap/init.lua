@@ -60,7 +60,8 @@ local plug_map = {
         :with_silent(),
     ["n|gs"] = map_cr("Lspsaga signature_help"):with_noremap():with_silent(),
     ["n|gr"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
-    ["n|gh"] = map_cr("Lspsaga lsp_finder"):with_noremap():with_silent(),
+    ["n|gh"] = map_cr("lua vim.lsp.buf.references()"):with_noremap()
+        :with_silent(),
     ["n|<A-d>"] = map_cu('lua require("FTerm").toggle()'):with_noremap()
         :with_silent(),
     ["t|<A-d>"] = map_cu([[<C-\><C-n><CMD>lua require("FTerm").toggle()]]):with_noremap()
@@ -70,6 +71,8 @@ local plug_map = {
     ["n|<Leader>g"] = map_cu("lua require('FTerm').run('gitui')"):with_noremap()
         :with_silent(),
     ["n|<Leader>G"] = map_cu("Git"):with_noremap():with_silent(),
+    ["n|gps"] = map_cr("G push"):with_noremap():with_silent(),
+    ["n|gpl"] = map_cr("G pull"):with_noremap():with_silent(),
     -- Plugin trouble
     ["n|gt"] = map_cr("TroubleToggle"):with_noremap():with_silent(),
     ["n|gR"] = map_cr("TroubleToggle lsp_references"):with_noremap()

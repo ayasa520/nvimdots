@@ -7,6 +7,19 @@ function config.lightbulb()
 end
 
 function config.cmp()
+    vim.cmd [[highlight CmpItemAbbrDeprecated guifg=#D8DEE9 guibg=NONE gui=strikethrough]]
+    vim.cmd [[highlight CmpItemKindSnippet guifg=#BF616A guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindUnit guifg=#D08770 guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindProperty guifg=#A3BE8C guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindKeyword guifg=#EBCB8B guibg=NONE]]
+    vim.cmd [[highlight CmpItemAbbrMatch guifg=#5E81AC guibg=NONE]]
+    vim.cmd [[highlight CmpItemAbbrMatchFuzzy guifg=#5E81AC guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindVariable guifg=#8FBCBB guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindInterface guifg=#88C0D0 guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindText guifg=#81A1C1 guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindFunction guifg=#B48EAD guibg=NONE]]
+    vim.cmd [[highlight CmpItemKindMethod guifg=#B48EAD guibg=NONE]]
+
     local t = function(str)
         return vim.api.nvim_replace_termcodes(str, true, true, true)
     end
@@ -22,31 +35,31 @@ function config.cmp()
         formatting = {
             format = function(entry, vim_item)
                 local lspkind_icons = {
-                    Text = "",
+                    Text = "",
                     Method = "",
                     Function = "",
                     Constructor = "",
-                    Field = "ﰠ",
-                    Variable = "",
+                    Field = "",
+                    Variable = "",
                     Class = "ﴯ",
                     Interface = "",
                     Module = "",
                     Property = "ﰠ",
-                    Unit = "塞",
+                    Unit = "",
                     Value = "",
                     Enum = "",
                     Keyword = "",
                     Snippet = "",
                     Color = "",
                     File = "",
-                    Reference = "",
+                    Reference = "",
                     Folder = "",
                     EnumMember = "",
                     Constant = "",
-                    Struct = "פּ",
+                    Struct = "",
                     Event = "",
                     Operator = "",
-                    TypeParameter = ""
+                    TypeParameter = ""
                 }
                 -- load lspkind icons
                 vim_item.kind = string.format("%s %s",
@@ -54,11 +67,11 @@ function config.cmp()
                                               vim_item.kind)
 
                 vim_item.menu = ({
-                    -- cmp_tabnine = "[TN]",
+                    cmp_tabnine = "[TN]",
+                    buffer = "[BUF]",
                     orgmode = "[ORG]",
                     nvim_lsp = "[LSP]",
-                    nvim_lua = "[Lua]",
-                    buffer = "[BUF]",
+                    nvim_lua = "[LUA]",
                     path = "[PATH]",
                     tmux = "[TMUX]",
                     luasnip = "[SNIP]",
@@ -115,9 +128,8 @@ function config.cmp()
         -- You should specify your *installed* sources.
         sources = {
             {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
-            {name = "buffer"}, {name = "path"}, {name = "spell"},
-            {name = "tmux"}, {name = "orgmode"}
-            -- {name = 'cmp_tabnine'},
+            {name = "path"}, {name = "spell"}, {name = "tmux"},
+            {name = "orgmode"}, {name = "buffer"}, {name = 'cmp_tabnine'}
         }
     }
 end
@@ -131,19 +143,20 @@ function config.luasnip()
     require("luasnip/loaders/from_vscode").load({paths={"./my_snippets"}})
 end
 
--- function config.tabnine()
---     local tabnine = require('cmp_tabnine.config')
---     tabnine:setup({max_line = 1000, max_num_results = 20, sort = true})
--- end
+function config.tabnine()
+    local tabnine = require('cmp_tabnine.config')
+    tabnine:setup({max_line = 1000, max_num_results = 20, sort = true})
+end
 
 function config.autopairs()
-    require("nvim-autopairs").setup {fast_wrap = {}}
+    require("nvim-autopairs").setup {}
 
     -- If you want insert `(` after select function or method item
     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
     local cmp = require("cmp")
     cmp.event:on("confirm_done",
                  cmp_autopairs.on_confirm_done({map_char = {tex = ""}}))
+    cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 end
 
 return config

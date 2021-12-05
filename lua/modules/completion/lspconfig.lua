@@ -91,6 +91,7 @@ lsp_installer.on_server_ready(function(server)
             }
         }
     elseif (server.name == "clangd") then
+        opts.args = {"--background-index", "-std=c++20"}
         opts.commands = {
             ClangdSwitchSourceHeader = {
                 function()
@@ -118,3 +119,17 @@ lsp_installer.on_server_ready(function(server)
 
     server:setup(opts)
 end)
+
+nvim_lsp.html.setup {
+    cmd = {"html-languageserver", "--stdio"},
+    filetypes = {"html"},
+    init_options = {
+        configurationSection = {"html", "css", "javascript"},
+        embeddedLanguages = {css = true, javascript = true}
+    },
+    settings = {},
+    single_file_support = true,
+    flags = {debounce_text_changes = 500},
+    capabilities = capabilities,
+    on_attach = custom_attach
+}

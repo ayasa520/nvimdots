@@ -32,6 +32,6 @@ ui["git@github.com:akinsho/nvim-bufferline.lua"] = {
     event = "BufRead",
     config = conf.nvim_bufferline
 }
-ui["git@github.com:Xuyuanp/scrollbar.nvim"] = {opt = true, event = "BufRead"}
+ui["git@github.com:dstein64/nvim-scrollview"] = {opt = true, event = "BufRead"}
 
 return ui
