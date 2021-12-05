@@ -1,34 +1,34 @@
 local completion = {}
 local conf = require("modules.completion.config")
 
-completion["neovim/nvim-lspconfig"] = {
+completion["git@github.com:neovim/nvim-lspconfig"] = {
     opt = true,
     event = "BufReadPre",
     config = conf.nvim_lsp
 }
-completion["williamboman/nvim-lsp-installer"] = {
+completion["git@github.com:williamboman/nvim-lsp-installer"] = {
     opt = true,
     after = "nvim-lspconfig"
 }
-completion["tami5/lspsaga.nvim"] = {opt = true, after = "nvim-lspconfig"}
-completion["kosayoda/nvim-lightbulb"] = {
+completion["git@github.com:tami5/lspsaga.nvim"] = {opt = true, after = "nvim-lspconfig"}
+completion["git@github.com:kosayoda/nvim-lightbulb"] = {
     opt = true,
     after = "nvim-lspconfig",
     config = conf.lightbulb
 }
-completion["Jyc-Code/DoxygenToolkit.vim"] = {after = "nvim-lspconfig"}
-completion["ray-x/lsp_signature.nvim"] = {opt = true, after = "nvim-lspconfig"}
-completion["hrsh7th/nvim-cmp"] = {
+completion["git@github.com:Jyc-Code/DoxygenToolkit.vim"] = {after = "nvim-lspconfig"}
+completion["git@github.com:ray-x/lsp_signature.nvim"] = {opt = true, after = "nvim-lspconfig"}
+completion["git@github.com:hrsh7th/nvim-cmp"] = {
     config = conf.cmp,
     event = "InsertEnter",
     requires = {
-        {"saadparwaiz1/cmp_luasnip", after = "LuaSnip"},
-        {"hrsh7th/cmp-buffer", after = "cmp_luasnip"},
-        {"hrsh7th/cmp-nvim-lsp", after = "cmp-buffer"},
-        {"hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp"},
-        {"andersevenrud/compe-tmux", branch = "cmp", after = "cmp-nvim-lua"},
-        {"hrsh7th/cmp-path", after = "compe-tmux"},
-        {"f3fora/cmp-spell", after = "cmp-path"}
+        {"git@github.com:saadparwaiz1/cmp_luasnip", after = "LuaSnip"},
+        {"git@github.com:hrsh7th/cmp-buffer", after = "cmp_luasnip"},
+        {"git@github.com:hrsh7th/cmp-nvim-lsp", after = "cmp-buffer"},
+        {"git@github.com:hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp"},
+        {"git@github.com:andersevenrud/compe-tmux", branch = "cmp", after = "cmp-nvim-lua"},
+        {"git@github.com:hrsh7th/cmp-path", after = "compe-tmux"},
+        {"git@github.com:f3fora/cmp-spell", after = "cmp-path"}
         -- {
         --     'tzachar/cmp-tabnine',
         --     run = './install.sh',
@@ -37,15 +37,15 @@ completion["hrsh7th/nvim-cmp"] = {
         -- }
     }
 }
-completion["L3MON4D3/LuaSnip"] = {
+completion["git@github.com:L3MON4D3/LuaSnip"] = {
     after = "nvim-cmp",
     config = conf.luasnip,
     requires = "rafamadriz/friendly-snippets"
 }
-completion["windwp/nvim-autopairs"] = {
+completion["git@github.com:windwp/nvim-autopairs"] = {
     after = "nvim-cmp",
     config = conf.autopairs
 }
-completion["github/copilot.vim"] = {opt = true, cmd = "Copilot"}
+completion["git@github.com:github/copilot.vim"] = {opt = true, cmd = "Copilot"}
 
 return completion

@@ -16,7 +16,7 @@ return require('packer').startup({
 	config = {
 		max_jobs = 16,
 		git = {
-			default_url_format = 'https://hub.fastgit.org/%s'
+			
 		},
 		display = {
 			open_fn = function()
