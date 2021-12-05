@@ -7,11 +7,11 @@ tools["git@github.com:nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
     config = conf.telescope,
     requires = {
-        {"nvim-lua/plenary.nvim", opt = false},
-        {"nvim-lua/popup.nvim", opt = true}
+        {"git@github.com:nvim-lua/plenary.nvim", opt = false},
+        {"git@github.com:nvim-lua/popup.nvim", opt = true}
     }
 }
-tools["git@github.com:nvim-telescope/telescope-fzy-native.nvim"] = {
+tools["git@github.com:nvim-telescope/telescope-fzf-native.nvim"] = {
     opt = true,
     run = "make",
     after = "telescope.nvim"
