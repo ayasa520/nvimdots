@@ -14,12 +14,12 @@ lang["git@github.com:simrat39/rust-tools.nvim"] = {
     config = conf.rust_tools,
     requires = {{"nvim-lua/plenary.nvim", opt = false}}
 }
-lang["git@github.com:kristijanhusak/orgmode.nvim"] = {
-    opt = true,
-    ft = "org",
-    config = conf.lang_org
-}
-lang["git@github.com:iamcco/markdown-preview.nvim"] = {
+-- lang["kristijanhusak/orgmode.nvim"] = {
+--     opt = true,
+--     ft = "org",
+--     config = conf.lang_org
+-- }
+lang["iamcco/markdown-preview.nvim"] = {
     opt = true,
     ft = "markdown",
     run = "cd app && yarn install",
