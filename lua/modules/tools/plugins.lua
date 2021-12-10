@@ -24,7 +24,7 @@ tools["git@github.com:nvim-telescope/telescope-project.nvim"] = {
 tools["git@github.com:nvim-telescope/telescope-frecency.nvim"] = {
     opt = true,
     after = "telescope.nvim",
-    requires = {{"tami5/sqlite.lua", opt = true}}
+    requires = {{"git@github.com:tami5/sqlite.lua", opt = true}}
 }
 tools["git@github.com:nvim-telescope/telescope-media-files.nvim"] = {
     opt = true,
@@ -51,7 +51,7 @@ tools["git@github.com:dstein64/vim-startuptime"] = {opt = true, cmd = "StartupTi
 tools["git@github.com:gelguy/wilder.nvim"] = {
     event = "CmdlineEnter",
     config = conf.wilder,
-    requires = {{"romgrk/fzy-lua-native", after = "wilder.nvim"}}
+    requires = {{"git@github.com:romgrk/fzy-lua-native", after = "wilder.nvim"}}
 }
 tools["git@github.com:nathom/filetype.nvim"] = {opt = false}
 return tools

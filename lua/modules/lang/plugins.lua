@@ -22,7 +22,8 @@ lang["git@github.com:kristijanhusak/orgmode.nvim"] = {
 lang["git@github.com:iamcco/markdown-preview.nvim"] = {
     opt = true,
     ft = "markdown",
-    run = "cd app && yarn install"
+    run = "cd app && yarn install",
+    cmd = {"MarkdownPreview","MarkdownPreviewStop","MarkdownPreviewToggle"}
 }
-lang["chrisbra/csv.vim"] = {opt = true, ft = "csv"}
+lang["git@github.com:chrisbra/csv.vim"] = {opt = true, ft = "csv"}
 return lang
