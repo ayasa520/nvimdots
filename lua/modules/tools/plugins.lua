@@ -53,5 +53,6 @@ tools["git@github.com:gelguy/wilder.nvim"] = {
     config = conf.wilder,
     requires = {{"git@github.com:romgrk/fzy-lua-native", after = "wilder.nvim"}}
 }
-tools["git@github.com:nathom/filetype.nvim"] = {opt = false}
+tools["famiu/bufdelete.nvim"] = {opt = true, cmd = {"Bdelete", "Bwipeout"}}
+
 return tools

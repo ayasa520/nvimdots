@@ -80,7 +80,7 @@ function autocmd.load_autocmds()
             {"FileType", "c,cpp", "setlocal tabstop=4 shiftwidth=4"},
             {
                 "FileType", "javascript,typescript,html",
-                "setlocal tabstop=4 shiftwidth=4"
+                "setlocal tabstop=2 shiftwidth=2"
             }, {
                 "FileType", "dashboard",
                 "set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2"
