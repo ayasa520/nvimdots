@@ -22,18 +22,22 @@ completion["git@github.com:hrsh7th/nvim-cmp"] = {
     config = conf.cmp,
     event = "InsertEnter",
     requires = {
+        {"git@github.com:lukas-reineke/cmp-under-comparator"},
         {"git@github.com:saadparwaiz1/cmp_luasnip", after = "LuaSnip"},
         {"git@github.com:hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip"},
         {"git@github.com:hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp"},
         {"git@github.com:andersevenrud/compe-tmux", branch = "cmp", after = "cmp-nvim-lua"},
         {"git@github.com:hrsh7th/cmp-path", after = "compe-tmux"},
         {"git@github.com:f3fora/cmp-spell", after = "cmp-path"},
-        {"git@github.com:hrsh7th/cmp-buffer", after = "cmp-spell"}, {
-            'git@github.com:tzachar/cmp-tabnine',
-            run = './install.sh',
-            after = 'cmp-spell',
-            config = conf.tabnine
-        }
+        {"git@github.com:hrsh7th/cmp-buffer", after = "cmp-spell"},
+        {"git@github.com:hrsh7th/cmp-cmdline", after = "cmp-buffer"},
+        {"git@github.com:kdheepak/cmp-latex-symbols", after = "cmp-cmdline"}
+        -- {
+        --     'tzachar/cmp-tabnine',
+        --     run = './install.sh',
+        --     after = 'cmp-spell',
+        --     config = conf.tabnine
+        -- }
     }
 }
 completion["git@github.com:L3MON4D3/LuaSnip"] = {

@@ -8,6 +8,9 @@
       {
         "language": "tex",
         "path": "./tex.json"
+      },{
+        "language": "markdown",
+        "path": "./markdown.json"
       }
     ]
   }
