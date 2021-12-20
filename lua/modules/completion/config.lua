@@ -163,8 +163,20 @@ end
 function config.luasnip()
     require("luasnip").config.set_config {
         history = true,
-	-- Update more often, :h events for more info.
-	updateevents = "TextChanged,TextChangedI",
+	    -- Update more often, :h events for more info.
+	    updateevents = "TextChanged,TextChangedI",
+        ext_opts = {
+            [require("luasnip.util.types").choiceNode] = {
+                active = {
+                    virt_text = {{"●", "GruvboxOrange"}}
+                }
+            },
+            [require("luasnip.util.types").insertNode] = {
+                active = {
+                    virt_text = {{"●", "GruvboxBlue"}}
+                }
+            }
+        }
     }
     -- 这两个添加了 json 格式的 snippet
     require("luasnip/loaders/from_vscode").load()
