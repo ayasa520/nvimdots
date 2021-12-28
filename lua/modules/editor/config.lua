@@ -455,39 +455,39 @@ function config.dap()
             request = 'launch',
             MIMode = 'gdb',
             miDebuggerServerAddress = 'localhost:1234',
-            miDebuggerPath = '/home/rikka/.local/share/nvim/dapinstall/ccppr_vsc/gdb-10.2/gdb',
+            miDebuggerPath = '/usr/bin/gdb',
             cwd = '${workspaceFolder}',
             program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
             end,
         },
         }
-    dap.configurations.cpp = {
-    {
-        name = "Launch file",
-        type = "cppdbg",
-        request = "launch",
-        program = function()
-        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = true,
-    },
-    {
-        name = 'Attach to gdbserver :1234',
-        type = 'cppdbg',
-        request = 'launch',
-        MIMode = 'gdb',
-        miDebuggerServerAddress = 'localhost:1234',
-        miDebuggerPath = '/home/rikka/.local/share/nvim/dapinstall/ccppr_vsc/gdb-10.2/gdb',
-        cwd = '${workspaceFolder}',
-        program = function()
-        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-    },
-    }
-
-    dap.adapters.python = {
+        dap.configurations.c = {
+        {
+            name = "Launch file",
+            type = "cppdbg",
+            request = "launch",
+            program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+            cwd = '${workspaceFolder}',
+            stopOnEntry = true,
+        },
+        {
+            name = 'Attach to gdbserver :1234',
+            type = 'cppdbg',
+            request = 'launch',
+            MIMode = 'gdb',
+            miDebuggerServerAddress = 'localhost:1234',
+            miDebuggerPath = '/usr/bin/gdb',
+            cwd = '${workspaceFolder}',
+            program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+        },
+        }
+    
+        dap.adapters.python = {
         type = "executable",
         command = os.getenv("HOME") ..
             '/.local/share/nvim/dapinstall/python/bin/python',

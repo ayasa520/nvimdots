@@ -1,7 +1,7 @@
-local home = require('core.global').home
 local config = {}
 
 function config.telescope()
+    local home = require('core.global').home
     if not packer_plugins["popup.nvim"].loaded then
         vim.cmd [[packadd popup.nvim]]
     end

@@ -167,9 +167,9 @@ local plug_map = {
     -- ["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap()
         -- :with_silent(),
     --inspect variable value
-    ["n|<leader>di"] = map_cr("lua require('dap.ui.variables').hover()"):with_noremap()
+    ["n|<leader>di"] = map_cr("lua require('dap.ui.widgets').hover() "):with_noremap()
         :with_silent(),
-    ["v|<leader>di"] = map_cr("lua require('dap.ui.variables').visual_hover()"):with_noremap()
+    ["v|<leader>di"] = map_cr("lua require('dap.ui.widgets').hover() "):with_noremap()
         :with_silent(),
     ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap()  
         :with_silent(),
