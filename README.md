@@ -2,11 +2,13 @@
 
 ![Dashboard](./shots/2021-10-13_17-25.png)
 
-![Telescope](./shots/telescope.png)
+![Telescope](https://s2.loli.net/2021/12/22/a3MrbwpL5oCHFgv.png)
 
-![Coding](./shots/coding.png)
+![Coding](https://s2.loli.net/2021/12/22/5fik2zBWth39w6a.png)
 
-![Gitui](./shots/gitui.png)
+![Packer](https://s2.loli.net/2021/12/22/TewXn6JShz2bCLy.png)
+
+![Gitui](https://s2.loli.net/2021/12/22/GPVWJ84yBC1jTbk.png)
 
 This is my neovim's configuration, which contains four branch.
 
@@ -28,12 +30,16 @@ Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
 - Modular. Easy to customize.
 - Powerful. Full functionality to code.
 
-![startup_with_light](./shots/startup_light.png)
+![startup time](https://s2.loli.net/2021/12/22/joMs914gIOv3ql8.png)
 
-![startup_with_dark](./shots/startup_dark.png)
+![vim-startuptime](https://s2.loli.net/2021/12/22/4bJRA9XMmWnIVsH.png)
 
 (Tested with [rhysd/vim-startuptime](https://github.com/rhysd/vim-startuptime))
 
 # Details
 
 Please refer to [wiki](https://github.com/ayamir/nvimdots/wiki).
+
+# Acknowledgement
+
+- [glepnir/nvim](https://github.com/glepnir/nvim)

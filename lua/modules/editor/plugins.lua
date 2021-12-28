@@ -138,10 +138,10 @@ editor["git@github.com:rcarriga/nvim-dap-ui"] = {
     }
 }
 editor["git@github.com:tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
--- editor["chentau/marks.nvim"] = {
---     opt = true,
---     event = "BufReadPost",
---     config = conf.marks
--- }
+editor["git@github.com:edluffy/specs.nvim"] = {
+    opt = true,
+    event = "CursorMoved",
+    config = conf.specs
+}
 
 return editor

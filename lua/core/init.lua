@@ -105,7 +105,7 @@ local dashboard_config = function()
         },
         find_frecency = {
             description = {" File frecency              comma f r "},
-            command = "Telescope frecency"
+            command = "lua require('telescope').extensions.frecency.frecency{}"
         },
         find_history = {
             description = {" File history               comma f e "},
@@ -113,7 +113,7 @@ local dashboard_config = function()
         },
         find_project = {
             description = {" Project find               comma f p "},
-            command = "Telescope project"
+            command = "lua require('telescope').extensions.project.project{}"
         },
         find_file = {
             description = {" File find                  comma f f "},

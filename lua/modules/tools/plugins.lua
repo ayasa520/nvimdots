@@ -4,7 +4,7 @@ local conf = require("modules.tools.config")
 tools["git@github.com:nvim-lua/plenary.nvim"] = {opt = false}
 tools["git@github.com:nvim-telescope/telescope.nvim"] = {
     opt = true,
-    cmd = "Telescope",
+    module = "telescope",
     config = conf.telescope,
     requires = {
         {"git@github.com:nvim-lua/plenary.nvim", opt = false},
@@ -25,10 +25,6 @@ tools["git@github.com:nvim-telescope/telescope-frecency.nvim"] = {
     opt = true,
     after = "telescope.nvim",
     requires = {{"git@github.com:tami5/sqlite.lua", opt = true}}
-}
-tools["git@github.com:nvim-telescope/telescope-media-files.nvim"] = {
-    opt = true,
-    after = "telescope.nvim"
 }
 tools["git@github.com:jvgrootveld/telescope-zoxide"] = {opt = true, after = "telescope.nvim"}
 tools["git@github.com:thinca/vim-quickrun"] = {opt = true, cmd = {"QuickRun", "Q"}}
@@ -53,6 +49,5 @@ tools["git@github.com:gelguy/wilder.nvim"] = {
     config = conf.wilder,
     requires = {{"git@github.com:romgrk/fzy-lua-native", after = "wilder.nvim"}}
 }
-tools["git@github.com:famiu/bufdelete.nvim"] = {opt = true, cmd = {"Bdelete", "Bwipeout"}}
 
 return tools
