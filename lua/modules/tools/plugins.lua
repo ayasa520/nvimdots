@@ -5,6 +5,7 @@ tools["git@github.com:nvim-lua/plenary.nvim"] = {opt = false}
 tools["git@github.com:nvim-telescope/telescope.nvim"] = {
     opt = true,
     module = "telescope",
+    cmd = "Telescope",
     config = conf.telescope,
     requires = {
         {"git@github.com:nvim-lua/plenary.nvim", opt = false},
