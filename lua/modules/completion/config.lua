@@ -206,7 +206,7 @@ function config.luasnip()
     }
     -- 这两个添加了 json 格式的 snippet
     require("luasnip/loaders/from_vscode").load()
-    require("luasnip/loaders/from_vscode").load({paths={"./my_snippets/luasnip"}}) 
+    require("luasnip/loaders/from_vscode").load({paths={"./my_snippets/luasnip/json"}}) 
     local function copy(args)
         return args[1]
     end
