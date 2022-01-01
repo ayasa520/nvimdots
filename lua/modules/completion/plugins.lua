@@ -10,7 +10,11 @@ completion["git@github.com:williamboman/nvim-lsp-installer"] = {
     opt = true,
     after = "nvim-lspconfig"
 }
-completion["git@github.com:tami5/lspsaga.nvim"] = {opt = true, after = "nvim-lspconfig"}
+completion["git@github.com:tami5/lspsaga.nvim"] = {
+    opt = true,
+    after = "nvim-lspconfig",
+    config = conf.saga
+}
 completion["git@github.com:kosayoda/nvim-lightbulb"] = {
     opt = true,
     after = "nvim-lspconfig",

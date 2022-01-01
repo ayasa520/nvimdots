@@ -137,6 +137,10 @@ editor["git@github.com:rcarriga/nvim-dap-ui"] = {
         }
     }
 }
+editor["git@github.com:theHamsta/nvim-dap-virtual-text.git"] = {
+    opt = false,
+    config = conf.dap_virtual_text
+}
 editor["git@github.com:tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
 editor["git@github.com:edluffy/specs.nvim"] = {
     opt = true,

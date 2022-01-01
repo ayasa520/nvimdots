@@ -19,7 +19,7 @@ lang["git@github.com:simrat39/rust-tools.nvim"] = {
 --     ft = "org",
 --     config = conf.lang_org
 -- }
-lang["iamcco/markdown-preview.nvim"] = {
+lang["git@github.com:iamcco/markdown-preview.nvim"] = {
     opt = true,
     ft = "markdown",
     run = "cd app && yarn install",

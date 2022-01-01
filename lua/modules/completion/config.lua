@@ -8,6 +8,16 @@ function config.lightbulb()
     vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 end
 
+function config.saga()
+    local saga = require 'lspsaga'
+    saga.init_lsp_saga {
+        error_sign = "",
+        warn_sign = "",
+        hint_sign = "",
+        infor_sign = "",
+    }
+end
+
 function config.cmp()
     vim.cmd [[highlight CmpItemAbbrDeprecated guifg=#D8DEE9 guibg=NONE gui=strikethrough]]
     vim.cmd [[highlight CmpItemKindSnippet guifg=#BF616A guibg=NONE]]
