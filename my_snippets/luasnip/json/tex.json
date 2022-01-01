@@ -1,7 +1,0 @@
-{
-    "Simple Snippet Example": {
-        "prefix": "text",
-        "body": "this is inserted as text",
-        "description": "descriptive description"
-    }
-} 
