@@ -1,3 +1,5 @@
+# How to use
+`git clone --recursive git@github.com:ayasa520/nvimdots.git`
 # Introduction
 
 ![Dashboard](./shots/2021-10-13_17-25.png)
