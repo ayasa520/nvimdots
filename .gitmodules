@@ -1,0 +1,3 @@
+[submodule "my_snippets"]
+	path = my_snippets
+	url = git@github.com:ayasa520/snippets.git 
