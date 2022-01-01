@@ -183,7 +183,7 @@ function config.ultisnips()
     vim.g.UltiSnipsJumpForwardTrigger = "<C-l>"
     vim.g.UltiSnipsJumpBackwardTrigger = "<C-h>"
     -- 下面设定了 UltiSnip snippets 的位置. 来源于 vim-snippet, 如果不特定的话就会使用 snippets 下的而非 UltiSnip 下的
-    vim.g.UltiSnipsSnippetDirectories={'UltiSnips/','/home/rikka/.config/nvim/my_snippets/ultisnip'}
+    vim.g.UltiSnipsSnippetDirectories={'UltiSnips/',os.getenv('HOME')..'/.config/nvim/my_snippets/ultisnip'}
 end
 
 function config.luasnip()
