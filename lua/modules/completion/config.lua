@@ -19,6 +19,13 @@ function config.saga()
 end
 
 function config.cmp()
+    local press = function(key)
+        vim.api.nvim_feedkeys(
+            vim.api.nvim_replace_termcodes(key, true, true, true),
+            "n",
+            true
+        )
+    end
     vim.cmd [[highlight CmpItemAbbrDeprecated guifg=#D8DEE9 guibg=NONE gui=strikethrough]]
     vim.cmd [[highlight CmpItemKindSnippet guifg=#BF616A guibg=NONE]]
     vim.cmd [[highlight CmpItemKindUnit guifg=#D08770 guibg=NONE]]
@@ -92,6 +99,7 @@ function config.cmp()
                     orgmode = "[ORG]",
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[LUA]",
+                    ultisnips = "[USP]",
                     path = "[PATH]",
                     tmux = "[TMUX]",
                     luasnip = "[SNIP]",
@@ -113,7 +121,9 @@ function config.cmp()
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
-                elseif has_words_before() then
+                elseif cmp.get_selected_entry() == nil and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+						press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
+                elseif  has_words_before() then
                     cmp.complete()
                 else
                     fallback()
@@ -129,6 +139,8 @@ function config.cmp()
             ["<C-h>"] = cmp.mapping(function(fallback)
                 if require("luasnip").jumpable(-1) then
                     vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+                elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                    press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
                 else
                     fallback()
                 end
@@ -136,6 +148,8 @@ function config.cmp()
             ["<C-l>"] = cmp.mapping(function(fallback)
                 if require("luasnip").expand_or_jumpable() then
                     vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+                elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                    press("<ESC>:call UltiSnips#JumpForwards()<CR>")
                 else
                     fallback()
                 end
@@ -155,12 +169,21 @@ function config.cmp()
         },
         -- You should specify your *installed* sources.
         sources = {
-            {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
+            {name = "nvim_lsp"}, {name = "ultisnips"}, {name = "nvim_lua"}, {name = "luasnip"},
             {name = "path"}, {name = "spell"}, {name = "tmux"},
             {name = "orgmode"}, {name = "buffer"}, {name = "latex_symbols"}
             -- {name = 'cmp_tabnine'}
         }
     }
+end
+
+function config.ultisnips()
+	vim.g.UltiSnipsRemoveSelectModeMappings = 0
+	vim.g.UltiSnipsEditSplit = 'vertical'
+    vim.g.UltiSnipsJumpForwardTrigger = "<C-l>"
+    vim.g.UltiSnipsJumpBackwardTrigger = "<C-h>"
+    -- 下面设定了 UltiSnip snippets 的位置. 来源于 vim-snippet, 如果不特定的话就会使用 snippets 下的而非 UltiSnip 下的
+    vim.g.UltiSnipsSnippetDirectories={'UltiSnips/','/home/rikka/.config/nvim/my_snippets/ultisnip'}
 end
 
 function config.luasnip()
@@ -171,19 +194,19 @@ function config.luasnip()
         ext_opts = {
             [require("luasnip.util.types").choiceNode] = {
                 active = {
-                    virt_text = {{"●", "GruvboxOrange"}}
+                    virt_text = {{"🔸", "GruvboxOrange"}}
                 }
             },
             [require("luasnip.util.types").insertNode] = {
                 active = {
-                    virt_text = {{"●", "GruvboxBlue"}}
+                    virt_text = {{"🔹", "GruvboxBlue"}}
                 }
             }
         }
     }
     -- 这两个添加了 json 格式的 snippet
     require("luasnip/loaders/from_vscode").load()
-    require("luasnip/loaders/from_vscode").load({paths={"./my_snippets"}}) 
+    require("luasnip/loaders/from_vscode").load({paths={"./my_snippets/luasnip"}}) 
     local function copy(args)
         return args[1]
     end
