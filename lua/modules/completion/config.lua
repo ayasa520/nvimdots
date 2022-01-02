@@ -137,19 +137,19 @@ function config.cmp()
                 end
             end, {"i", "s"}),
             ["<C-h>"] = cmp.mapping(function(fallback)
-                if require("luasnip").jumpable(-1) then
-                    vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
-                elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
                     press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
+                elseif require("luasnip").jumpable(-1) then
+                    vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
                 else
                     fallback()
                 end
             end,{"i","s"}),
             ["<C-l>"] = cmp.mapping(function(fallback)
-                if require("luasnip").expand_or_jumpable() then
-                    vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
-                elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
                     press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+                elseif require("luasnip").expand_or_jumpable() then
+                    vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
                 else
                     fallback()
                 end
