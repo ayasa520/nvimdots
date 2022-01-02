@@ -183,11 +183,13 @@ function config.ultisnips()
     vim.g.UltiSnipsJumpForwardTrigger = "<C-l>"
     vim.g.UltiSnipsJumpBackwardTrigger = "<C-h>"
     -- 下面设定了 UltiSnip snippets 的位置. 来源于 vim-snippet, 如果不特定的话就会使用 snippets 下的而非 UltiSnip 下的
-    vim.g.UltiSnipsSnippetDirectories={'UltiSnips/',os.getenv('HOME')..'/.config/nvim/my_snippets/ultisnip'}
+    vim.g.UltiSnipsSnippetDirectories={os.getenv('HOME')..'/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/',os.getenv('HOME')..'/.config/nvim/my_snippets/ultisnip'}
 end
 
 function config.luasnip()
     require("luasnip").config.set_config {
+        region_check_events = "InsertEnter",
+        delete_check_events = "TextChanged,InsertLeave",
         history = true,
 	    -- Update more often, :h events for more info.
 	    updateevents = "TextChanged,TextChangedI",
@@ -211,7 +213,8 @@ function config.luasnip()
         return args[1]
     end
     -- lua 格式的这样写, 比较复杂的(需要上下文的)snippets放在这里
-    require("luasnip").snippets = require("modules.completion.snippets.snippets")
+    package.path = package.path..';'..os.getenv('HOME')..'/.config/nvim/my_snippets/luasnip/lua/?.lua'
+    require("luasnip").snippets = require("snippets")
 end
 
 -- function config.tabnine()

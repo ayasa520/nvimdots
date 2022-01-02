@@ -33,7 +33,7 @@ completion["git@github.com:hrsh7th/nvim-cmp"] = {
         {"git@github.com:quangnguyen30192/cmp-nvim-ultisnips", after = "ultisnips"},
         {"git@github.com:hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip"},
         {"git@github.com:hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp"},
-        {"git@github.com:andersevenrud/compe-tmux", branch = "cmp", after = "cmp-nvim-lua"},
+        {"git@github.com:andersevenrud/compe-tmux", after = "cmp-nvim-lua"},
         {"git@github.com:hrsh7th/cmp-path", after = "compe-tmux"},
         {"git@github.com:f3fora/cmp-spell", after = "cmp-path"},
         {"git@github.com:hrsh7th/cmp-buffer", after = "cmp-spell"},
