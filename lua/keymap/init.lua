@@ -96,6 +96,9 @@ local plug_map = {
     ["n|<Leader>fr"] = map_cu(
         "lua require('telescope').extensions.frecency.frecency{}"):with_noremap()
         :with_silent(),
+    ["n|<Leader>fd"] = map_cu(
+            "Telescope media_files"):with_noremap()
+            :with_silent(),
     ["n|<Leader>fe"] = map_cu("DashboardFindHistory"):with_noremap()
         :with_silent(),
     ["n|<Leader>ff"] = map_cu("DashboardFindFile"):with_noremap():with_silent(),

@@ -1,6 +1,9 @@
 local tools = {}
 local conf = require("modules.tools.config")
 
+tools["git@github.com:nvim-telescope/telescope-media-files.nvim"]={
+    opt = true,after = 'telescope.nvim'
+}
 tools["git@github.com:nvim-lua/plenary.nvim"] = {opt = false}
 tools["git@github.com:nvim-telescope/telescope.nvim"] = {
     opt = true,

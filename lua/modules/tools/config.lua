@@ -20,7 +20,10 @@ function config.telescope()
     if not packer_plugins["telescope-zoxide"].loaded then
         vim.cmd [[packadd telescope-zoxide]]
     end
-
+    
+    if not packer_plugins['telescope-media-files.nvim'].loaded then
+        vim.cmd [[packadd telescope-media-files.nvim]]
+    end
     require("telescope").setup {
         defaults = {
             prompt_prefix = "🔭 ",
@@ -59,10 +62,16 @@ function config.telescope()
                 show_scores = true,
                 show_unindexed = true,
                 ignore_patterns = {"*.git/*", "*/tmp/*"}
-            }
+            },
+             media_files = {
+                -- filetypes whitelist
+                -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+                filetypes = {"png", "webp", "jpg", "jpeg"},
+                find_cmd = "fd" -- find command (defaults to `fd`)
+              }
         }
     }
-
+    require('telescope').load_extension('media_files')
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("project")
     require("telescope").load_extension("zoxide")
