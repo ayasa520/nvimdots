@@ -91,6 +91,13 @@ function config.lualine()
         },
         filetypes = {'Outline'}
     }
+    local function getWords()
+          if not (vim.fn.wordcount().visual_words == nil) then
+            return tostring(vim.fn.wordcount().visual_words) .. " w,"..tostring(vim.fn.wordcount().visual_chars).." c"
+          else
+            return tostring(vim.fn.wordcount().words) .. " w,"..tostring(vim.fn.wordcount().chars).." c"
+          end
+      end
 
     require("lualine").setup {
         options = {
@@ -113,7 +120,7 @@ function config.lualine()
                     symbols = {error = " ", warn = " ", info = " "}
                 }
             },
-            lualine_y = {"filetype", "encoding", "fileformat"},
+            lualine_y = {"filetype", "encoding", "fileformat",{ getWords }},
             lualine_z = {"progress", "location"}
         },
         inactive_sections = {
