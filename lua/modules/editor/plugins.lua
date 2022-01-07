@@ -6,13 +6,13 @@ editor['git@github.com:ekickx/clipboard-image.nvim'] = {
     config = conf.clipboard_image
 }
 editor['git@github.com:lervag/vimtex'] = {
-    opt = true,
+    opt = false,
     config = conf.vimtex,
     ft = 'tex'
 }
 
 editor['git@github.com:Pocco81/AutoSave.nvim'] = {
-    opt = true,
+    opt = false,
     cmd = {'ASToggle','ASOn','ASOff'},
     events = {"InsertLeave", "TextChanged"},
     config = conf.autosave
