@@ -1,7 +1,10 @@
 local config = {}
 local dap_dir = vim.fn.stdpath("data") .. "/dapinstall/"
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
-
+function config.sandwich()
+  
+    -- 我仅仅需要添加 `` '' "" [] {} 而已
+end
 function config.symbols_outline()
     require("symbols-outline").setup({
         highlight_hovered_item = true,

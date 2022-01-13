@@ -21,6 +21,8 @@ local createdir = function()
 end
 
 local disable_distribution_plugins = function()
+    vim.g.sandwich_no_default_key_mappings = 1
+    vim.g.operator_sandwich_no_default_key_mappings = 1
     vim.g.loaded_fzf = 1
     vim.g.loaded_gtags = 1
     vim.g.loaded_gzip = 1
@@ -50,7 +52,7 @@ local leader_map = function()
 end
 
 local neovide_config = function()
-    vim.cmd [[set guifont=文泉驿等宽微米黑:h12]]
+    vim.cmd [[set guifont=Courier\ New:h12:b,BlexMono\ Mono\ Font:h12:b]]
     vim.cmd [[cnoremap <C-V> <C-r>+]]
     vim.cmd [[inoremap <C-V> <C-r>+]]
     vim.g.neovide_refresh_rate = 60
@@ -71,7 +73,7 @@ local dashboard_config = function()
     vim.g.dashboard_default_executive = "telescope"
 
     vim.g.dashboard_custom_header = {
-    [[    ⠀⠀        ⠀⠀⠀⠀⠀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⠉⡏⣿⣭⡉⣉⣆⠀⠀⠀⠀]],
+    [[    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣏⠉⡏⣿⣭⡉⣉⣆⠀⠀⠀⠀]],
     [[    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⣧⣿⣿⣯⠒⠊⠀⠀⠀⠀]],
     [[    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀]],
     [[    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀]],

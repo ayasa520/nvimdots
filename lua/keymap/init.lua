@@ -191,7 +191,26 @@ local plug_map = {
     ["n|<leader>tl"] = map_cr("DoxLic"):with_noremap():with_silent(),
     ["n|<leader>tb"] = map_cr("DoxBlock"):with_noremap():with_silent(),
     ["n|<leader>tu"] = map_cr("DoxUndoc"):with_noremap():with_silent(),
-    ["n|<leader>ta"] = map_cr("DoxAuthor"):with_noremap():with_silent()
+    ["n|<leader>ta"] = map_cr("DoxAuthor"):with_noremap():with_silent(),
+    -- 环绕字符 normal 以及 visual 模式生效
+    ["n|<leader>`"] = map_cmd("<Plug>(sandwich-add)iw`"):with_silent(),
+    ["n|<leader>["]=map_cmd("<Plug>(sandwich-add)iw["):with_silent(),
+    ["n|<leader>{"]=map_cmd("<Plug>(sandwich-add)iw{"):with_silent(),
+    ["n|<leader>("]=map_cmd("<Plug>(sandwich-add)iw("):with_silent(),
+    ["n|<leader>'"]=map_cmd("<Plug>(sandwich-add)iw'"):with_silent(),
+    ["n|<leader>\""]=map_cmd("<Plug>(sandwich-add)iw\""):with_silent(),
+    ["n|<leader><"]=map_cmd("<Plug>(sandwich-add)iw<"):with_silent(),
+    ["v|<leader>`"] = map_cmd("<Plug>(sandwich-add)`"):with_silent(),
+    ["v|<leader>["]=map_cmd("<Plug>(sandwich-add)["):with_silent(),
+    ["v|<leader>{"]=map_cmd("<Plug>(sandwich-add){"):with_silent(),
+    ["v|<leader>'"]=map_cmd("<Plug>(sandwich-add)'"):with_silent(),
+    ["v|<leader>\""]=map_cmd("<Plug>(sandwich-add)\""):with_silent(),
+    ["v|<leader><"]=map_cmd("<Plug>(sandwich-add)<"):with_silent(),
+    ["v|<leader>("]=map_cmd("<Plug>(sandwich-add)("):with_silent(),
+
+
+    
+
     
 };
 

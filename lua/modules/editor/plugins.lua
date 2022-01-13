@@ -1,5 +1,9 @@
 local editor = {}
 local conf = require('modules.editor.config')
+editor['git@github.com:machakann/vim-sandwich.git'] = {
+    config = conf.sandwich
+}
+
 editor['git@github.com:ekickx/clipboard-image.nvim'] = {
     opt = true,
     cmd={'PasteImg'},
