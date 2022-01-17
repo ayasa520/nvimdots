@@ -6,6 +6,7 @@ completion["git@github.com:neovim/nvim-lspconfig"] = {
     event = "BufReadPre",
     config = conf.nvim_lsp
 }
+<<<<<<< HEAD
 completion["git@github.com:williamboman/nvim-lsp-installer"] = {
     opt = true,
     after = "nvim-lspconfig"
@@ -14,6 +15,17 @@ completion["git@github.com:tami5/lspsaga.nvim"] = {
     opt = true,
     after = "nvim-lspconfig",
     config = conf.saga
+}
+
+completion["git@github.com:creativenull/efmls-configs-nvim"] = {
+    opt = false,
+    requires = "neovim/nvim-lspconfig"
+}
+
+completion["git@github.com:RishabhRD/nvim-lsputils"] = {
+    opt = true,
+    after = "nvim-lspconfig",
+    config = conf.nvim_lsputils
 }
 completion["git@github.com:kosayoda/nvim-lightbulb"] = {
     opt = true,
@@ -26,6 +38,7 @@ completion["git@github.com:hrsh7th/nvim-cmp"] = {
     config = conf.cmp,
     event = "InsertEnter",
     requires = {
+<<<<<<< HEAD
         {"git@github.com:lukas-reineke/cmp-under-comparator"},
         {"git@github.com:saadparwaiz1/cmp_luasnip", after = "LuaSnip"},
         -- 就目前的配置而言, LuaSnip 的细节更好, 比如可以做到外部再次跳回 snippet 内部
@@ -38,6 +51,17 @@ completion["git@github.com:hrsh7th/nvim-cmp"] = {
         {"git@github.com:f3fora/cmp-spell", after = "cmp-path"},
         {"git@github.com:hrsh7th/cmp-buffer", after = "cmp-spell"},
         {"git@github.com:kdheepak/cmp-latex-symbols", after = "cmp-buffer"}
+=======
+        {"lukas-reineke/cmp-under-comparator"},
+        {"saadparwaiz1/cmp_luasnip", after = "LuaSnip"},
+        {"hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip"},
+        {"hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp"},
+        {"andersevenrud/cmp-tmux", after = "cmp-nvim-lua"},
+        {"hrsh7th/cmp-path", after = "cmp-tmux"},
+        {"f3fora/cmp-spell", after = "cmp-path"},
+        {"hrsh7th/cmp-buffer", after = "cmp-spell"},
+        {"kdheepak/cmp-latex-symbols", after = "cmp-buffer"}
+>>>>>>> upstream/main
         -- {
         --     'tzachar/cmp-tabnine',
         --     run = './install.sh',

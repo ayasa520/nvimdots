@@ -6,6 +6,7 @@ tools["git@github.com:nvim-telescope/telescope-media-files.nvim"]={
 }
 tools["git@github.com:nvim-lua/plenary.nvim"] = {opt = false}
 tools["git@github.com:nvim-telescope/telescope.nvim"] = {
+tools["git@github.com:RishabhRD/popfix"] = {opt = false}
     opt = true,
     module = "telescope",
     cmd = "Telescope",

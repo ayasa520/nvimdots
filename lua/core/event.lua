@@ -42,9 +42,12 @@ function autocmd.load_autocmds()
             {"BufWritePre", "MERGE_MSG", "setlocal noundofile"},
             {"BufWritePre", "*.tmp", "setlocal noundofile"},
             {"BufWritePre", "*.bak", "setlocal noundofile"},
+<<<<<<< HEAD
             -- Auto format when save
             -- {"BufWritePost", "*", "FormatWrite"},
             -- Auto change work directory
+=======
+>>>>>>> upstream/main
             {"BufEnter", "*", "silent! lcd %:p:h"}, -- auto place to last edit
             {
                 "BufReadPost", "*",
@@ -79,9 +82,6 @@ function autocmd.load_autocmds()
             {"FileType", "go,rust", "setlocal tabstop=4 shiftwidth=4"},
             {"FileType", "c,cpp", "setlocal tabstop=4 shiftwidth=4"},
             {
-                "FileType", "javascript,typescript,html",
-                "setlocal tabstop=2 shiftwidth=2"
-            }, {
                 "FileType", "dashboard",
                 "set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2"
             }, {
