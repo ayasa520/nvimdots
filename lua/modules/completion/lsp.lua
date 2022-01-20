@@ -311,6 +311,10 @@ flake8 = vim.tbl_extend('force', flake8, {
     lintCommand = "flake8 --max-line-length 160 --extend-ignore F403,F405 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -"
 })
 
+clangfmt = vim.tbl_extend('force', clangfmt,{
+    formatCommand = string.format("%s -style='{BasedOnStyle: Google, IndentWidth: 4, AccessModifierOffset: -4}'  ${INPUT}", require('efmls-configs.fs').executable('clang-format')),
+    formatStdin = true
+})
 -- Setup formatter and linter for efmls here
 
 efmls.setup {

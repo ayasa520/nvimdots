@@ -44,8 +44,6 @@ local plug_map = {
         :with_silent(),
     ["n|g]"] = map_cr("Lspsaga diagnostic_jump_prev"):with_noremap()
         :with_silent(),
-    ["n|gs"] = map_cr("Lspsaga signature_help"):with_noremap():with_silent(),
-    ["n|gr"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
     ["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
     ["n|<C-Up>"] = map_cr(
         "lua require('lspsaga.action').smart_scroll_with_saga(-1)"):with_noremap()
@@ -215,5 +213,9 @@ local plug_map = {
 
     
 };
+local del_map = {
+    ["s|m"] = {}
+}
 
 bind.nvim_load_mapping(plug_map)
+bind.nvim_del_mapping(del_map)

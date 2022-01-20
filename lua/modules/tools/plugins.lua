@@ -1,12 +1,40 @@
 local tools = {}
 local conf = require("modules.tools.config")
 
+-- tools["git@github.com:NTBBloodbath/rest.nvim.git"] = {
+--     requires = { "git@github.com:nvim-lua/plenary.nvim" },
+--     config = function()
+--         require("rest-nvim").setup({
+--           -- Open request results in a horizontal split
+--           result_split_horizontal = false,
+--           -- Skip SSL verification, useful for unknown certificates
+--           skip_ssl_verification = false,
+--           -- Highlight request on run
+--           highlight = {
+--             enabled = true,
+--             timeout = 150,
+--           },
+--           result = {
+--             -- toggle showing URL, HTTP info, headers at top the of result window
+--             show_url = true,
+--             show_http_info = true,
+--             show_headers = true,
+--           },
+--           -- Jump to request line on run
+--           jump_to_request = false,
+--           env_file = '.env',
+--           custom_dynamic_variables = {},
+--           yank_dry_run = true,
+--         })
+--       end
+-- }
+
 tools["git@github.com:nvim-telescope/telescope-media-files.nvim"]={
     opt = true,after = 'telescope.nvim'
 }
+tools["git@github.com:RishabhRD/popfix"] = {opt = false}
 tools["git@github.com:nvim-lua/plenary.nvim"] = {opt = false}
 tools["git@github.com:nvim-telescope/telescope.nvim"] = {
-tools["git@github.com:RishabhRD/popfix"] = {opt = false}
     opt = true,
     module = "telescope",
     cmd = "Telescope",

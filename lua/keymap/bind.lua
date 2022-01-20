@@ -88,4 +88,13 @@ function pbind.nvim_load_mapping(mapping)
     end
 end
 
+function pbind.nvim_del_mapping(mapping)
+    for key, value in pairs(mapping) do
+        local mode, keymap = key:match("([^|]*)|?(.*)")
+        if type(value) == "table" then
+            vim.api.nvim_del_keymap(mode, keymap)
+        end
+    end
+end
+
 return pbind
