@@ -22,7 +22,9 @@ function autocmd.load_autocmds()
              {"BufEnter", "*" , "silent !fcitx5-remote -c"},
              {"BufLeave", "*" , "silent !fcitx5-remote -c"}
         },
-
+        autosave = {
+            {"BufEnter","*","lua require'modules.completion.formatting'.formatToggle(true)"},
+        },
         packer = {
             -- {"BufWritePost", "*.lua", "lua require('core.pack').auto_compile()"}
         },
