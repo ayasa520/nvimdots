@@ -56,6 +56,7 @@ function config.symbols_outline()
     })
 end
 
+
 function config.vim_cursorwod()
     vim.api.nvim_command("augroup user_plugin_cursorword")
     vim.api.nvim_command("autocmd!")
@@ -259,7 +260,7 @@ function config.dap_virtual_text()
         enabled = true,                     -- enable this plugin (the default)
         enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
         highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-        highlight_new_as_changed = false,   -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+        highlight_new_as_changed = true,   -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
         show_stop_reason = true,            -- show stop reason when stopped for exceptions
         commented = false,                  -- prefix virtual text with comment string
         -- experimental features:
@@ -274,7 +275,7 @@ end
 function config.dap()
     local dap = require("dap")
     vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
-    vim.fn.sign_define('DapStopped', {text='➡', texthl='', linehl='', numhl=''})
+    vim.fn.sign_define('DapStopped', {text='▶', texthl='', linehl='', numhl=''})
 
     dap.adapters.go = function(callback, config)
         local stdout = vim.loop.new_pipe(false)
@@ -327,9 +328,8 @@ function config.dap()
     dap.adapters.cppdbg = {
         type = 'executable',
         command = '/home/rikka/.local/share/nvim/dapinstall/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7',
-      }
-      dap.configurations.asm = {
-        {
+    }
+    dap.configurations.c = {{
             name = "Launch file",
             type = "cppdbg",
             request = "launch",
@@ -338,8 +338,12 @@ function config.dap()
             end,
             cwd = '${workspaceFolder}',
             stopOnEntry = true,
-        },
-        {
+            setupCommands = {{ 
+                text = '-enable-pretty-printing',
+                description =  'enable pretty printing',
+                ignoreFailures = false 
+            }}
+        }, {
             name = 'Attach to gdbserver :1234',
             type = 'cppdbg',
             request = 'launch',
@@ -350,58 +354,15 @@ function config.dap()
             program = function()
             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
             end,
-        },
-        }
-        dap.configurations.cpp = {
-        {
-            name = "Launch file",
-            type = "cppdbg",
-            request = "launch",
-            program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end,
-            cwd = '${workspaceFolder}',
-            stopOnEntry = true,
-        },
-        {
-            name = 'Attach to gdbserver :1234',
-            type = 'cppdbg',
-            request = 'launch',
-            MIMode = 'gdb',
-            miDebuggerServerAddress = 'localhost:1234',
-            miDebuggerPath = '/usr/bin/gdb',
-            cwd = '${workspaceFolder}',
-            program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end,
-        },
-        }
-        dap.configurations.c = {
-            {
-                name = "Launch file",
-                type = "cppdbg",
-                request = "launch",
-                program = function()
-                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                stopOnEntry = true,
-            },
-            {
-                name = 'Attach to gdbserver :1234',
-                type = 'cppdbg',
-                request = 'launch',
-                MIMode = 'gdb',
-                miDebuggerServerAddress = 'localhost:1234',
-                miDebuggerPath = '/usr/bin/gdb',
-                cwd = '${workspaceFolder}',
-                program = function()
-                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-            },
-            }
-    
-        dap.adapters.python = {
+            setupCommands = {{ 
+                text = '-enable-pretty-printing',
+                description =  'enable pretty printing',
+                ignoreFailures = false 
+            }}
+    }}
+    dap.configurations.asm = dap.configurations.c
+    dap.configurations.cpp = dap.configurations.c
+    dap.adapters.python = {
         type = "executable",
         command = os.getenv("HOME") ..
             '/.local/share/nvim/dapinstall/python/bin/python',

@@ -22,9 +22,7 @@ function autocmd.load_autocmds()
              {"BufEnter", "*" , "silent !fcitx5-remote -c"},
              {"BufLeave", "*" , "silent !fcitx5-remote -c"}
         },
-        autosave = {
-            {"VimEnter","*","ASOn"}
-        },
+
         packer = {
             -- {"BufWritePost", "*.lua", "lua require('core.pack').auto_compile()"}
         },

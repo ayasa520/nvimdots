@@ -17,9 +17,19 @@ editor['git@github.com:lervag/vimtex'] = {
 
 editor['git@github.com:Pocco81/AutoSave.nvim'] = {
     opt = false,
-    cmd = {'ASToggle','ASOn','ASOff'},
-    events = {"InsertLeave", "TextChanged"},
-    config = conf.autosave
+    config = function()
+        require("autosave").setup({
+            write_all_buffers = false,
+            events = {"InsertLeave", "TextChanged"},
+            on_off_commands = false,
+            clean_command_line_interval = 0,
+            debounce_delay = 135,
+            enabled = true,
+            execution_message = function ()
+                return "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S")
+              end,
+        })
+    end
 }
 editor['git@github.com:junegunn/vim-easy-align'] = {opt = true, cmd = 'EasyAlign'}
 editor['git@github.com:itchyny/vim-cursorword'] = {

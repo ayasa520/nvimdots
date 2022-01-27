@@ -25,7 +25,7 @@ local def_map = {
     ["n|<A-q>"] = map_cmd(":bwipeout<CR>"),
     ["n|<A-S-q>"] = map_cmd(":q!<CR>"),
     ["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"),
-    ["n|<A-S-f>"] = map_cr("FormatWrite"),
+    ["n|<A-S-f>"] = map_cmd("<ESC>:FormatEnable<CR>:w<CR>:FormatDisable<CR>"):with_silent(),
     -- Insert
     ["i|<C-u>"] = map_cmd('<C-G>u<C-U>'):with_noremap(),
     ["i|<C-b>"] = map_cmd('<Left>'):with_noremap(),
@@ -34,7 +34,7 @@ local def_map = {
     ["i|<C-s>"] = map_cmd('<Esc>:w<CR>'),
     ["i|<C-q>"] = map_cmd('<Esc>:wq<CR>'),
     ["i|<C-Tab>"] = map_cmd('<C-d>'):with_noremap(),
-    ["i|<A-S-f>"] = map_cr("FormatWrite"),
+
     -- command line
     ["c|<C-b>"] = map_cmd("<Left>"):with_noremap(),
     ["c|<C-f>"] = map_cmd("<Right>"):with_noremap(),
