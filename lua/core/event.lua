@@ -16,11 +16,10 @@ end
 function autocmd.load_autocmds()
     local definitions = {
         inputer = {
-             {"InsertEnter","*","silent !fcitx5-remote -c"},
-             {"InsertLeave", "*", "silent !fcitx5-remote -c"},
-             {"BufCreate", "*" , "silent !fcitx5-remote -c"},
-             {"BufEnter", "*" , "silent !fcitx5-remote -c"},
-             {"BufLeave", "*" , "silent !fcitx5-remote -c"}
+             {"InsertLeave", "*", [[call system("fcitx5-remote -c")]]},
+             {"BufCreate", "*" , [[call system("fcitx5-remote -c")]]},
+             {"BufEnter", "*" , [[call system("fcitx5-remote -c")]]},
+             {"BufLeave", "*" , [[call system("fcitx5-remote -c")]]}
         },
         format = {
             {"BufEnter","*","lua require'modules.completion.formatting'.formatToggle(true)"},

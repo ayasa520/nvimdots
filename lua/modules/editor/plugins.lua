@@ -10,14 +10,19 @@ editor['git@github.com:ekickx/clipboard-image.nvim'] = {
     config = conf.clipboard_image
 }
 
+editor["git@github.com:famiu/bufdelete.nvim"] = {
+	opt = true,
+	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
+}
+
 editor['git@github.com:Pocco81/AutoSave.nvim'] = {
     opt = false,
     config = function()
         require("autosave").setup({
             write_all_buffers = false,
-            events = {"InsertLeave", "TextChanged"},
+            events = {},
             on_off_commands = false,
-            clean_command_line_interval = 0,
+            clean_command_line_interval = 3000,
             debounce_delay = 135,
             enabled = true,
             execution_message = function ()

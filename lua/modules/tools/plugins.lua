@@ -30,17 +30,10 @@ local conf = require("modules.tools.config")
 -- }
 tools['git@github.com:lervag/vimtex'] = {
     opt = false,
-    config = function()
-        vim.g.vimtex_view_general_viewer = 'okular'
-        -- vim.g.vimtex_view_method = 'zathura'
-        vim.g.vimtex_compiler_latexmk_engines = {
-            _ = '-xelatex'
-        }
-        vim.g.vimtex_quickfix_open_on_warning = 0
-        vim.g.vimtex_compiler_progname = 'nvr'
-        vim.g.vimtex_view_general_options = [[--unique file:@pdf\#src:@line@tex]]
-    end,
+    config = conf.vimtex,
+    ft = 'tex'
 }
+
 tools["git@github.com:nvim-telescope/telescope-media-files.nvim"]={
     opt = true,after = 'telescope.nvim'
 }
