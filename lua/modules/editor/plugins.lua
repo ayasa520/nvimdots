@@ -20,7 +20,7 @@ editor['git@github.com:Pocco81/AutoSave.nvim'] = {
     config = function()
         require("autosave").setup({
             write_all_buffers = false,
-            events = {},
+            events = {"InsertLeave", "TextChanged"},
             on_off_commands = false,
             clean_command_line_interval = 3000,
             debounce_delay = 135,
