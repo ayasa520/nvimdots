@@ -2,7 +2,11 @@
 `git clone --recursive git@github.com:ayasa520/nvimdots.git`
 # Introduction
 
+<<<<<<< HEAD
 ![Dashboard](./shots/2021-10-13_17-25.png)
+=======
+![Dashboard](https://s2.loli.net/2022/01/28/OAXIV7bCGMHUSzj.png)
+>>>>>>> upstream/main
 
 ![Telescope](https://s2.loli.net/2021/12/22/a3MrbwpL5oCHFgv.png)
 
