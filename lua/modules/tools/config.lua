@@ -78,6 +78,8 @@ function config.telescope()
     require("telescope").load_extension("frecency")
 end
 
+
+
 function config.trouble()
     require("trouble").setup {
         position = "bottom", -- position of the list can be: bottom, top, left, right

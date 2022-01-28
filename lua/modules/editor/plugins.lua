@@ -9,11 +9,6 @@ editor['git@github.com:ekickx/clipboard-image.nvim'] = {
     cmd={'PasteImg'},
     config = conf.clipboard_image
 }
-editor['git@github.com:lervag/vimtex'] = {
-    opt = false,
-    config = conf.vimtex,
-    ft = 'tex'
-}
 
 editor['git@github.com:Pocco81/AutoSave.nvim'] = {
     opt = false,
