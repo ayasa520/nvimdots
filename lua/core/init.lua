@@ -167,11 +167,7 @@ local load_core = function()
 	require("core.event")
 	pack.load_compile()
 
-<<<<<<< HEAD
     vim.cmd[[colorscheme tokyonight]] 
-=======
-	vim.cmd([[colorscheme catppuccin]])
->>>>>>> upstream/main
 end
 
 load_core()
