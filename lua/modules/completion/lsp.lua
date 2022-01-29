@@ -22,12 +22,7 @@ local lsp_installer = require("nvim-lsp-installer")
 
 -- Override diagnostics symbol
 
-saga.init_lsp_saga({
-	error_sign = "",
-	warn_sign = "",
-	hint_sign = "",
-	infor_sign = "",
-})
+
 
 lsp_installer.settings({
 	ui = {
@@ -350,3 +345,5 @@ efmls.setup {
     markdown = {formatter = prettier}
     -- rust = {formatter = rustfmt},
 }
+
+vim.fn.sign_define("Lsp")

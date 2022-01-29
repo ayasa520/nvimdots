@@ -3,7 +3,12 @@ local conf = require("modules.ui.config")
 
 ui["git@github.com:kyazdani42/nvim-web-devicons"] = {opt = false}
 ui["git@github.com:sainnhe/edge"] = {opt = false, config = conf.edge}
-ui["git@github.com:folke/tokyonight.nvim"] = {opt=false,config=conf.tokyonight}
+ui["git@github.com:catppuccin/nvim"] = {
+	opt = false,
+	as = "catppuccin",
+	config = conf.catppuccin,
+}
+ui["git@github.com:rebelot/kanagawa.nvim"] = { opt = false, config = conf.kanagawa }
 ui["git@github.com:hoob3rt/lualine.nvim"] = {
     opt = true,
     after = "lualine-lsp-progress",

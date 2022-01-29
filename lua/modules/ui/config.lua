@@ -77,16 +77,54 @@ function config.catppuccin()
 		},
 	})
 end
-function config.tokyonight()
-    vim.g.tokyonight_style = "night"
-    vim.g.tokyonight_italic_functions = true
-    vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-
-    -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-    vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
-
--- Load the colorscheme
-  
+function config.catppuccin()
+	require("catppuccin").setup({
+		transparent_background = false,
+		term_colors = true,
+		styles = {
+			comments = "italic",
+			functions = "italic,bold",
+			keywords = "italic",
+			strings = "NONE",
+			variables = "NONE",
+		},
+		integrations = {
+			treesitter = true,
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = "italic",
+					hints = "italic",
+					warnings = "italic",
+					information = "italic",
+				},
+				underlines = {
+					errors = "underline",
+					hints = "underline",
+					warnings = "underline",
+					information = "underline",
+				},
+			},
+			lsp_trouble = true,
+			lsp_saga = true,
+			gitgutter = false,
+			gitsigns = true,
+			telescope = true,
+			nvimtree = { enabled = true, show_root = true },
+			which_key = true,
+			indent_blankline = { enabled = true, colored_indent_levels = false },
+			dashboard = true,
+			neogit = false,
+			vim_sneak = false,
+			fern = false,
+			barbar = false,
+			bufferline = true,
+			markdown = true,
+			lightspeed = false,
+			ts_rainbow = true,
+			hop = true,
+		},
+	})
 end
 function config.lualine()
 	local gps = require("nvim-gps")
@@ -117,16 +155,45 @@ function config.lualine()
           end
       end
 
+	  local colors = {
+		blue   = '#80a0ff',
+		cyan   = '#79dac8',
+		black  = '#080808',
+		white  = '#c6c6c6',
+		red    = '#ff5189',
+		violet = '#d183e8',
+		grey   = '#303030',
+	  }
+	  
+	  local bubbles_theme = {
+		normal = {
+		  a = { fg = colors.black, bg = colors.violet },
+		  b = { fg = colors.white, bg = colors.grey },
+		  c = { fg = colors.black, bg = colors.black },
+		},
+	  
+		insert = { a = { fg = colors.black, bg = colors.blue } },
+		visual = { a = { fg = colors.black, bg = colors.cyan } },
+		replace = { a = { fg = colors.black, bg = colors.red } },
+	  
+		inactive = {
+		  a = { fg = colors.white, bg = colors.black },
+		  b = { fg = colors.white, bg = colors.black },
+		  c = { fg = colors.black, bg = colors.black },
+		},
+	  }
     require("lualine").setup {
         options = {
             icons_enabled = true,
-            theme = "onedark",
+            theme = "catppuccin",
             disabled_filetypes = {},
             component_separators = "|",
             section_separators = {left = "", right = ""}
         },
         sections = {
-            lualine_a = {"mode"},
+            lualine_a = {
+				{ "mode", separator = { left = '' }, right_padding = 2 },
+			},
             lualine_b = {{"branch"}, {"diff"}},
             lualine_c = {
                 {"lsp_progress"}, {gps_content, cond = gps.is_available}
@@ -135,11 +202,11 @@ function config.lualine()
                 {
                     "diagnostics",
                     sources = {'nvim_diagnostic'},
-                    symbols = {error = " ", warn = " ", info = " "}
+                    symbols = {error = " ", warn = " ", info = " ", hint = "💡"}
                 }
             },
             lualine_y = {"filetype", "encoding", "fileformat",{ getWords }},
-            lualine_z = {"progress", "location"}
+            lualine_z = {"progress", {"location", separator = { right = '' }, left_padding = 2}}
         },
         inactive_sections = {
             lualine_a = {},
