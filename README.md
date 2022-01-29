@@ -1,20 +1,23 @@
-# How to use
-`git clone --recursive git@github.com:ayasa520/nvimdots.git`
+# Install
+`git clone --recursive git@github.com:ayasa520/nvimdots.git ~/.config/nvim`
+
 # Introduction
 
-<<<<<<< HEAD
-![Dashboard](./shots/2021-10-13_17-25.png)
-=======
-![Dashboard](https://s2.loli.net/2022/01/28/OAXIV7bCGMHUSzj.png)
->>>>>>> upstream/main
+![Dashboard](img/2022-01-29-11-50-37.png)
 
-![Telescope](https://s2.loli.net/2021/12/22/a3MrbwpL5oCHFgv.png)
+![Telescope](img/2022-01-29-11-52-25.png)
 
-![Coding](https://s2.loli.net/2021/12/22/5fik2zBWth39w6a.png)
+![Coding](img/2022-01-29-11-55-39.png)
 
-![Packer](https://s2.loli.net/2021/12/22/TewXn6JShz2bCLy.png)
+![Debugging](img/2022-01-29-12-11-25.png)
 
-![Gitui](https://s2.loli.net/2021/12/22/GPVWJ84yBC1jTbk.png)
+![Async Quick Run](img/2022-01-29-12-16.gif)
+
+![Code completion](img/2022-01-29-12-46.gif)
+
+![Packer](img/2022-01-29-11-57-19.png)
+
+
 
 This is my neovim's configuration, which contains four branch.
 
@@ -36,9 +39,9 @@ Chinese introduction is [here](https://zhuanlan.zhihu.com/p/382092667).
 - Modular. Easy to customize.
 - Powerful. Full functionality to code.
 
-![startup time](https://s2.loli.net/2021/12/22/joMs914gIOv3ql8.png)
 
-![vim-startuptime](https://s2.loli.net/2021/12/22/4bJRA9XMmWnIVsH.png)
+![startup time](img/2022-01-29-13-14-13.png)
+
 
 (Tested with [rhysd/vim-startuptime](https://github.com/rhysd/vim-startuptime))
 
