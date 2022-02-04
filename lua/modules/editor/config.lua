@@ -71,6 +71,12 @@ function config.nvim_treesitter()
 	vim.api.nvim_command("set foldmethod=expr")
 	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 
+	-- 在这里设置 curl 的代理 Set the proxy for curl here
+	require("nvim-treesitter.install").command_extra_args = {
+		curl = { "--proxy", "http://127.0.0.1:7890" },
+	}
+
+
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = "maintained",
 		highlight = { enable = true, disable = { "vim" } },
