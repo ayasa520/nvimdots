@@ -3,49 +3,43 @@
 
 # Introduction
 
-![Dashboard](img/2022-01-29-11-50-37.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Dashboard</center> 
-
-
+![Dashboard](img/2022-01-29-11-50-37.png "Dashboard")
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Dashboard</p>
+<br>
 
 ![Telescope](img/2022-01-29-11-52-25.png)
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Telescope</p>
+<br>
 
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Telescope</center> 
 
 
 
 
 ![Coding](img/2022-01-29-11-55-39.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Coding</center> 
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Coding</p>
+<br>
+
 
 
 
 
 ![Debugging](img/2022-01-29-12-11-25.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Debugging</center> 
-
-
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Debugging</p>
+<br>
 
 
 ![Async Quick Run](img/2022-01-29-12-16.gif)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Async Quick Run</center> 
-
-
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Async Quick Run</p>
+<br>
 
 
 ![Code completion](img/2022-01-29-12-46.gif)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Code completion</center> 
-
-
-
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Code completion</p>
+<br>
 
 ![Packer](img/2022-01-29-11-57-19.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Packer</center> 
-
-
-
-
-
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Packer</p>
+<br>
 
 This is my neovim's configuration, which contains four branch.
 

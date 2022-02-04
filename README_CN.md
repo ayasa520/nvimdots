@@ -3,33 +3,43 @@
 
 # 介绍
 
-![Dashboard](img/2022-01-29-11-50-37.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Dashboard</center> 
-
+![Dashboard](img/2022-01-29-11-50-37.png "Dashboard")
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Dashboard</p>
+<br>
 
 ![Telescope](img/2022-01-29-11-52-25.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Telescope</center> 
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Telescope</p>
+<br>
+
+
+
 
 
 ![Coding](img/2022-01-29-11-55-39.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">码代码</center> 
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Coding</p>
+<br>
+
+
+
 
 
 ![Debugging](img/2022-01-29-12-11-25.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">调试</center> 
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Debugging</p>
+<br>
 
 
 ![Async Quick Run](img/2022-01-29-12-16.gif)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">异步地快速运行代码</center> 
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Async Quick Run</p>
+<br>
 
 
 ![Code completion](img/2022-01-29-12-46.gif)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">代码补全</center> 
-
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Code completion</p>
+<br>
 
 ![Packer](img/2022-01-29-11-57-19.png)
-<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Packer 管理插件</center> 
-
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Packer</p>
+<br>
 
 这是我 fork 的 [ayamir](https://github.com/ayamir/nvimdots) 的配置, 我只使用 main 分支. 使用 packer.nvim 管理插件
 

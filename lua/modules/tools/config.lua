@@ -128,9 +128,7 @@ function config.sniprun()
 		interpreter_options = {}, -- " intepreter-specific options, consult docs / :SnipInfo <name>
 		-- " you can combo different display modes as desired
 		display = {
-			-- "TempFloatingWindow",      -- "display results in a floating window
-			"LongTempFloatingWindow", -- "same as above, but only long results. To use with VirtualText__
-			-- "Terminal"                 -- "display results in a vertical split
+			"NvimNotify"  ,"Terminal"               -- "display results in a vertical split
 		},
 		-- " miscellaneous compatibility/adjustement settings
 		inline_messages = 0, -- " inline_message (0/1) is a one-line way to display messages
@@ -162,6 +160,47 @@ function config.filetype()
 			},
 		},
 	})
+end
+
+function config.nvim_notify()
+	vim.notify = require("notify"),
+	require("notify").setup({
+		-- Animation style (see below for details)
+		stages = "fade_in_slide_out",
+	  
+		-- Function called when a new window is opened, use for changing win settings/config
+		on_open = nil,
+	  
+		-- Function called when a window is closed
+		on_close = nil,
+	  
+		-- Render function for notifications. See notify-render()
+		render = "default",
+	  
+		-- Default timeout for notifications
+		timeout = 5000,
+	  
+		-- Max number of columns for messages
+		max_width = nil,
+		-- Max number of lines for a message
+		max_height = nil,
+	  
+		-- For stages that change opacity this is treated as the highlight behind the window
+		-- Set this to either a highlight group, an RGB hex value e.g. "#000000" or a function returning an RGB code for dynamic values
+		background_colour = "Normal",
+	  
+		-- Minimum width for notification windows
+		minimum_width = 50,
+	  
+		-- Icons for the different levels
+		icons = {
+		  ERROR = "",
+		  WARN = "",
+		  INFO = "",
+		  DEBUG = "",
+		  TRACE = "✎",
+		},
+	  })
 end
 
 return config

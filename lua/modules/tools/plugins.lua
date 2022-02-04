@@ -76,7 +76,8 @@ tools["git@github.com:thinca/vim-quickrun"] = {
 tools["git@github.com:michaelb/sniprun"] = {
     opt = true,
     run = "bash ./install.sh",
-    cmd = {"SnipRun", "'<,'>SnipRun"}
+    cmd = {"SnipRun", "'<,'>SnipRun"},
+    config = conf.sniprun
 }
 tools["git@github.com:folke/which-key.nvim"] = {
     opt = true,
@@ -97,6 +98,10 @@ tools["git@github.com:gelguy/wilder.nvim"] = {
 tools["git@github.com:nathom/filetype.nvim"] = {
 	opt = false,
 	config = conf.filetype,
+}
+tools["git@github.com:rcarriga/nvim-notify"] = {
+    opt = false,
+    config = conf.nvim_notify,
 }
 
 return tools
