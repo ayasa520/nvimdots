@@ -1,20 +1,9 @@
 require("modules.completion.formatting")
 
-if not packer_plugins["nvim-lsp-installer"].loaded then
-	vim.cmd([[packadd nvim-lsp-installer]])
-end
-
-if not packer_plugins["lsp_signature.nvim"].loaded then
-	vim.cmd([[packadd lsp_signature.nvim]])
-end
-
-if not packer_plugins["lspsaga.nvim"].loaded then
-	vim.cmd([[packadd lspsaga.nvim]])
-end
-
-if not packer_plugins["cmp-nvim-lsp"].loaded then
-	vim.cmd([[packadd cmp-nvim-lsp]])
-end
+vim.cmd([[packadd nvim-lsp-installer]])
+vim.cmd([[packadd lsp_signature.nvim]])
+vim.cmd([[packadd lspsaga.nvim]])
+vim.cmd([[packadd cmp-nvim-lsp]])
 
 local nvim_lsp = require("lspconfig")
 local saga = require("lspsaga")
@@ -47,7 +36,7 @@ vim.lsp.handlers["textDocument/formatting"] = function(err, result, ctx)
 		vim.api.nvim_buf_get_var(ctx.bufnr, "init_changedtick") == vim.api.nvim_buf_get_var(ctx.bufnr, "changedtick")
 	then
 		local view = vim.fn.winsaveview()
-		vim.lsp.util.apply_text_edits(result, ctx.bufnr)
+		vim.lsp.util.apply_text_edits(result, ctx.bufnr, "utf-8")
 		vim.fn.winrestview(view)
 		if ctx.bufnr == vim.api.nvim_get_current_buf() then
 			vim.b.saving_format = true
@@ -102,7 +91,7 @@ local enhance_server_opts = {
 	["sumneko_lua"] = function(opts)
 		opts.settings = {
 			Lua = {
-				diagnostics = { globals = { "vim", "packer_plugins" } },
+				diagnostics = { globals = { "vim" } },
 				workspace = {
 					library = {
 						[vim.fn.expand("$VIMRUNTIME/lua")] = true,

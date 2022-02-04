@@ -4,18 +4,46 @@
 # Introduction
 
 ![Dashboard](img/2022-01-29-11-50-37.png)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Dashboard</center> 
+
+
 
 ![Telescope](img/2022-01-29-11-52-25.png)
 
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Telescope</center> 
+
+
+
+
 ![Coding](img/2022-01-29-11-55-39.png)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Coding</center> 
+
+
+
 
 ![Debugging](img/2022-01-29-12-11-25.png)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Debugging</center> 
+
+
+
 
 ![Async Quick Run](img/2022-01-29-12-16.gif)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Async Quick Run</center> 
+
+
+
 
 ![Code completion](img/2022-01-29-12-46.gif)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Code completion</center> 
+
+
+
 
 ![Packer](img/2022-01-29-11-57-19.png)
+<center style="font-size:14px;color:#C0C0C0;text-decoration:underline">Packer</center> 
+
+
+
 
 
 

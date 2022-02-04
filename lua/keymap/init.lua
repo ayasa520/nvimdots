@@ -133,7 +133,7 @@ local plug_map = {
     -- Plugin SymbolsOutline
     ["n|<A-t>"] = map_cr("SymbolsOutline"):with_noremap():with_silent(),
     -- Plugin split-term
-    ["n|<F5>"] = map_cr("VTerm"):with_noremap():with_silent(),
+    ["n|<F4>"] = map_cr("VTerm"):with_noremap():with_silent(),
     ["n|<C-w>t"] = map_cr("VTerm"):with_noremap():with_silent(),
     -- Plugin MarkdownPreview
     ["n|<F12>"] = map_cr("MarkdownPreviewToggle"):with_noremap():with_silent(),
@@ -142,9 +142,9 @@ local plug_map = {
     ["n|<leader>sr"] = map_cu("RestoreSession"):with_noremap():with_silent(),
     ["n|<leader>sd"] = map_cu("DeleteSession"):with_noremap():with_silent(),
     -- Plugin SnipRun
-    ["v|<leader>r"] = map_cr("SnipRun"):with_noremap():with_silent(),
+    ["v|<leader>Q"] = map_cr("SnipRun"):with_noremap():with_silent(),
     -- Plugin dap
-    ["n|<F6>"] = map_cr("lua require('dap').continue()"):with_noremap() -- 调试 debug
+    ["n|<F5>"] = map_cr("lua require('dap').continue()"):with_noremap() -- 调试 debug
         :with_silent(),
     ["n|<leader>dr"] = map_cr("lua require('dap').continue()"):with_noremap() -- ,dr 继续
         :with_silent(),
@@ -161,15 +161,15 @@ local plug_map = {
         :with_silent(),
     ["n|<leader>drl"] = map_cr("lua require('dap').run_last()"):with_noremap() -- ,drl ?
         :with_silent(),
-    ["n|<F9>"] = map_cr("lua require('dap').step_over()"):with_noremap() -- F9 step over
+    ["n|<F10>"] = map_cr("lua require('dap').step_over()"):with_noremap() -- F9 step over
         :with_silent(),
     -- ["n|<leader>dv"] = map_cr("lua require('dap').step_over()"):with_noremap()
         -- :with_silent(),
-    ["n|<F10>"] = map_cr("lua require('dap').step_into()"):with_noremap()  -- F10 step into
+    ["n|<F11>"] = map_cr("lua require('dap').step_into()"):with_noremap()  -- F10 step into
         :with_silent(),
     -- ["n|<leader>di"] = map_cr("lua require('dap').step_into()"):with_noremap() 
         -- :with_silent(),
-    ["n|<F11>"] = map_cr("lua require('dap').step_out()"):with_noremap() -- F11 step out
+    ["n|<S-<F11>>"] = map_cr("lua require('dap').step_out()"):with_noremap() -- F11 step out
         :with_silent(),
     -- ["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap()
         -- :with_silent(),

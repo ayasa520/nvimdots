@@ -223,17 +223,6 @@ function config.toggleterm()
 end
 
 function config.dapui()
-	local dap, dapui = require("dap"), require("dapui")
-	dap.listeners.after.event_initialized["dapui_config"] = function()
-		dapui.open()
-	end
-	dap.listeners.before.event_terminated["dapui_config"] = function()
-		dapui.close()
-	end
-	dap.listeners.before.event_exited["dapui_config"] = function()
-		dapui.close()
-	end
-
 	require("dapui").setup({
 		icons = { expanded = "▾", collapsed = "▸" },
 		mappings = {
@@ -287,8 +276,18 @@ end
 
 function config.dap()
     local dap = require("dap")
+	local dapui = require("dapui")
     vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
     vim.fn.sign_define('DapStopped', {text='▶', texthl='', linehl='', numhl=''})
+	dap.listeners.after.event_initialized["dapui"] = function()
+		dapui.open()
+	end
+	dap.listeners.after.event_terminated["dapui"] = function()
+		dapui.close()
+	end
+	dap.listeners.after.event_exited["dapui"] = function()
+		dapui.close()
+	end
 
 	dap.adapters.go = function(callback, config)
 		local stdout = vim.loop.new_pipe(false)
@@ -426,6 +425,26 @@ function config.specs()
 		},
 		ignore_filetypes = {},
 		ignore_buftypes = { nofile = true },
+	})
+end
+
+function config.tabout()
+	require("tabout").setup({
+		tabkey = "<A-l>",
+		backwards_tabkey = "<A-h>",
+		ignore_beginning = false,
+		act_as_tab = true,
+		enable_backward = true,
+		completion = true,
+		tabouts = {
+			{ open = "'", close = "'" },
+			{ open = '"', close = '"' },
+			{ open = "`", close = "`" },
+			{ open = "(", close = ")" },
+			{ open = "[", close = "]" },
+			{ open = "{", close = "}" },
+		},
+		exclude = {},
 	})
 end
 

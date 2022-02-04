@@ -1,29 +1,12 @@
 local config = {}
 
 function config.telescope()
-	if not packer_plugins["sqlite.lua"].loaded then
-		vim.cmd([[packadd sqlite.lua]])
-	end
-
-	if not packer_plugins["telescope-fzf-native.nvim"].loaded then
-		vim.cmd([[packadd telescope-fzf-native.nvim]])
-	end
-
-	if not packer_plugins["telescope-project.nvim"].loaded then
-		vim.cmd([[packadd telescope-project.nvim]])
-	end
-
-	if not packer_plugins["telescope-frecency.nvim"].loaded then
-		vim.cmd([[packadd telescope-frecency.nvim]])
-	end
-
-    if not packer_plugins["telescope-zoxide"].loaded then
-        vim.cmd [[packadd telescope-zoxide]]
-    end
-    
-    if not packer_plugins['telescope-media-files.nvim'].loaded then
-        vim.cmd [[packadd telescope-media-files.nvim]]
-    end
+	vim.cmd([[packadd sqlite.lua]])
+	vim.cmd([[packadd telescope-fzf-native.nvim]])
+	vim.cmd([[packadd telescope-project.nvim]])
+	vim.cmd([[packadd telescope-frecency.nvim]])
+	vim.cmd [[packadd telescope-zoxide]]
+	vim.cmd [[packadd telescope-media-files.nvim]]
     require("telescope").setup {
         defaults = {
             prompt_prefix = "🔭 ",
@@ -145,9 +128,6 @@ function config.sniprun()
 		interpreter_options = {}, -- " intepreter-specific options, consult docs / :SnipInfo <name>
 		-- " you can combo different display modes as desired
 		display = {
-			"Classic", -- "display results in the command-line  area
-			"VirtualTextOk", -- "display ok results as virtual text (multiline is shortened)
-			"VirtualTextErr", -- "display error results as virtual text
 			-- "TempFloatingWindow",      -- "display results in a floating window
 			"LongTempFloatingWindow", -- "same as above, but only long results. To use with VirtualText__
 			-- "Terminal"                 -- "display results in a vertical split
@@ -170,6 +150,18 @@ call wilder#set_option('pipeline', [wilder#branch(wilder#cmdline_pipeline({'use_
 
 call wilder#set_option('renderer', wilder#renderer_mux({':': wilder#popupmenu_renderer({'highlighter': wilder#lua_fzy_highlighter(), 'left': [wilder#popupmenu_devicons()], 'right': [' ', wilder#popupmenu_scrollbar()]}), '/': wilder#wildmenu_renderer({'highlighter': wilder#lua_fzy_highlighter()})}))
 ]])
+end
+
+function config.filetype()
+	-- In init.lua or filetype.nvim's config file
+	require("filetype").setup({
+		overrides = {
+			shebang = {
+				-- Set the filetype of files with a dash shebang to sh
+				dash = "sh",
+			},
+		},
+	})
 end
 
 return config

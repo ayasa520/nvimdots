@@ -77,112 +77,50 @@ function config.catppuccin()
 		},
 	})
 end
-function config.catppuccin()
-	require("catppuccin").setup({
-		transparent_background = false,
-		term_colors = true,
-		styles = {
-			comments = "italic",
-			functions = "italic,bold",
-			keywords = "italic",
-			strings = "NONE",
-			variables = "NONE",
-		},
-		integrations = {
-			treesitter = true,
-			native_lsp = {
-				enabled = true,
-				virtual_text = {
-					errors = "italic",
-					hints = "italic",
-					warnings = "italic",
-					information = "italic",
-				},
-				underlines = {
-					errors = "underline",
-					hints = "underline",
-					warnings = "underline",
-					information = "underline",
-				},
-			},
-			lsp_trouble = true,
-			lsp_saga = true,
-			gitgutter = false,
-			gitsigns = true,
-			telescope = true,
-			nvimtree = { enabled = true, show_root = true },
-			which_key = true,
-			indent_blankline = { enabled = true, colored_indent_levels = false },
-			dashboard = true,
-			neogit = false,
-			vim_sneak = false,
-			fern = false,
-			barbar = false,
-			bufferline = true,
-			markdown = true,
-			lightspeed = false,
-			ts_rainbow = true,
-			hop = true,
-		},
-	})
-end
 function config.lualine()
 	local gps = require("nvim-gps")
 
-    local function gps_content()
-        if gps.is_available() then
-            return gps.get_location()
-        else
-            return ""
-        end
-    end
-    local symbols_outline = {
-        sections = {
-            lualine_a = {'mode'},
-            lualine_b = {'filetype'},
-            lualine_c = {},
-            lualine_x = {},
-            lualine_y = {},
-            lualine_z = {'location'}
-        },
-        filetypes = {'Outline'}
-    }
-    local function getWords()
-          if not (vim.fn.wordcount().visual_words == nil) then
-            return tostring(vim.fn.wordcount().visual_words) .. " w,"..tostring(vim.fn.wordcount().visual_chars).." c"
-          else
-            return tostring(vim.fn.wordcount().words) .. " w,"..tostring(vim.fn.wordcount().chars).." c"
-          end
-      end
+	local function gps_content()
+		if gps.is_available() then
+			return gps.get_location()
+		else
+			return ""
+		end
+	end
+	local simple_sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "filetype" },
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = { "location" },
+	}
+	local symbols_outline = {
+		sections = simple_sections,
+		filetypes = { "Outline" },
+	}
+	local dapui_scopes = {
+		sections = simple_sections,
+		filetypes = { "dapui_scopes" },
+	}
 
-	  local colors = {
-		blue   = '#80a0ff',
-		cyan   = '#79dac8',
-		black  = '#080808',
-		white  = '#c6c6c6',
-		red    = '#ff5189',
-		violet = '#d183e8',
-		grey   = '#303030',
-	  }
-	  
-	  local bubbles_theme = {
-		normal = {
-		  a = { fg = colors.black, bg = colors.violet },
-		  b = { fg = colors.white, bg = colors.grey },
-		  c = { fg = colors.black, bg = colors.black },
-		},
-	  
-		insert = { a = { fg = colors.black, bg = colors.blue } },
-		visual = { a = { fg = colors.black, bg = colors.cyan } },
-		replace = { a = { fg = colors.black, bg = colors.red } },
-	  
-		inactive = {
-		  a = { fg = colors.white, bg = colors.black },
-		  b = { fg = colors.white, bg = colors.black },
-		  c = { fg = colors.black, bg = colors.black },
-		},
-	  }
-    require("lualine").setup {
+	local dapui_breakpoints = {
+		sections = simple_sections,
+		filetypes = { "dapui_breakpoints" },
+	}
+
+	local dapui_stacks = {
+		sections = simple_sections,
+		filetypes = { "dapui_stacks" },
+	}
+
+	local dapui_watches = {
+		sections = simple_sections,
+		filetypes = { "dapui_watches" },
+	}
+
+
+    require("lualine").setup({
         options = {
             icons_enabled = true,
             theme = "catppuccin",
@@ -194,33 +132,38 @@ function config.lualine()
             lualine_a = {
 				{ "mode", separator = { left = '' }, right_padding = 2 },
 			},
-            lualine_b = {{"branch"}, {"diff"}},
-            lualine_c = {
-                {"lsp_progress"}, {gps_content, cond = gps.is_available}
-            },
-            lualine_x = {
-                {
-                    "diagnostics",
-                    sources = {'nvim_diagnostic'},
+			lualine_x = {
+				{
+					"diagnostics",
+					sources = { "nvim_diagnostic" },
                     symbols = {error = " ", warn = " ", info = " ", hint = "💡"}
-                }
-            },
+				},
+			},
             lualine_y = {"filetype", "encoding", "fileformat",{ getWords }},
-            lualine_z = {"progress", {"location", separator = { right = '' }, left_padding = 2}}
-        },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = {"filename"},
-            lualine_x = {"location"},
-            lualine_y = {},
-            lualine_z = {}
-        },
-        tabline = {},
-        extensions = {
-            "quickfix", "nvim-tree", "toggleterm", "fugitive", symbols_outline
-        }
-    }
+            lualine_z = {"progress", {"location", separator = { right = '' }, left_padding = 2}},
+
+		},
+		inactive_sections = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = { "filename" },
+			lualine_x = { "location" },
+			lualine_y = {},
+			lualine_z = {},
+		},
+		tabline = {},
+		extensions = {
+			"quickfix",
+			"nvim-tree",
+			"toggleterm",
+			"fugitive",
+			symbols_outline,
+			dapui_scopes,
+			dapui_breakpoints,
+			dapui_stacks,
+			dapui_watches,
+		},
+	})
 end
 
 function config.nvim_tree()
