@@ -275,6 +275,7 @@ function config.dap_virtual_text()
 end
 
 function config.dap()
+	vim.cmd([[autocmd FileType dap-float nnoremap <buffer><silent> q <cmd>close!<CR>]])
     local dap = require("dap")
 	local dapui = require("dapui")
     vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
