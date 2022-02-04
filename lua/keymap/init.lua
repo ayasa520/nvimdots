@@ -169,7 +169,7 @@ local plug_map = {
         :with_silent(),
     -- ["n|<leader>di"] = map_cr("lua require('dap').step_into()"):with_noremap() 
         -- :with_silent(),
-    ["n|<S-<F11>>"] = map_cr("lua require('dap').step_out()"):with_noremap() -- F11 step out
+    ["n|<F23>"] = map_cr("lua require('dap').step_out()"):with_noremap() -- F11 step out
         :with_silent(),
     -- ["n|<leader>do"] = map_cr("lua require('dap').step_out()"):with_noremap()
         -- :with_silent(),
