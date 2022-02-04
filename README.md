@@ -28,8 +28,8 @@
 <br>
 
 
-![Async Quick Run](img/2022-01-29-12-16.gif)
-<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Async Quick Run</p>
+![Asynchronous code quick running](img/2022-01-29-12-16.gif)
+<p align="center" style="font-size:14px;color:#C0C0C0;text-decoration:underline">Asynchronous code quick running</p>
 <br>
 
 
