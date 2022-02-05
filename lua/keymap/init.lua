@@ -157,7 +157,7 @@ local plug_map = {
         :with_silent(),
     ["n|<leader>dbl"] = map_cr("lua require('dap').list_breakpoints()"):with_noremap() -- ,dbl 列出所有断点
         :with_silent(),
-    ["n|<leader>drc"] = map_cr("lua require('dap').run_to_cursor()"):with_noremap() -- ,dap 运行到指针?
+    ["n|<leader>drc"] = map_cr("lua require('dap').run_to_cursor()"):with_noremap() -- ,dap 运行到光标处
         :with_silent(),
     ["n|<leader>drl"] = map_cr("lua require('dap').run_last()"):with_noremap() -- ,drl ?
         :with_silent(),

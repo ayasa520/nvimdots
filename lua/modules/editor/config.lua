@@ -348,7 +348,7 @@ function config.dap()
 
     dap.adapters.cppdbg = {
         type = 'executable',
-        command = '/home/rikka/.local/share/nvim/dapinstall/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7',
+        command = os.getenv("HOME") .. '/.local/share/nvim/dapinstall/ccppr_vsc/extension/debugAdapters/bin/OpenDebugAD7',
     }
     dap.configurations.c = {{
             name = "Launch file",
