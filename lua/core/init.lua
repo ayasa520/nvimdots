@@ -53,9 +53,6 @@ local leader_map = function()
 end
 
 local neovide_config = function()
-    vim.cmd [[set guifont=Courier\ New:h12:b,BlexMono\ Mono\ Font:h12:b]]
-    vim.cmd [[cnoremap <C-V> <C-r>+]]
-    vim.cmd [[inoremap <C-V> <C-r>+]]
     vim.g.neovide_refresh_rate = 60
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_no_idle = true

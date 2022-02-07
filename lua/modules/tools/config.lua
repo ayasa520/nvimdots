@@ -128,7 +128,7 @@ function config.sniprun()
 		interpreter_options = {}, -- " intepreter-specific options, consult docs / :SnipInfo <name>
 		-- " you can combo different display modes as desired
 		display = {
-			"NvimNotify"  ,"Terminal"               -- "display results in a vertical split
+			"Classic"            -- "display results in a vertical split
 		},
 		-- " miscellaneous compatibility/adjustement settings
 		inline_messages = 0, -- " inline_message (0/1) is a one-line way to display messages

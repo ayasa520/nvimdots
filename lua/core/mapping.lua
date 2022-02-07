@@ -22,10 +22,10 @@ local def_map = {
     ["n|<A-;>"] = map_cr("resize -2"):with_silent(),
     ["n|<A-'>"] = map_cr("resize +2"):with_silent(),
     ["n|<C-q>"] = map_cmd(":wq<CR>"),
-    ["n|<A-q>"] = map_cmd(":Bwipeout<CR>"),
+    ["n|<A-q>"] = map_cmd(":bwipeout<CR>"),
     ["n|<A-S-q>"] = map_cmd(":q!<CR>"),
     ["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"),
-    ["n|<A-S-f>"] = map_cmd("<ESC>:FormatEnable<CR>:w<CR>:FormatDisable<CR>:<ESC>"):with_silent(),
+    ["n|<A-S-f>"] = map_cmd("<ESC>:FormatEnable<CR>:w<CR>1<CR>:FormatDisable<CR>:<ESC>"):with_silent(),
     -- Insert
     ["i|<C-u>"] = map_cmd('<C-G>u<C-U>'):with_noremap(),
     ["i|<C-b>"] = map_cmd('<Left>'):with_noremap(),

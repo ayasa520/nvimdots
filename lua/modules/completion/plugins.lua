@@ -39,9 +39,6 @@ completion["git@github.com:hrsh7th/nvim-cmp"] = {
     requires = {
         {"git@github.com:lukas-reineke/cmp-under-comparator"},
         {"git@github.com:saadparwaiz1/cmp_luasnip", after = "LuaSnip"},
-        -- 就目前的配置而言, LuaSnip 的细节更好, 比如可以做到外部再次跳回 snippet 内部
-        -- 但是 LuaSnip 实现一些复杂功能又是及其繁琐
-        {"git@github.com:quangnguyen30192/cmp-nvim-ultisnips", after = "ultisnips"},
         {"git@github.com:hrsh7th/cmp-nvim-lsp", after = "cmp_luasnip"},
         {"git@github.com:hrsh7th/cmp-nvim-lua", after = "cmp-nvim-lsp"},
         {"git@github.com:andersevenrud/compe-tmux", after = "cmp-nvim-lua"},
@@ -57,11 +54,7 @@ completion["git@github.com:hrsh7th/nvim-cmp"] = {
         -- }
     }
 }
-completion["git@github.com:SirVer/ultisnips"] = {
-    after = "nvim-cmp",
-    config = conf.ultisnips,
-    requires = "git@github.com:honza/vim-snippets"
-}
+
 completion["git@github.com:L3MON4D3/LuaSnip"] = {
     after = "nvim-cmp",
     config = conf.luasnip,

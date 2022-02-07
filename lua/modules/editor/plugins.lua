@@ -10,10 +10,6 @@ editor['git@github.com:ekickx/clipboard-image.nvim'] = {
     config = conf.clipboard_image
 }
 
-editor["git@github.com:famiu/bufdelete.nvim"] = {
-	opt = true,
-	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
-}
 
 editor['git@github.com:Pocco81/AutoSave.nvim'] = {
     opt = false,

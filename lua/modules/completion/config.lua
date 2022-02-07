@@ -19,13 +19,6 @@ function config.saga()
 end
 
 function config.cmp()
-    local press = function(key)
-        vim.api.nvim_feedkeys(
-            vim.api.nvim_replace_termcodes(key, true, true, true),
-            "n",
-            true
-        )
-    end
     vim.cmd [[highlight CmpItemAbbrDeprecated guifg=#D8DEE9 guibg=NONE gui=strikethrough]]
     vim.cmd [[highlight CmpItemKindSnippet guifg=#BF616A guibg=NONE]]
     vim.cmd [[highlight CmpItemKindUnit guifg=#D08770 guibg=NONE]]
@@ -99,7 +92,6 @@ function config.cmp()
                     orgmode = "[ORG]",
                     nvim_lsp = "[LSP]",
                     nvim_lua = "[LUA]",
-                    ultisnips = "[USP]",
                     path = "[PATH]",
                     tmux = "[TMUX]",
                     luasnip = "[SNIP]",
@@ -121,8 +113,6 @@ function config.cmp()
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
-                elseif cmp.get_selected_entry() == nil and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-						press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
                 elseif  has_words_before() then
                     cmp.complete()
                 else
@@ -137,25 +127,21 @@ function config.cmp()
                 end
             end, {"i", "s"}),
             ["<C-h>"] = cmp.mapping(function(fallback)
-                if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-                    press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-                elseif require("luasnip").jumpable(-1) then
+                if require("luasnip").jumpable(-1) then
                     vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
                 else
                     fallback()
                 end
             end,{"i","s"}),
             ["<C-l>"] = cmp.mapping(function(fallback)
-                if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-                    press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-                elseif require("luasnip").expand_or_jumpable() then
+                if require("luasnip").expand_or_jumpable() then
                     vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
                 else
                     fallback()
                 end
             end,{"i","s"}),
             ["<C-k>"] = cmp.mapping(function(fallback)
-                if require("luasnip").choice_active() then 
+                if require("luasnip").choice_active() then
                     vim.fn.feedkeys(t("<Plug>luasnip-next-choice"), "")
                 else
                     fallback()
@@ -169,7 +155,7 @@ function config.cmp()
         },
         -- You should specify your *installed* sources.
         sources = {
-            {name = "nvim_lsp"}, {name = "ultisnips"}, {name = "nvim_lua"}, {name = "luasnip"},
+            {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
             {name = "path"}, {name = "spell"}, {name = "tmux"},
             {name = "orgmode"}, {name = "buffer"}, {name = "latex_symbols"}
             -- {name = 'cmp_tabnine'}
@@ -177,14 +163,7 @@ function config.cmp()
     })
 end
 
-function config.ultisnips()
-	vim.g.UltiSnipsRemoveSelectModeMappings = 0
-	vim.g.UltiSnipsEditSplit = 'vertical'
-    vim.g.UltiSnipsJumpForwardTrigger = "<C-l>"
-    vim.g.UltiSnipsJumpBackwardTrigger = "<C-h>"
-    -- 下面设定了 UltiSnip snippets 的位置. 来源于 vim-snippet, 如果不特定的话就会使用 snippets 下的而非 UltiSnip 下的
-    vim.g.UltiSnipsSnippetDirectories={os.getenv('HOME')..'/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/',os.getenv('HOME')..'/.config/nvim/my_snippets/ultisnip'}
-end
+
 
 function config.luasnip()
     require("luasnip").config.set_config {
@@ -208,7 +187,7 @@ function config.luasnip()
     }
     -- 这两个添加了 json 格式的 snippet
     require("luasnip/loaders/from_vscode").load()
-    require("luasnip/loaders/from_vscode").load({paths={"./my_snippets/luasnip/json"}}) 
+    require("luasnip/loaders/from_vscode").load({paths={"./my_snippets/luasnip/json"}})
     local function copy(args)
         return args[1]
     end
