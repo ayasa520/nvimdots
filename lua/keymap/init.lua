@@ -187,11 +187,8 @@ local plug_map = {
     ["n|<leader>vv"] = map_cr("VimtexView"):with_noremap():with_silent(),
     ["n|<leader>vl"] = map_cr("VimtexClean"):with_noremap():with_silent(),
     ["n|<leader>vs"] = map_cr("VimtexStop"):with_noremap():with_silent(),
-    ["n|<leader>tt"] = map_cr("Dox"):with_noremap():with_silent(),
-    ["n|<leader>tl"] = map_cr("DoxLic"):with_noremap():with_silent(),
-    ["n|<leader>tb"] = map_cr("DoxBlock"):with_noremap():with_silent(),
-    ["n|<leader>tu"] = map_cr("DoxUndoc"):with_noremap():with_silent(),
-    ["n|<leader>ta"] = map_cr("DoxAuthor"):with_noremap():with_silent(),
+    ["n|<A-g>"] = map_cr("Neogen"):with_noremap():with_silent(),
+
     -- 环绕字符 normal 以及 visual 模式生效
     ["n|<leader>`"] = map_cmd("<Plug>(sandwich-add)iw`"):with_silent(),
     ["n|<leader>["]=map_cmd("<Plug>(sandwich-add)iw["):with_silent(),

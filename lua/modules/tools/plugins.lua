@@ -103,5 +103,12 @@ tools["git@github.com:rcarriga/nvim-notify"] = {
     opt = false,
     config = conf.nvim_notify,
 }
+tools["git@github.com:danymat/neogen"] = {
+    opt = false,
+    config = function()
+        require('neogen').setup {}
+    end,
+    requires = "nvim-treesitter/nvim-treesitter"
+}
 
 return tools

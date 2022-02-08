@@ -31,7 +31,6 @@ completion["git@github.com:kosayoda/nvim-lightbulb"] = {
     after = "nvim-lspconfig",
     config = conf.lightbulb
 }
-completion["git@github.com:Jyc-Code/DoxygenToolkit.vim"] = {after = "nvim-lspconfig"}
 completion["git@github.com:ray-x/lsp_signature.nvim"] = {opt = true, after = "nvim-lspconfig"}
 completion["git@github.com:hrsh7th/nvim-cmp"] = {
     config = conf.cmp,

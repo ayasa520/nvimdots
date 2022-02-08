@@ -129,6 +129,8 @@ function config.cmp()
             ["<C-h>"] = cmp.mapping(function(fallback)
                 if require("luasnip").jumpable(-1) then
                     vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+                elseif require('neogen').jumpable(true) then
+                    require('neogen').jump_prev()
                 else
                     fallback()
                 end
@@ -136,6 +138,8 @@ function config.cmp()
             ["<C-l>"] = cmp.mapping(function(fallback)
                 if require("luasnip").expand_or_jumpable() then
                     vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+                elseif require('neogen').jumpable() then
+                    require('neogen').jump_next()
                 else
                     fallback()
                 end
