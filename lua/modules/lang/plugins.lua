@@ -26,4 +26,26 @@ lang["git@github.com:iamcco/markdown-preview.nvim"] = {
     cmd = {"MarkdownPreview","MarkdownPreviewStop","MarkdownPreviewToggle"}
 }
 lang["git@github.com:chrisbra/csv.vim"] = {opt = true, ft = "csv"}
+lang["git@github.com:nvim-neorg/neorg.git"] = {
+    opt = true,
+    ft = "norg",
+    config = function()
+        require('neorg').setup ({
+            load = {
+                ["core.defaults"] = {},
+                ["core.norg.dirman"] = {
+                    config = {
+                        workspaces = {
+                            work = "~/notes/work",
+                            home = "~/notes/home",
+                        }
+                    }
+                },
+                ["core.norg.concealer"] = {},
+                ["core.norg.qol.toc"] = {}
+            }
+        })
+    end,
+    requires = "nvim-lua/plenary.nvim"
+}
 return lang
