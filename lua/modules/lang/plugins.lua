@@ -22,7 +22,7 @@ lang["git@github.com:simrat39/rust-tools.nvim"] = {
 lang["git@github.com:iamcco/markdown-preview.nvim"] = {
     opt = true,
     ft = "markdown",
-    run = "cd app && yarn install",
+    run = "cd app && npm install",
     cmd = {"MarkdownPreview","MarkdownPreviewStop","MarkdownPreviewToggle"}
 }
 lang["git@github.com:chrisbra/csv.vim"] = {opt = true, ft = "csv"}
