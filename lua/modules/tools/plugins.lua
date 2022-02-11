@@ -108,7 +108,9 @@ tools["git@github.com:danymat/neogen"] = {
     config = function()
         require('neogen').setup {}
     end,
-    requires = "nvim-treesitter/nvim-treesitter"
+    requires ={
+        {"git@github.com:nvim-treesitter/nvim-treesitter"}
+    }
 }
 
 return tools

@@ -18,6 +18,7 @@ ui["git@github.com:arkav/lualine-lsp-progress"] = {opt = true, after = "nvim-gps
 ui["git@github.com:glepnir/dashboard-nvim"] = {opt = true, event = "BufWinEnter"}
 ui["git@github.com:kyazdani42/nvim-tree.lua"] = {
     opt = true,
+    event = "BufRead",
     cmd = {"NvimTreeToggle", "NvimTreeOpen"},
     config = conf.nvim_tree
 }

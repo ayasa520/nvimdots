@@ -26,26 +26,52 @@ lang["git@github.com:iamcco/markdown-preview.nvim"] = {
     cmd = {"MarkdownPreview","MarkdownPreviewStop","MarkdownPreviewToggle"}
 }
 lang["git@github.com:chrisbra/csv.vim"] = {opt = true, ft = "csv"}
-lang["git@github.com:nvim-neorg/neorg.git"] = {
-    opt = true,
-    ft = "norg",
-    config = function()
-        require('neorg').setup ({
-            load = {
-                ["core.defaults"] = {},
-                ["core.norg.dirman"] = {
-                    config = {
-                        workspaces = {
-                            work = "~/notes/work",
-                            home = "~/notes/home",
-                        }
-                    }
-                },
-                ["core.norg.concealer"] = {},
-                ["core.norg.qol.toc"] = {}
-            }
-        })
-    end,
-    requires = "nvim-lua/plenary.nvim"
-}
+-- lang["git@github.com:nvim-neorg/neorg"] = {
+--     opt = true,
+--     ft = "norg",
+--     config = function()
+--         require('neorg').setup ({
+--             load = {
+--                 ["core.defaults"] = {},
+--                 ["core.norg.dirman"] = {
+--                     config = {
+--                         workspaces = {
+--                             work = "~/notes/work",
+--                             home = "~/notes/home",
+--                         }
+--                     }
+--                 },
+--                 ["core.norg.concealer"] = {
+--                     config = {
+--                         icons = {
+--                             todo ={
+--                                 urgent = {
+--                                     enabled = true,
+--                                     icon = "",
+--                                     highlight = "NeorgTodoItemUrgentMark",
+--                                     query = "(todo_item_urgent) @icon",
+--                                     extract = function()
+--                                     return 1
+--                                     end,
+--                                 },
+--                             },
+--                         }
+--                     }
+--                 },
+--                 ["core.norg.qol.toc"] = {},
+--                 ["core.norg.completion"] = { config = { engine = "nvim-cmp" } },
+--                 ["core.presenter"] = {
+--                     config = {
+--                         zen_mode = "truezen"
+--                     }
+--                 }
+                 
+--             }
+--         })
+--     end,
+--     requires = {
+--         {"git@github.com:nvim-lua/plenary.nvim"},
+--         {"git@github.com:Pocco81/TrueZen.nvim"},
+--     }
+-- }
 return lang

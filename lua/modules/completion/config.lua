@@ -162,6 +162,7 @@ function config.cmp()
             {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
             {name = "path"}, {name = "spell"}, {name = "tmux"},
             {name = "orgmode"}, {name = "buffer"}, {name = "latex_symbols"}
+            --  { name = "neorg" }
             -- {name = 'cmp_tabnine'}
         }
     })

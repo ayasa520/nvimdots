@@ -32,26 +32,28 @@ function Packer:load_plugins()
 end
 
 function Packer:load_packer()
-    if not packer then
-        api.nvim_command("packadd packer.nvim")
-        packer = require("packer")
-    end
-    packer.init({
-        compile_path = packer_compiled,
-        git = {clone_timeout = 120},
-        disable_commands = true,
-        max_jobs = 20,
-        display = {
-            open_fn = function()
-                return require("packer.util").float({border = "single"})
-            end
-        }
-    })
-    packer.reset()
-    local use = packer.use
-    self:load_plugins()
-    use {"git@github.com:wbthomason/packer.nvim", opt = true}
-    for _, repo in ipairs(self.repos) do use(repo) end
+	if not packer then
+		api.nvim_command("packadd packer.nvim")
+		packer = require("packer")
+	end
+	packer.init({
+		compile_path = packer_compiled,
+		git = { clone_timeout = 60 },
+		disable_commands = true,
+		-- max_jobs = 20,
+		display = {
+			open_fn = function()
+				return require("packer.util").float({ border = "single" })
+			end,
+		},
+	})
+	packer.reset()
+	local use = packer.use
+	self:load_plugins()
+	use({ "git@github.com:wbthomason/packer.nvim", opt = true })
+	for _, repo in ipairs(self.repos) do
+		use(repo)
+	end
 end
 
 function Packer:init_ensure_plugins()
