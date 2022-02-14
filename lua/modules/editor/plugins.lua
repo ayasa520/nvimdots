@@ -147,11 +147,7 @@ editor["theHamsta/nvim-dap-virtual-text"] = {
     config = conf.dap_virtual_text
 }
 editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
-editor["edluffy/specs.nvim"] = {
-    opt = true,
-    event = "CursorMoved",
-    config = conf.specs
-}
+
 editor["abecodes/tabout.nvim"] = {
 	opt = true,
 	event = "InsertEnter",
