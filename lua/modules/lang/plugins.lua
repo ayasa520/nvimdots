@@ -1,14 +1,14 @@
 local lang = {}
 local conf = require("modules.lang.config")
 
-lang['git@github.com:fatih/vim-go'] = {
+lang['fatih/vim-go'] = {
     opt = true,
     ft = 'go',
     run = ':GoInstallBinaries',
     config = conf.lang_go
 }
-lang["git@github.com:rust-lang/rust.vim"] = {opt = true, ft = "rust"}
-lang["git@github.com:simrat39/rust-tools.nvim"] = {
+lang["rust-lang/rust.vim"] = {opt = true, ft = "rust"}
+lang["simrat39/rust-tools.nvim"] = {
     opt = true,
     ft = "rust",
     config = conf.rust_tools,
@@ -19,14 +19,14 @@ lang["git@github.com:simrat39/rust-tools.nvim"] = {
 --     ft = "org",
 --     config = conf.lang_org
 -- }
-lang["git@github.com:iamcco/markdown-preview.nvim"] = {
+lang["iamcco/markdown-preview.nvim"] = {
     opt = true,
     ft = "markdown",
     run = "cd app && npm install",
     cmd = {"MarkdownPreview","MarkdownPreviewStop","MarkdownPreviewToggle"}
 }
-lang["git@github.com:chrisbra/csv.vim"] = {opt = true, ft = "csv"}
--- lang["git@github.com:nvim-neorg/neorg"] = {
+lang["chrisbra/csv.vim"] = {opt = true, ft = "csv"}
+-- lang["nvim-neorg/neorg"] = {
 --     opt = true,
 --     ft = "norg",
 --     config = function()
@@ -70,8 +70,8 @@ lang["git@github.com:chrisbra/csv.vim"] = {opt = true, ft = "csv"}
 --         })
 --     end,
 --     requires = {
---         {"git@github.com:nvim-lua/plenary.nvim"},
---         {"git@github.com:Pocco81/TrueZen.nvim"},
+--         {"nvim-lua/plenary.nvim"},
+--         {"Pocco81/TrueZen.nvim"},
 --     }
 -- }
 return lang

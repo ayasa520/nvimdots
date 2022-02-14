@@ -1,17 +1,17 @@
 local editor = {}
 local conf = require('modules.editor.config')
-editor['git@github.com:machakann/vim-sandwich.git'] = {
+editor['machakann/vim-sandwich'] = {
     config = conf.sandwich
 }
 
-editor['git@github.com:ekickx/clipboard-image.nvim'] = {
+editor['ekickx/clipboard-image.nvim'] = {
     opt = true,
     cmd={'PasteImg'},
     config = conf.clipboard_image
 }
 
 
-editor['git@github.com:Pocco81/AutoSave.nvim'] = {
+editor['Pocco81/AutoSave.nvim'] = {
     opt = false,
     config = function()
         require("autosave").setup({
@@ -27,13 +27,13 @@ editor['git@github.com:Pocco81/AutoSave.nvim'] = {
         })
     end
 }
-editor['git@github.com:junegunn/vim-easy-align'] = {opt = true, cmd = 'EasyAlign'}
-editor['git@github.com:itchyny/vim-cursorword'] = {
+editor['junegunn/vim-easy-align'] = {opt = true, cmd = 'EasyAlign'}
+editor['itchyny/vim-cursorword'] = {
     opt = true,
     event = {"BufReadPre", "BufNewFile"},
     config = conf.vim_cursorwod
 }
-editor["git@github.com:terrortylor/nvim-comment"] = {
+editor["terrortylor/nvim-comment"] = {
     opt = false,
     config = function()
         require("nvim_comment").setup({
@@ -43,60 +43,60 @@ editor["git@github.com:terrortylor/nvim-comment"] = {
         })
     end
 }
-editor["git@github.com:simrat39/symbols-outline.nvim"] = {
+editor["simrat39/symbols-outline.nvim"] = {
     opt = true,
     cmd = {"SymbolsOutline", "SymbolsOutlineOpen"},
     config = conf.symbols_outline
 }
-editor["git@github.com:nvim-treesitter/nvim-treesitter"] = {
+editor["nvim-treesitter/nvim-treesitter"] = {
     opt = true,
     run = ":TSUpdate",
     event = "BufRead",
     config = conf.nvim_treesitter
 }
-editor["git@github.com:nvim-treesitter/nvim-treesitter-textobjects"] = {
+editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
     opt = true,
     after = "nvim-treesitter"
 }
-editor["git@github.com:romgrk/nvim-treesitter-context"] = {
+editor["romgrk/nvim-treesitter-context"] = {
     opt = true,
     after = "nvim-treesitter"
 }
-editor["git@github.com:p00f/nvim-ts-rainbow"] = {
+editor["p00f/nvim-ts-rainbow"] = {
     opt = true,
     after = "nvim-treesitter",
     event = "BufRead"
 }
-editor["git@github.com:JoosepAlviste/nvim-ts-context-commentstring"] = {
+editor["JoosepAlviste/nvim-ts-context-commentstring"] = {
     opt = true,
     after = "nvim-treesitter"
 }
-editor["git@github.com:mfussenegger/nvim-ts-hint-textobject"] = {
+editor["mfussenegger/nvim-ts-hint-textobject"] = {
     opt = true,
     after = "nvim-treesitter"
 }
-editor["git@github.com:SmiteshP/nvim-gps"] = {
+editor["SmiteshP/nvim-gps"] = {
     opt = true,
     after = "nvim-treesitter",
     config = conf.nvim_gps
 }
-editor["git@github.com:windwp/nvim-ts-autotag"] = {
+editor["windwp/nvim-ts-autotag"] = {
     opt = true,
     ft = {"html", "xml"},
     config = conf.autotag
 }
-editor["git@github.com:andymass/vim-matchup"] = {
+editor["andymass/vim-matchup"] = {
     opt = true,
     after = "nvim-treesitter",
     config = conf.matchup
 }
-editor["git@github.com:rhysd/accelerated-jk"] = {opt = true}
-editor["git@github.com:hrsh7th/vim-eft"] = {opt = true}
-editor["git@github.com:romainl/vim-cool"] = {
+editor["rhysd/accelerated-jk"] = {opt = true}
+editor["hrsh7th/vim-eft"] = {opt = true}
+editor["romainl/vim-cool"] = {
     opt = true,
     event = {"CursorMoved", "InsertEnter"}
 }
-editor["git@github.com:phaazon/hop.nvim"] = {
+editor["phaazon/hop.nvim"] = {
     opt = true,
     branch = "v1",
     cmd = {
@@ -107,57 +107,64 @@ editor["git@github.com:phaazon/hop.nvim"] = {
         require("hop").setup {keys = "etovxqpdygfblzhckisuran"}
     end
 }
-editor["git@github.com:karb94/neoscroll.nvim"] = {
+editor["karb94/neoscroll.nvim"] = {
     opt = true,
     event = "WinScrolled",
     config = conf.neoscroll
 }
-editor["git@github.com:vimlab/split-term.vim"] = {opt = true, cmd = {"Term", "VTerm"}}
-editor["git@github.com:akinsho/nvim-toggleterm.lua"] = {
+editor["vimlab/split-term.vim"] = {opt = true, cmd = {"Term", "VTerm"}}
+editor["akinsho/nvim-toggleterm.lua"] = {
     opt = true,
     event = "BufRead",
     config = conf.toggleterm
 }
-editor["git@github.com:numtostr/FTerm.nvim"] = {opt = true, event = "BufRead"}
-editor["git@github.com:norcalli/nvim-colorizer.lua"] = {
+editor["numtostr/FTerm.nvim"] = {opt = true, event = "BufRead"}
+editor["norcalli/nvim-colorizer.lua"] = {
     opt = true,
     event = "BufRead",
     config = conf.nvim_colorizer
 }
-editor["git@github.com:rmagatti/auto-session"] = {
+editor["rmagatti/auto-session"] = {
     opt = true,
     cmd = {"SaveSession", "RestoreSession", "DeleteSession"},
     config = conf.auto_session
 }
-editor["git@github.com:jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
-editor["git@github.com:rcarriga/nvim-dap-ui"] = {
+editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
+editor["rcarriga/nvim-dap-ui"] = {
     opt = false,
     config = conf.dapui,
     requires = {
-        {"git@github.com:mfussenegger/nvim-dap", config = conf.dap}, {
-            "git@github.com:Pocco81/DAPInstall.nvim",
+        {"mfussenegger/nvim-dap", config = conf.dap}, {
+            "Pocco81/DAPInstall.nvim",
             opt = true,
             cmd = {"DIInstall", "DIUninstall", "DIList"},
             config = conf.dapinstall
         }
     }
 }
-editor["git@github.com:theHamsta/nvim-dap-virtual-text.git"] = {
+editor["theHamsta/nvim-dap-virtual-text"] = {
     opt = false,
     config = conf.dap_virtual_text
 }
-editor["git@github.com:tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
-editor["git@github.com:edluffy/specs.nvim"] = {
+editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
+editor["edluffy/specs.nvim"] = {
     opt = true,
     event = "CursorMoved",
     config = conf.specs
 }
-editor["git@github.com:abecodes/tabout.nvim"] = {
+editor["abecodes/tabout.nvim"] = {
 	opt = true,
 	event = "InsertEnter",
 	wants = "nvim-treesitter",
 	after = "nvim-cmp",
 	config = conf.tabout,
+}
+
+editor["dhruvasagar/vim-table-mode"] = {
+    ft = "markdown",
+    config = function ()
+        vim.g.table_mode_corner='|'
+    end
 }
 
 return editor

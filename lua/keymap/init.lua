@@ -55,7 +55,7 @@ local plug_map = {
         :with_silent(),
     ["v|<leader>ca"] = map_cu("Lspsaga range_code_action"):with_noremap()
         :with_silent(),
-    ["n|gd"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
+    ["n|gd"] = map_cr("Lspsaga preview_definition"):with_noremap():with_silent(),
     ["n|gD"] = map_cr("lua vim.lsp.buf.definition()"):with_noremap()
         :with_silent(),
     ["n|gs"] = map_cr("Lspsaga signature_help"):with_noremap():with_silent(),

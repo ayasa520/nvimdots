@@ -1,5 +1,5 @@
 # 使用这个配置
-`git clone --recursive git@github.com:ayasa520/nvimdots.git ~/.config/nvim`
+`git clone --recursive ayasa520/nvimdots.git ~/.config/nvim`
 
 # 介绍
 

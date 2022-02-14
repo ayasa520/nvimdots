@@ -75,6 +75,17 @@ function config.nvim_treesitter()
 	require("nvim-treesitter.install").command_extra_args = {
 		curl = { "--proxy", "http://127.0.0.1:7890" },
 	}
+
+	-- 或者使用 SSH (slow)
+	-- require("nvim-treesitter.install").prefer_git = true
+	-- local parsers = require("nvim-treesitter.parsers").get_parser_configs()
+	-- for _, p in pairs(parsers) do
+	--   p.install_info.url = p.install_info.url:gsub(
+	-- 	"https://github.com/",
+	-- 	"git@github.com:"
+	--   )
+	-- end
+
 	-- local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 	-- parser_configs.norg_meta = {
 	-- 	install_info = {
@@ -297,6 +308,7 @@ end
 
 function config.dap()
 	vim.cmd([[autocmd FileType dap-float nnoremap <buffer><silent> q <cmd>close!<CR>]])
+
     local dap = require("dap")
 	local dapui = require("dapui")
     vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
