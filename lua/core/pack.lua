@@ -1,4 +1,5 @@
 local fn, uv, api = vim.fn, vim.loop, vim.api
+local is_mac = require("core.global").is_mac
 local vim_path = require("core.global").vim_path
 local data_dir = require("core.global").data_dir
 local modules_dir = vim_path .. "/lua/modules"
@@ -36,19 +37,30 @@ function Packer:load_packer()
 		api.nvim_command("packadd packer.nvim")
 		packer = require("packer")
 	end
-	packer.init({
-		compile_path = packer_compiled,
-		git = {  
-			default_url_format = "git@github.com:%s" 
-		},
-		disable_commands = true,
-		-- max_jobs = 20,
-		display = {
-			open_fn = function()
-				return require("packer.util").float({ border = "single" })
-			end,
-		},
-	})
+	if not is_mac then
+		packer.init({
+			compile_path = packer_compiled,
+			git = { clone_timeout = 60, default_url_format = "git@github.com:%s" },
+			disable_commands = true,
+			display = {
+				open_fn = function()
+					return require("packer.util").float({ border = "single" })
+				end,
+			},
+		})
+	else
+		packer.init({
+			compile_path = packer_compiled,
+			git = { clone_timeout = 60, default_url_format = "git@github.com:%s" },
+			disable_commands = true,
+			max_jobs = 20,
+			display = {
+				open_fn = function()
+					return require("packer.util").float({ border = "single" })
+				end,
+			},
+		})
+	end
 	packer.reset()
 	local use = packer.use
 	self:load_plugins()
@@ -59,17 +71,17 @@ function Packer:load_packer()
 end
 
 function Packer:init_ensure_plugins()
-    local packer_dir = data_dir .. "pack/packer/opt/packer.nvim"
-    local state = uv.fs_stat(packer_dir)
-    if not state then
-        local cmd = "!git clone git@github.com:wbthomason/packer.nvim " ..
-                        packer_dir
-        api.nvim_command(cmd)
-        uv.fs_mkdir(data_dir .. "lua", 511,
-                    function() assert("make compile path dir faield") end)
-        self:load_packer()
-        packer.install()
-    end
+	local packer_dir = data_dir .. "pack/packer/opt/packer.nvim"
+	local state = uv.fs_stat(packer_dir)
+	if not state then
+		local cmd = "!git clone git@github.com:wbthomason/packer.nvim " .. packer_dir
+		api.nvim_command(cmd)
+		uv.fs_mkdir(data_dir .. "lua", 511, function()
+			assert("make compile path dir failed")
+		end)
+		self:load_packer()
+		packer.install()
+	end
 end
 
 local plugins = setmetatable({}, {

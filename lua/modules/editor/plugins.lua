@@ -43,11 +43,6 @@ editor["terrortylor/nvim-comment"] = {
         })
     end
 }
-editor["simrat39/symbols-outline.nvim"] = {
-    opt = true,
-    cmd = {"SymbolsOutline", "SymbolsOutlineOpen"},
-    config = conf.symbols_outline
-}
 editor["nvim-treesitter/nvim-treesitter"] = {
     opt = true,
     run = ":TSUpdate",
@@ -90,8 +85,8 @@ editor["andymass/vim-matchup"] = {
     after = "nvim-treesitter",
     config = conf.matchup
 }
-editor["rhysd/accelerated-jk"] = {opt = true}
-editor["hrsh7th/vim-eft"] = {opt = true}
+editor["rhysd/accelerated-jk"] = { opt = true, event = "BufReadPost" }
+editor["hrsh7th/vim-eft"] = { opt = true, event = "BufReadPost" }
 editor["romainl/vim-cool"] = {
     opt = true,
     event = {"CursorMoved", "InsertEnter"}
