@@ -115,5 +115,10 @@ tools["danymat/neogen"] = {
 tools["airblade/vim-rooter"] = {
     opt = false
 }
-
+tools["romgrk/hologram.nvim"] = {
+    branch = 'development',
+    config =function()
+        require("hologram").setup()
+        end
+}
 return tools
