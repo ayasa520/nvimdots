@@ -1,5 +1,5 @@
 # Install
-`git clone --recursive ayasa520/nvimdots.git ~/.config/nvim`
+`git clone --recursive git@github.com:ayasa520/nvimdots.git ~/.config/nvim`
 
 # Introduction
 
