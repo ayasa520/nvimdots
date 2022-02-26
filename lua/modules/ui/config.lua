@@ -30,7 +30,7 @@ end
 
 function config.catppuccin()
 	require("catppuccin").setup({
-		transparent_background = true,
+		transparent_background = flase,
 		term_colors = true,
 		styles = {
 			comments = "italic",
@@ -95,10 +95,10 @@ function config.lualine()
 		lualine_y = {},
 		lualine_z = { "location" },
 	}
-	local aerial = {
-		sections = simple_sections,
-		filetypes = { "aerial" },
-	}
+	-- local aerial = {
+	-- 	sections = simple_sections,
+	-- 	filetypes = { "aerial" },
+	-- }
 	local dapui_scopes = {
 		sections = simple_sections,
 		filetypes = { "dapui_scopes" },
