@@ -27,11 +27,11 @@ completion["RishabhRD/nvim-lsputils"] = {
     config = conf.nvim_lsputils
 }
 
--- completion["stevearc/aerial.nvim"] = {
--- 	opt = true,
--- 	after = "nvim-lspconfig",
--- 	config = conf.aerial,
--- }
+completion["stevearc/aerial.nvim"] = {
+	opt = true,
+	after = "nvim-lspconfig",
+	config = conf.aerial,
+}
 completion["kosayoda/nvim-lightbulb"] = {
     opt = true,
     after = "nvim-lspconfig",
@@ -61,6 +61,7 @@ completion["hrsh7th/nvim-cmp"] = {
 }
 
 completion["L3MON4D3/LuaSnip"] = {
+    opt = false,
     after = "nvim-cmp",
     config = conf.luasnip,
     requires = "rafamadriz/friendly-snippets"

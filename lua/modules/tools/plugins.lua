@@ -119,6 +119,8 @@ tools["romgrk/hologram.nvim"] = {
     branch = 'development',
     config =function()
         require("hologram").setup()
-        end
+    end
 }
+
+
 return tools

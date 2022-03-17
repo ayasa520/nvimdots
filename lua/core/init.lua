@@ -1,6 +1,5 @@
 local global = require("core.global")
 local vim = vim
-
 -- Create cache dir and subs dir
 local createdir = function()
 	local data_dir = {
@@ -169,7 +168,6 @@ local load_core = function()
 	dashboard_config()
 	minimap_config()
 	-- clipboard_settings()
-
 	require("core.options")
 	require("core.mapping")
 	require("keymap")
