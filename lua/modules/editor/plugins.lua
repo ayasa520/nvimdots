@@ -33,6 +33,23 @@ editor['itchyny/vim-cursorword'] = {
     event = {"BufReadPre", "BufNewFile"},
     config = conf.vim_cursorwod
 }
+editor["RRethy/vim-illuminate"] = {
+	event = "BufRead",
+	config = function()
+		vim.g.Illuminate_highlightUnderCursor = 0
+		vim.g.Illuminate_ftblacklist = {
+			"help",
+			"dashboard",
+			"alpha",
+			"packer",
+			"norg",
+			"DoomInfo",
+			"NvimTree",
+			"Outline",
+			"toggleterm",
+		}
+	end,
+}
 editor["terrortylor/nvim-comment"] = {
     opt = false,
     config = function()
@@ -53,10 +70,6 @@ editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
     opt = true,
     after = "nvim-treesitter"
 }
-editor["romgrk/nvim-treesitter-context"] = {
-    opt = true,
-    after = "nvim-treesitter"
-}
 editor["p00f/nvim-ts-rainbow"] = {
     opt = true,
     after = "nvim-treesitter",
@@ -69,11 +82,6 @@ editor["JoosepAlviste/nvim-ts-context-commentstring"] = {
 editor["mfussenegger/nvim-ts-hint-textobject"] = {
     opt = true,
     after = "nvim-treesitter"
-}
-editor["SmiteshP/nvim-gps"] = {
-    opt = true,
-    after = "nvim-treesitter",
-    config = conf.nvim_gps
 }
 editor["windwp/nvim-ts-autotag"] = {
     opt = true,
@@ -107,11 +115,11 @@ editor["karb94/neoscroll.nvim"] = {
     event = "WinScrolled",
     config = conf.neoscroll
 }
-editor["vimlab/split-term.vim"] = {opt = true, cmd = {"Term", "VTerm"}}
-editor["akinsho/nvim-toggleterm.lua"] = {
-    opt = true,
-    event = "BufRead",
-    config = conf.toggleterm
+editor["vimlab/split-term.vim"] = { opt = true, cmd = { "Term", "VTerm" } }
+editor["akinsho/toggleterm.nvim"] = {
+	opt = true,
+	event = "BufRead",
+	config = conf.toggleterm,
 }
 editor["numtostr/FTerm.nvim"] = {opt = true, event = "BufRead"}
 editor["norcalli/nvim-colorizer.lua"] = {
@@ -126,16 +134,18 @@ editor["rmagatti/auto-session"] = {
 }
 editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
 editor["rcarriga/nvim-dap-ui"] = {
-    opt = false,
-    config = conf.dapui,
-    requires = {
-        {"mfussenegger/nvim-dap", config = conf.dap}, {
-            "Pocco81/DAPInstall.nvim",
-            opt = true,
-            cmd = {"DIInstall", "DIUninstall", "DIList"},
-            config = conf.dapinstall
-        }
-    }
+	opt = false,
+	config = conf.dapui,
+	requires = {
+		{ "mfussenegger/nvim-dap", config = conf.dap },
+		{
+			"Pocco81/dap-buddy.nvim",
+			opt = true,
+			cmd = { "DIInstall", "DIUninstall", "DIList" },
+			commit = "24923c3819a450a772bb8f675926d530e829665f",
+			config = conf.dapinstall,
+		},
+	},
 }
 editor["theHamsta/nvim-dap-virtual-text"] = {
     opt = false,
@@ -149,6 +159,10 @@ editor["abecodes/tabout.nvim"] = {
 	wants = "nvim-treesitter",
 	after = "nvim-cmp",
 	config = conf.tabout,
+}
+editor["sindrets/diffview.nvim"] = {
+	opt = true,
+	cmd = { "DiffviewOpen" },
 }
 
 editor["dhruvasagar/vim-table-mode"] = {

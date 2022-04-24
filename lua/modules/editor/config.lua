@@ -1,16 +1,6 @@
 local config = {}
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 
-function config.vim_cursorwod()
-	vim.api.nvim_command("augroup user_plugin_cursorword")
-	vim.api.nvim_command("autocmd!")
-	vim.api.nvim_command("autocmd FileType NvimTree,lspsagafinder,dashboard let b:cursorword = 0")
-	vim.api.nvim_command("autocmd WinEnter * if &diff || &pvw | let b:cursorword = 0 | endif")
-	vim.api.nvim_command("autocmd InsertEnter * let b:cursorword = 0")
-	vim.api.nvim_command("autocmd InsertLeave * let b:cursorword = 1")
-	vim.api.nvim_command("augroup END")
-end
-
 function config.nvim_treesitter()
 	vim.api.nvim_command("set foldmethod=expr")
 	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
@@ -32,7 +22,25 @@ function config.nvim_treesitter()
 
 
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = "maintained",
+		ensure_installed = {
+			"bash",
+			"c",
+			"cpp",
+			"lua",
+			"go",
+			"gomod",
+			"json",
+			"yaml",
+			"latex",
+			"make",
+			"python",
+			"rust",
+			"html",
+			"javascript",
+			"typescript",
+			"vue",
+			"css",
+		},
 		highlight = { enable = true, disable = { "vim" } },
 		textobjects = {
 			select = {
@@ -72,34 +80,11 @@ function config.nvim_treesitter()
 		},
 		context_commentstring = { enable = true, enable_autocmd = false },
 		matchup = { enable = true },
-		context = { enable = true, throttle = true },
 	})
 end
 
 function config.matchup()
 	vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
-end
-
-function config.nvim_gps()
-	require("nvim-gps").setup({
-		icons = {
-			["class-name"] = " ", -- Classes and class-like objects
-			["function-name"] = " ", -- Functions
-			["method-name"] = " ", -- Methods (functions inside class-like objects)
-		},
-		languages = {
-			-- You can disable any language individually here
-			["c"] = true,
-			["cpp"] = true,
-			["go"] = true,
-			["java"] = true,
-			["javascript"] = true,
-			["lua"] = true,
-			["python"] = true,
-			["rust"] = true,
-		},
-		separator = " > ",
-	})
 end
 
 function config.autotag()
@@ -241,13 +226,13 @@ function config.dap()
 	local dapui = require("dapui")
     vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
     vim.fn.sign_define('DapStopped', {text='▶', texthl='', linehl='', numhl=''})
-	dap.listeners.after.event_initialized["dapui"] = function()
+	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open()
 	end
-	dap.listeners.after.event_terminated["dapui"] = function()
+	dap.listeners.after.event_terminated["dapui_config"] = function()
 		dapui.close()
 	end
-	dap.listeners.after.event_exited["dapui"] = function()
+	dap.listeners.after.event_exited["dapui_config"] = function()
 		dapui.close()
 	end
 

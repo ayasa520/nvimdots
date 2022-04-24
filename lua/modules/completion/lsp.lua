@@ -5,6 +5,7 @@ vim.cmd([[packadd lsp_signature.nvim]])
 vim.cmd([[packadd lspsaga.nvim]])
 vim.cmd([[packadd cmp-nvim-lsp]])
 vim.cmd([[packadd aerial.nvim]])
+vim.cmd([[packadd vim-illuminate]])
 
 local nvim_lsp = require("lspconfig")
 local saga = require("lspsaga")
@@ -37,7 +38,7 @@ vim.lsp.handlers["textDocument/formatting"] = function(err, result, ctx)
 		vim.api.nvim_buf_get_var(ctx.bufnr, "init_changedtick") == vim.api.nvim_buf_get_var(ctx.bufnr, "changedtick")
 	then
 		local view = vim.fn.winsaveview()
-		vim.lsp.util.apply_text_edits(result, ctx.bufnr, "utf-8")
+		vim.lsp.util.apply_text_edits(result, ctx.bufnr, "utf-16")
 		vim.fn.winrestview(view)
 		if ctx.bufnr == vim.api.nvim_get_current_buf() then
 			vim.b.saving_format = true
@@ -58,6 +59,7 @@ local function custom_attach(client)
 		handler_opts = { "double" },
 	})
 	require("aerial").on_attach(client)
+	require("illuminate").on_attach(client)
 
 	if client.resolved_capabilities.document_formatting then
 		vim.cmd([[augroup Format]])
@@ -105,6 +107,10 @@ local enhance_server_opts = {
 				telemetry = { enable = false },
 			},
 		}
+		opts.on_attach = function(client)
+			client.resolved_capabilities.document_formatting = false
+			custom_attach(client)
+		end
 	end,
 	["clangd"] = function(opts)
 		opts.args = {
@@ -256,7 +262,10 @@ nvim_lsp.html.setup({
 	single_file_support = true,
 	flags = { debounce_text_changes = 500 },
 	capabilities = capabilities,
-	on_attach = custom_attach,
+	on_attach = function(client)
+		client.resolved_capabilities.document_formatting = false
+		custom_attach(client)
+	end,
 })
 
 local efmls = require("efmls-configs")

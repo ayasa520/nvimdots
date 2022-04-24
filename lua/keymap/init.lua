@@ -204,7 +204,12 @@ local plug_map = {
     ["v|<leader>\""]=map_cmd("<Plug>(sandwich-add)\""):with_silent(),
     ["v|<leader><"]=map_cmd("<Plug>(sandwich-add)<"):with_silent(),
     ["v|<leader>("]=map_cmd("<Plug>(sandwich-add)("):with_silent(),
-
+	-- Plugin Tabout
+	["i|<A-l>"] = map_cmd([[<Plug>(TaboutMulti)]]):with_silent(),
+	["i|<A-h>"] = map_cmd([[<Plug>(TaboutBackMulti)]]):with_silent(),
+	-- Plugin Diffview
+	["n|<leader>D"] = map_cr("DiffviewOpen"):with_silent():with_noremap(),
+	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap(),
 
     
 

@@ -10,22 +10,13 @@ function config.edge()
 	vim.g.edge_transparent_background = 1
 end
 
-function config.kanagawa()
-	require("kanagawa").setup({
-		undercurl = true, -- enable undercurls
-		commentStyle = "italic",
-		functionStyle = "bold,italic",
-		keywordStyle = "italic",
-		statementStyle = "bold",
-		typeStyle = "NONE",
-		variablebuiltinStyle = "italic",
-		specialReturn = true, -- special highlight for the return keyword
-		specialException = true, -- special highlight for exception handling keywords
-		transparent = false, -- do not set background color
-		dimInactive = true, -- dim inactive window `:h hl-NormalNC`
-		colors = {},
-		overrides = {},
-	})
+function config.nord()
+	vim.g.nord_contrast = true
+	vim.g.nord_borders = false
+	vim.g.nord_cursorline_transparent = true
+	vim.g.nord_disable_background = false
+	vim.g.nord_enable_sidebar_background = true
+	vim.g.nord_italic = false
 end
 
 function config.catppuccin()
@@ -179,13 +170,34 @@ function config.lualine()
 	})
 end
 
+function config.nvim_gps()
+	require("nvim-gps").setup({
+		icons = {
+			["class-name"] = " ", -- Classes and class-like objects
+			["function-name"] = " ", -- Functions
+			["method-name"] = " ", -- Methods (functions inside class-like objects)
+		},
+		languages = {
+			-- You can disable any language individually here
+			["c"] = true,
+			["cpp"] = true,
+			["go"] = true,
+			["java"] = true,
+			["javascript"] = true,
+			["lua"] = true,
+			["python"] = true,
+			["rust"] = true,
+		},
+		separator = " > ",
+	})
+end
+
 function config.nvim_tree()
 	require("nvim-tree").setup({
 		disable_netrw = true,
 		hijack_netrw = true,
 		open_on_setup = false,
 		ignore_ft_on_setup = {},
-		auto_close = true,
 		open_on_tab = false,
 		hijack_cursor = true,
 		update_cwd = false,
