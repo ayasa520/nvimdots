@@ -89,17 +89,8 @@ tools["folke/trouble.nvim"] = {
     cmd = {"Trouble", "TroubleToggle", "TroubleRefresh"},
     config = conf.trouble
 }
-<<<<<<< HEAD
-tools["dstein64/vim-startuptime"] = {opt = true, cmd = "StartupTime"}
-tools["gelguy/wilder.nvim"] = {
-    event = "CmdlineEnter",
-    config = conf.wilder,
-    requires = {{"romgrk/fzy-lua-native", after = "wilder.nvim"}}
-}
-=======
 tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 
->>>>>>> upstream/main
 tools["nathom/filetype.nvim"] = {
 	opt = false,
 	config = conf.filetype,

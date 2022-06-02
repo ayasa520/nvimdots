@@ -170,22 +170,23 @@ function config.cmp()
             {name = "orgmode"}, {name = "buffer"}, {name = "latex_symbols"},
             -- {name = 'cmp_tabnine'}
         }
-		cmp.setup.cmdline("/", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = { { name = "buffer" } }
-		})
-		cmp.setup.cmdline("?", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = { { name = "buffer" } }
-		})
-		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources(
-				{ { name = "path" } },
-				{ { name = "cmdline" } }
-			)
-		})
+		
     })
+	cmp.setup.cmdline("/", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = { { name = "buffer" } }
+	})
+	cmp.setup.cmdline("?", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = { { name = "buffer" } }
+	})
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources(
+			{ { name = "path" } },
+			{ { name = "cmdline" } }
+		)
+	})
 end
 
 
