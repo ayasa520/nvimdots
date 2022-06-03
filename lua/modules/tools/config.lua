@@ -5,60 +5,72 @@ function config.telescope()
 	vim.cmd([[packadd telescope-fzf-native.nvim]])
 	vim.cmd([[packadd telescope-project.nvim]])
 	vim.cmd([[packadd telescope-frecency.nvim]])
-	vim.cmd [[packadd telescope-zoxide]]
-	vim.cmd [[packadd telescope-media-files.nvim]]
-    require("telescope").setup {
-        defaults = {
-            prompt_prefix = "🔭 ",
-            selection_caret = " ",
-            layout_config = {
-                horizontal = {prompt_position = "bottom", results_width = 0.6},
-                vertical = {mirror = false}
-            },
-            file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-            grep_previewer = require("telescope.previewers").vim_buffer_vimgrep
-                .new,
-            qflist_previewer = require("telescope.previewers").vim_buffer_qflist
-                .new,
-            file_sorter = require("telescope.sorters").get_fuzzy_file,
-            file_ignore_patterns = {},
-            generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-            path_display = {"absolute"},
-            winblend = 0,
-            border = {},
-            borderchars = {
-                "─", "│", "─", "│", "╭", "╮", "╯", "╰"
-            },
-            color_devicons = true,
-            use_less = true,
-            set_env = {["COLORTERM"] = "truecolor"}
-        },
-        extensions = {
-            fzf = {
-                fuzzy = false, -- false will only do exact matching
-                override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true, -- override the file sorter
-                case_mode = "smart_case" -- or "ignore_case" or "respect_case"
-                -- the default case_mode is "smart_case"
-            },
-            frecency = {
-                show_scores = true,
-                show_unindexed = true,
-                ignore_patterns = {"*.git/*", "*/tmp/*"}
-            },
-             media_files = {
-                -- filetypes whitelist
-                -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-                filetypes = {"png", "webp", "jpg", "jpeg"},
-                find_cmd = "fd" -- find command (defaults to `fd`)
-              }
-        }
-    }
-    require('telescope').load_extension('media_files')
-    require("telescope").load_extension("fzf")
-    require("telescope").load_extension("project")
-    require("telescope").load_extension("zoxide")
-    require("telescope").load_extension("frecency")
+	vim.cmd([[packadd telescope-zoxide]])
+
+	local telescope_actions = require("telescope.actions.set")
+	local fixfolds = {
+		hidden = true,
+		attach_mappings = function(_)
+			telescope_actions.select:enhance({
+				post = function()
+					vim.cmd(":normal! zx")
+				end,
+			})
+			return true
+		end,
+	}
+
+	require("telescope").setup({
+		defaults = {
+			initial_mode = "insert",
+			prompt_prefix = "  ",
+			selection_caret = " ",
+			entry_prefix = " ",
+			scroll_strategy = "limit",
+			results_title = false,
+			borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+			layout_strategy = "horizontal",
+			path_display = { "absolute" },
+			file_ignore_patterns = {},
+			layout_config = {
+				prompt_position = "bottom",
+				horizontal = {
+					preview_width = 0.5,
+				},
+			},
+			file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+			grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+			qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+			file_sorter = require("telescope.sorters").get_fuzzy_file,
+			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+		},
+		extensions = {
+			fzf = {
+				fuzzy = false,
+				override_generic_sorter = true,
+				override_file_sorter = true,
+				case_mode = "smart_case",
+			},
+			frecency = {
+				show_scores = true,
+				show_unindexed = true,
+				ignore_patterns = { "*.git/*", "*/tmp/*" },
+			},
+		},
+		pickers = {
+			buffers = fixfolds,
+			find_files = fixfolds,
+			git_files = fixfolds,
+			grep_string = fixfolds,
+			live_grep = fixfolds,
+			oldfiles = fixfolds,
+		},
+	})
+
+	require("telescope").load_extension("fzf")
+	require("telescope").load_extension("project")
+	require("telescope").load_extension("zoxide")
+	require("telescope").load_extension("frecency")
 end
 
 function config.vimtex()
@@ -128,7 +140,12 @@ function config.sniprun()
 		interpreter_options = {}, -- " intepreter-specific options, consult docs / :SnipInfo <name>
 		-- " you can combo different display modes as desired
 		display = {
-			"Classic"            -- "display results in a vertical split
+			"Classic", -- "display results in the command-line  area
+			"VirtualTextOk", -- "display ok results as virtual text (multiline is shortened)
+			"VirtualTextErr", -- "display error results as virtual text
+			-- "TempFloatingWindow",      -- "display results in a floating window
+			"LongTempFloatingWindow", -- "same as above, but only long results. To use with VirtualText__
+			-- "Terminal"                 -- "display results in a vertical split
 		},
 		-- " miscellaneous compatibility/adjustement settings
 		inline_messages = 0, -- " inline_message (0/1) is a one-line way to display messages
@@ -137,6 +154,59 @@ function config.sniprun()
 		borders = "shadow", -- " display borders around floating windows
 		-- " possible values are 'none', 'single', 'double', or 'shadow'
 	})
+end
+
+function config.which_key()
+	require("which-key").setup({
+		plugins = {
+			presets = {
+				operators = false,
+				motions = false,
+				text_objects = false,
+				windows = false,
+				nav = false,
+				z = true,
+				g = true,
+			},
+		},
+
+		icons = {
+			breadcrumb = "»",
+			separator = "│",
+			group = "+",
+		},
+
+		window = {
+			border = "none",
+			position = "bottom",
+			margin = { 1, 0, 1, 0 },
+			padding = { 1, 1, 1, 1 },
+			winblend = 0,
+		},
+	})
+end
+
+function config.wilder()
+	vim.cmd([[
+call wilder#setup({'modes': [':', '/', '?']})
+call wilder#set_option('use_python_remote_plugin', 0)
+call wilder#set_option('pipeline', [wilder#branch(
+	\ wilder#cmdline_pipeline({'use_python': 0,'fuzzy': 1, 'fuzzy_filter': wilder#lua_fzy_filter()}),
+	\ wilder#vim_search_pipeline(),
+	\ [wilder#check({_, x -> empty(x)}), wilder#history(), wilder#result({'draw': [{_, x -> ' ' . x}]})]
+	\ )])
+call wilder#set_option('renderer', wilder#renderer_mux({
+	\ ':': wilder#popupmenu_renderer({
+		\ 'highlighter': wilder#lua_fzy_highlighter(),
+		\ 'left': [wilder#popupmenu_devicons()],
+		\ 'right': [' ', wilder#popupmenu_scrollbar()]
+		\ }),
+	\ '/': wilder#wildmenu_renderer({
+		\ 'highlighter': wilder#lua_fzy_highlighter(),
+		\ 'apply_incsearch_fix': v:true,
+		\})
+	\ }))
+]])
 end
 
 function config.filetype()
@@ -149,47 +219,6 @@ function config.filetype()
 			},
 		},
 	})
-end
-
-function config.nvim_notify()
-	vim.notify = require("notify"),
-	require("notify").setup({
-		-- Animation style (see below for details)
-		stages = "fade_in_slide_out",
-	  
-		-- Function called when a new window is opened, use for changing win settings/config
-		on_open = nil,
-	  
-		-- Function called when a window is closed
-		on_close = nil,
-	  
-		-- Render function for notifications. See notify-render()
-		render = "default",
-	  
-		-- Default timeout for notifications
-		timeout = 5000,
-	  
-		-- Max number of columns for messages
-		max_width = nil,
-		-- Max number of lines for a message
-		max_height = nil,
-	  
-		-- For stages that change opacity this is treated as the highlight behind the window
-		-- Set this to either a highlight group, an RGB hex value e.g. "#000000" or a function returning an RGB code for dynamic values
-		background_colour = "Normal",
-	  
-		-- Minimum width for notification windows
-		minimum_width = 50,
-	  
-		-- Icons for the different levels
-		icons = {
-		  ERROR = "",
-		  WARN = "",
-		  INFO = "",
-		  DEBUG = "",
-		  TRACE = "✎",
-		},
-	  })
 end
 
 return config

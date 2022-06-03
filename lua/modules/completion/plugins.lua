@@ -6,38 +6,33 @@ completion["neovim/nvim-lspconfig"] = {
     event = "BufReadPre",
     config = conf.nvim_lsp
 }
+completion["creativenull/efmls-configs-nvim"] = {
+	opt = false,
+	requires = "neovim/nvim-lspconfig"
+}
 completion["williamboman/nvim-lsp-installer"] = {
-    opt = true,
-    after = "nvim-lspconfig"
+	opt = false,
+}
+completion["kevinhwang91/nvim-bqf"] = {
+	opt = true,
+	ft = "qf",
+	config = conf.bqf,
 }
 completion["tami5/lspsaga.nvim"] = {
-    opt = true,
-    after = "nvim-lspconfig",
-    config = conf.saga
+	opt = true,
+	after = "nvim-lspconfig",
 }
-
-completion["creativenull/efmls-configs-nvim"] = {
-    opt = false,
-    requires = "neovim/nvim-lspconfig"
-}
-
-completion["RishabhRD/nvim-lsputils"] = {
-    opt = true,
-    after = "nvim-lspconfig",
-    config = conf.nvim_lsputils
-}
-
 completion["stevearc/aerial.nvim"] = {
 	opt = true,
 	after = "nvim-lspconfig",
 	config = conf.aerial,
 }
 completion["kosayoda/nvim-lightbulb"] = {
-    opt = true,
-    after = "nvim-lspconfig",
-    config = conf.lightbulb
+	opt = true,
+	after = "nvim-lspconfig",
+	config = conf.lightbulb,
 }
-completion["ray-x/lsp_signature.nvim"] = {opt = true, after = "nvim-lspconfig"}
+completion["ray-x/lsp_signature.nvim"] = { opt = true, after = "nvim-lspconfig" }
 completion["hrsh7th/nvim-cmp"] = {
 	config = conf.cmp,
 	event = "InsertEnter",
@@ -51,7 +46,6 @@ completion["hrsh7th/nvim-cmp"] = {
 		{ "f3fora/cmp-spell", after = "cmp-path" },
 		{ "hrsh7th/cmp-buffer", after = "cmp-spell" },
 		{ "kdheepak/cmp-latex-symbols", after = "cmp-buffer" },
-        { "hrsh7th/cmp-cmdline", after = "cmp-buffer" },
 		-- {
 		--     'tzachar/cmp-tabnine',
 		--     run = './install.sh',
@@ -62,15 +56,14 @@ completion["hrsh7th/nvim-cmp"] = {
 }
 
 completion["L3MON4D3/LuaSnip"] = {
-    opt = false,
-    after = "nvim-cmp",
-    config = conf.luasnip,
-    requires = "rafamadriz/friendly-snippets"
+	after = "nvim-cmp",
+	config = conf.luasnip,
+	requires = "rafamadriz/friendly-snippets",
 }
 completion["windwp/nvim-autopairs"] = {
-    after = "nvim-cmp",
-    config = conf.autopairs
+	after = "nvim-cmp",
+	config = conf.autopairs,
 }
-completion["github/copilot.vim"] = {opt = true, cmd = "Copilot"}
+completion["github/copilot.vim"] = { opt = true, cmd = "Copilot" }
 
 return completion

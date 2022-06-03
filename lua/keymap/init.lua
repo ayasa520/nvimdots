@@ -167,7 +167,7 @@ local plug_map = {
         -- :with_silent(),
     ["n|<F11>"] = map_cr("lua require('dap').step_into()"):with_noremap()  -- F11 step into
         :with_silent(),
-    -- ["n|<leader>di"] = map_cr("lua require('dap').step_into()"):with_noremap() 
+    -- ["n|<leader>di"] = map_cr("lua require('dap').step_into()"):with_noremap()
         -- :with_silent(),
     ["n|<F23>"] = map_cr("lua require('dap').step_out()"):with_noremap() -- shift-F11 step out
         :with_silent(),
@@ -178,12 +178,12 @@ local plug_map = {
         :with_silent(),
     ["v|<leader>di"] = map_cr("lua require('dap.ui.widgets').hover() "):with_noremap()
         :with_silent(),
-    ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap()  
+    ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap()
         :with_silent(),
     ["o|m"] = map_cu([[lua require('tsht').nodes()]]):with_silent(),
     ["v|m"] = map_cr([[lua require('tsht').nodes()]]):with_noremap()
         :with_silent(),
-    ["n|<leader>vc"] = map_cr("VimtexCompile"):with_noremap():with_silent(),    
+    ["n|<leader>vc"] = map_cr("VimtexCompile"):with_noremap():with_silent(),
     ["n|<leader>vv"] = map_cr("VimtexView"):with_noremap():with_silent(),
     ["n|<leader>vl"] = map_cr("VimtexClean"):with_noremap():with_silent(),
     ["n|<leader>vs"] = map_cr("VimtexStop"):with_noremap():with_silent(),
@@ -211,9 +211,9 @@ local plug_map = {
 	["n|<leader>D"] = map_cr("DiffviewOpen"):with_silent():with_noremap(),
 	["n|<leader><leader>D"] = map_cr("DiffviewClose"):with_silent():with_noremap(),
 
-    
 
-    
+
+
 };
 local del_map = {
     ["s|m"] = {}

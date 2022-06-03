@@ -8,36 +8,11 @@ function config.lightbulb()
 	vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 end
 
-function config.saga()
-    local saga = require 'lspsaga'
-    saga.init_lsp_saga {
-        error_sign = "",
-        warn_sign = "",
-        hint_sign = "",
-        infor_sign = "",
-    }
-end
 function config.aerial()
-	-- Call the setup function to change the default behavior
-	require("aerial").setup({
-
-    })
+	require("aerial").setup({})
 end
 
 function config.cmp()
-    vim.cmd [[highlight CmpItemAbbrDeprecated guifg=#D8DEE9 guibg=NONE gui=strikethrough]]
-    vim.cmd [[highlight CmpItemKindSnippet guifg=#BF616A guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindUnit guifg=#D08770 guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindProperty guifg=#A3BE8C guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindKeyword guifg=#EBCB8B guibg=NONE]]
-    vim.cmd [[highlight CmpItemAbbrMatch guifg=#5E81AC guibg=NONE]]
-    vim.cmd [[highlight CmpItemAbbrMatchFuzzy guifg=#5E81AC guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindVariable guifg=#8FBCBB guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindInterface guifg=#88C0D0 guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindText guifg=#81A1C1 guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindFunction guifg=#B48EAD guibg=NONE]]
-    vim.cmd [[highlight CmpItemKindMethod guifg=#B48EAD guibg=NONE]]
-
 	local t = function(str)
 		return vim.api.nvim_replace_termcodes(str, true, true, true)
 	end
@@ -46,8 +21,35 @@ function config.cmp()
 		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
 
+	local border = function(hl)
+		return {
+			{ "╭", hl },
+			{ "─", hl },
+			{ "╮", hl },
+			{ "│", hl },
+			{ "╯", hl },
+			{ "─", hl },
+			{ "╰", hl },
+			{ "│", hl },
+		}
+	end
+
+	local cmp_window = require("cmp.utils.window")
+
+	function cmp_window:has_scrollbar()
+		return false
+	end
+
 	local cmp = require("cmp")
 	cmp.setup({
+		window = {
+			completion = {
+				border = border("CmpBorder"),
+			},
+			documentation = {
+				border = border("CmpDocBorder"),
+			},
+		},
 		sorting = {
 			comparators = {
 				cmp.config.compare.offset,
@@ -104,125 +106,102 @@ function config.cmp()
                     spell = "[SPELL]"
                 })[entry.source.name]
 
-                return vim_item
-            end
-        },
-        -- You can set mappings if you want
-        -- 对于 luasnip, choiceNode 使用 Ctrl k 切换（暂时没有候选展示），Ctrl l 跳到下一个插入点
-        mapping = cmp.mapping.preset.insert( {
-            ["<CR>"] = cmp.mapping.confirm({select = true}),
-            ["<C-p>"] = cmp.mapping.select_prev_item(),
-            ["<C-n>"] = cmp.mapping.select_next_item(),
-            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-            ["<C-f>"] = cmp.mapping.scroll_docs(4),
-            ["<C-e>"] = cmp.mapping.close(),
-            ["<Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif  has_words_before() then
-                    cmp.complete()
-                else
-                    fallback()
-                end
-            end, {"i", "s"}),
-            ["<S-Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                else
-                    fallback()
-                end
-            end, {"i", "s"}),
-            ["<C-h>"] = cmp.mapping(function(fallback)
-                if require('neogen').jumpable(true) then
-                    require('neogen').jump_prev()
-                elseif require("luasnip").jumpable(-1) then
-                    vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
-                else
-                    fallback()
-                end
-            end,{"i","s"}),
-            ["<C-l>"] = cmp.mapping(function(fallback)
-                if require('neogen').jumpable() then
-                    require('neogen').jump_next()
-                elseif require("luasnip").expand_or_jumpable() then
-                    vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
-                else
-                    fallback()
-                end
-            end,{"i","s"}),
-            ["<C-k>"] = cmp.mapping(function(fallback)
-                if require("luasnip").choice_active() then
-                    vim.fn.feedkeys(t("<Plug>luasnip-next-choice"), "")
-                else
-                    fallback()
-                end
-            end,{"i","s"})
-        }),
-        snippet = {
-            expand = function(args)
-                require("luasnip").lsp_expand(args.body)
-            end
-        },
-        -- You should specify your *installed* sources.
-        sources = {
-            {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
-            {name = "path"}, {name = "spell"}, {name = "tmux"},
-            {name = "orgmode"}, {name = "buffer"}, {name = "latex_symbols"},
-            -- {name = 'cmp_tabnine'}
-        }
-		
-    })
-	cmp.setup.cmdline("/", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = { { name = "buffer" } }
-	})
-	cmp.setup.cmdline("?", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = { { name = "buffer" } }
-	})
-	cmp.setup.cmdline(":", {
-		mapping = cmp.mapping.preset.cmdline(),
-		sources = cmp.config.sources(
-			{ { name = "path" } },
-			{ { name = "cmdline" } }
-		)
+				return vim_item
+			end,
+		},
+		-- You can set mappings if you want
+		mapping = cmp.mapping.preset.insert({
+			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			["<C-p>"] = cmp.mapping.select_prev_item(),
+			["<C-n>"] = cmp.mapping.select_next_item(),
+			["<C-d>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-e>"] = cmp.mapping.close(),
+			["<Tab>"] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.select_next_item()
+				elseif has_words_before() then
+					cmp.complete()
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
+			["<S-Tab>"] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item()
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
+			["<C-h>"] = cmp.mapping(function(fallback)
+				if require('neogen').jumpable(true) then
+					require('neogen').jump_prev()
+				elseif require("luasnip").jumpable(-1) then
+					vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+				else
+					fallback()
+				end
+			end,{"i","s"}),
+			["<C-l>"] = cmp.mapping(function(fallback)
+				if require('neogen').jumpable() then
+					require('neogen').jump_next()
+				elseif require("luasnip").expand_or_jumpable() then
+					vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+				else
+					fallback()
+				end
+			end,{"i","s"}),
+			["<C-k>"] = cmp.mapping(function(fallback)
+				if require("luasnip").choice_active() then
+					vim.fn.feedkeys(t("<Plug>luasnip-next-choice"), "")
+				else
+					fallback()
+				end
+			end,{"i","s"})
+		}),
+		snippet = {
+			expand = function(args)
+				require("luasnip").lsp_expand(args.body)
+			end,
+		},
+		-- You should specify your *installed* sources.
+		sources = {
+			{ name = "nvim_lsp" },
+			{ name = "nvim_lua" },
+			{ name = "luasnip" },
+			{ name = "path" },
+			{ name = "spell" },
+			{ name = "tmux" },
+			{ name = "orgmode" },
+			{ name = "buffer" },
+			{ name = "latex_symbols" },
+			-- {name = 'cmp_tabnine'}
+		},
 	})
 end
 
-
-
 function config.luasnip()
-    require("luasnip").config.set_config {
-        region_check_events = "InsertEnter",
-        delete_check_events = "TextChanged,InsertLeave",
-        history = true,
-	    -- Update more often, :h events for more info.
-	    updateevents = "TextChanged,TextChangedI",
-        ext_opts = {
-            [require("luasnip.util.types").choiceNode] = {
-                active = {
-                    virt_text = {{"🔸", "GruvboxOrange"}}
-                }
-            },
-            [require("luasnip.util.types").insertNode] = {
-                active = {
-                    virt_text = {{"🔹", "GruvboxBlue"}}
-                }
-            }
-        }
-    }
+	vim.o.runtimepath = vim.o.runtimepath .. "," .. os.getenv("HOME") .. "/.config/nvim/my_snippets/luasnip/json,"
+	require("luasnip").config.set_config({
+		history = true,
+		updateevents = "TextChanged,TextChangedI",
 
-    -- 这两个添加了 json 格式的 snippet
-    require("luasnip/loaders/from_vscode").load()
-    require("luasnip/loaders/from_vscode").load({paths={"./my_snippets/luasnip/json"}})
-    require("luasnip").filetype_extend("markdown", { "math" })
-
-    local function copy(args)
-        return args[1]
-    end
-    -- -- lua 格式的这样写, 比较复杂的(需要上下文的)snippets放在这里
-    -- package.path = package.path..';'..os.getenv('HOME')..'/.config/nvim/my_snippets/luasnip/lua/?.lua'
-    -- require("luasnip").snippets = require("snippets")
+		ext_opts = {
+			[require("luasnip.util.types").choiceNode] = {
+				active = {
+					virt_text = {{"🔸", "GruvboxOrange"}}
+				}
+			},
+			[require("luasnip.util.types").insertNode] = {
+				active = {
+					virt_text = {{"🔹", "GruvboxBlue"}}
+				}
+			}
+		}
+	})
+	require("luasnip.loaders.from_lua").lazy_load()
+	require("luasnip.loaders.from_vscode").lazy_load()
+	require("luasnip.loaders.from_snipmate").lazy_load()
 end
 
 -- function config.tabnine()
@@ -240,65 +219,50 @@ function config.autopairs()
 	cmp_autopairs.lisp[#cmp_autopairs.lisp + 1] = "racket"
 end
 
-function config.nvim_lsputils()
-	if vim.fn.has("nvim-0.5.1") == 1 then
-		vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
-		vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
-		vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
-		vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
-		vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").typeDefinition_handler
-		vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
-		vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
-		vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
-	else
-		local bufnr = vim.api.nvim_buf_get_number(0)
+function config.bqf()
+	vim.cmd([[
+    hi BqfPreviewBorder guifg=#F2CDCD ctermfg=71
+    hi link BqfPreviewRange Search
+]])
 
-		vim.lsp.handlers["textDocument/codeAction"] = function(_, _, actions)
-			require("lsputil.codeAction").code_action_handler(nil, actions, nil, nil, nil)
-		end
-
-		vim.lsp.handlers["textDocument/references"] = function(_, _, result)
-			require("lsputil.locations").references_handler(nil, result, {
-				bufnr = bufnr,
-			}, nil)
-		end
-
-		vim.lsp.handlers["textDocument/definition"] = function(_, method, result)
-			require("lsputil.locations").definition_handler(nil, result, {
-				bufnr = bufnr,
-				method = method,
-			}, nil)
-		end
-
-		vim.lsp.handlers["textDocument/declaration"] = function(_, method, result)
-			require("lsputil.locations").declaration_handler(nil, result, {
-				bufnr = bufnr,
-				method = method,
-			}, nil)
-		end
-
-		vim.lsp.handlers["textDocument/typeDefinition"] = function(_, method, result)
-			require("lsputil.locations").typeDefinition_handler(nil, result, {
-				bufnr = bufnr,
-				method = method,
-			}, nil)
-		end
-
-		vim.lsp.handlers["textDocument/implementation"] = function(_, method, result)
-			require("lsputil.locations").implementation_handler(nil, result, {
-				bufnr = bufnr,
-				method = method,
-			}, nil)
-		end
-
-		vim.lsp.handlers["textDocument/documentSymbol"] = function(_, _, result, _, bufn)
-			require("lsputil.symbols").document_handler(nil, result, { bufnr = bufn }, nil)
-		end
-
-		vim.lsp.handlers["textDocument/symbol"] = function(_, _, result, _, bufn)
-			require("lsputil.symbols").workspace_handler(nil, result, { bufnr = bufn }, nil)
-		end
-	end
+	require("bqf").setup({
+		auto_enable = true,
+		auto_resize_height = true, -- highly recommended enable
+		preview = {
+			win_height = 12,
+			win_vheight = 12,
+			delay_syntax = 80,
+			border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+			should_preview_cb = function(bufnr, qwinid)
+				local ret = true
+				local bufname = vim.api.nvim_buf_get_name(bufnr)
+				local fsize = vim.fn.getfsize(bufname)
+				if fsize > 100 * 1024 then
+					-- skip file size greater than 100k
+					ret = false
+				elseif bufname:match("^fugitive://") then
+					-- skip fugitive buffer
+					ret = false
+				end
+				return ret
+			end,
+		},
+		-- make `drop` and `tab drop` to become preferred
+		func_map = {
+			drop = "o",
+			openc = "O",
+			split = "<C-s>",
+			tabdrop = "<C-t>",
+			tabc = "",
+			ptogglemode = "z,",
+		},
+		filter = {
+			fzf = {
+				action_for = { ["ctrl-s"] = "split", ["ctrl-t"] = "tab drop" },
+				extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+			},
+		},
+	})
 end
 
 return config

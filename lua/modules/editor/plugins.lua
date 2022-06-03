@@ -61,59 +61,56 @@ editor["terrortylor/nvim-comment"] = {
     end
 }
 editor["nvim-treesitter/nvim-treesitter"] = {
-    opt = true,
-    run = ":TSUpdate",
-    event = "BufRead",
-    config = conf.nvim_treesitter
+	opt = true,
+	run = ":TSUpdate",
+	event = "BufRead",
+	config = conf.nvim_treesitter,
 }
 editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
-    opt = true,
-    after = "nvim-treesitter"
+	opt = true,
+	after = "nvim-treesitter",
 }
 editor["p00f/nvim-ts-rainbow"] = {
-    opt = true,
-    after = "nvim-treesitter",
-    event = "BufRead"
+	opt = true,
+	after = "nvim-treesitter",
+	event = "BufRead",
 }
 editor["JoosepAlviste/nvim-ts-context-commentstring"] = {
-    opt = true,
-    after = "nvim-treesitter"
+	opt = true,
+	after = "nvim-treesitter",
 }
 editor["mfussenegger/nvim-ts-hint-textobject"] = {
-    opt = true,
-    after = "nvim-treesitter"
+	opt = true,
+	after = "nvim-treesitter",
 }
 editor["windwp/nvim-ts-autotag"] = {
-    opt = true,
-    ft = {"html", "xml"},
-    config = conf.autotag
+	opt = true,
+	after = "nvim-treesitter",
+	config = conf.autotag,
 }
 editor["andymass/vim-matchup"] = {
-    opt = true,
-    after = "nvim-treesitter",
-    config = conf.matchup
+	opt = true,
+	after = "nvim-treesitter",
+	config = conf.matchup,
 }
-editor["rhysd/accelerated-jk"] = { opt = true, event = "BufReadPost" }
+editor["rhysd/accelerated-jk"] = { opt = true, event = "BufWinEnter" }
 editor["hrsh7th/vim-eft"] = { opt = true, event = "BufReadPost" }
 editor["romainl/vim-cool"] = {
-    opt = true,
-    event = {"CursorMoved", "InsertEnter"}
+	opt = true,
+	event = { "CursorMoved", "InsertEnter" },
 }
 editor["phaazon/hop.nvim"] = {
-    opt = true,
-    branch = "v1",
-    cmd = {
-        "HopLine", "HopLineStart", "HopWord", "HopPattern", "HopChar1",
-        "HopChar2"
-    },
-    config = function()
-        require("hop").setup {keys = "etovxqpdygfblzhckisuran"}
-    end
+	opt = true,
+	branch = "v1",
+	event = "BufReadPost",
+	config = function()
+		require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+	end,
 }
 editor["karb94/neoscroll.nvim"] = {
-    opt = true,
-    event = "WinScrolled",
-    config = conf.neoscroll
+	opt = true,
+	event = "BufReadPost",
+	config = conf.neoscroll,
 }
 editor["vimlab/split-term.vim"] = { opt = true, cmd = { "Term", "VTerm" } }
 editor["akinsho/toggleterm.nvim"] = {
@@ -121,18 +118,18 @@ editor["akinsho/toggleterm.nvim"] = {
 	event = "BufRead",
 	config = conf.toggleterm,
 }
-editor["numtostr/FTerm.nvim"] = {opt = true, event = "BufRead"}
+editor["numtostr/FTerm.nvim"] = { opt = true, event = "BufRead" }
 editor["norcalli/nvim-colorizer.lua"] = {
-    opt = true,
-    event = "BufRead",
-    config = conf.nvim_colorizer
+	opt = true,
+	event = "BufRead",
+	config = conf.nvim_colorizer,
 }
 editor["rmagatti/auto-session"] = {
-    opt = true,
-    cmd = {"SaveSession", "RestoreSession", "DeleteSession"},
-    config = conf.auto_session
+	opt = true,
+	cmd = { "SaveSession", "RestoreSession", "DeleteSession" },
+	config = conf.auto_session,
 }
-editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
+editor["jdhao/better-escape.vim"] = { opt = true, event = "InsertEnter" }
 editor["rcarriga/nvim-dap-ui"] = {
 	opt = false,
 	config = conf.dapui,
@@ -152,7 +149,11 @@ editor["theHamsta/nvim-dap-virtual-text"] = {
     config = conf.dap_virtual_text
 }
 editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
-
+editor["edluffy/specs.nvim"] = {
+	opt = true,
+	event = "CursorMoved",
+	config = conf.specs,
+}
 editor["abecodes/tabout.nvim"] = {
 	opt = true,
 	event = "InsertEnter",
@@ -163,6 +164,11 @@ editor["abecodes/tabout.nvim"] = {
 editor["sindrets/diffview.nvim"] = {
 	opt = true,
 	cmd = { "DiffviewOpen" },
+}
+editor["brglng/vim-im-select"] = {
+	opt = false,
+	event = "BufReadPost",
+	config = conf.imselect,
 }
 
 editor["dhruvasagar/vim-table-mode"] = {
