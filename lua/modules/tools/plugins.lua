@@ -52,5 +52,21 @@ tools["nathom/filetype.nvim"] = {
 	opt = false,
 	config = conf.filetype,
 }
-
+tools["thinca/vim-quickrun"] = {
+    opt = true, 
+    cmd = {"QuickRun", "Q"},
+    config = function ()
+            vim.g.quickrun_config={ _={runner='nvimterm'}}
+    end,
+    requires = {{"statiolake/vim-quickrun-runner-nvimterm",opt = true}}
+}
+tools["danymat/neogen"] = {
+    opt = false,
+    config = function()
+        require('neogen').setup {}
+    end,
+    requires ={
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+}
 return tools

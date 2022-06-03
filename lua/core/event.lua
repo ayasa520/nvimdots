@@ -106,9 +106,6 @@ function autocmd.load_autocmds()
 			{"BufEnter", "*" , [[call system("fcitx5-remote -c")]]},
 			{"BufLeave", "*" , [[call system("fcitx5-remote -c")]]}
 	   },
-	   format = {
-		   {"BufEnter","*","lua require'modules.completion.formatting'.formatToggle(true)"},
-	   }
 	}
 
 	autocmd.nvim_create_augroups(definitions)

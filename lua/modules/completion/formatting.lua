@@ -1,6 +1,6 @@
 local M = {}
 
-local format_on_save = true
+local format_on_save = false
 
 vim.cmd([[command! FormatToggle lua require'modules.completion.formatting'.toggle_format_on_save()]])
 
