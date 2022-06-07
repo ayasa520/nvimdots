@@ -41,7 +41,7 @@ local def_map = {
 	["c|<C-d>"] = map_cmd("<Del>"):with_noremap(),
 	["c|<C-h>"] = map_cmd("<BS>"):with_noremap(),
 	["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):with_noremap(),
-	["c|w!!"] = map_cmd("execute 'silent! write !sudo tee % >/dev/null' <bar> edit!"),
+	-- ["c|w!!"] = map_cmd("execute 'silent! write !sudo tee % >/dev/null' <bar> edit!"),
 	-- Visual
 	["v|J"] = map_cmd(":m '>+1<cr>gv=gv"),
 	["v|K"] = map_cmd(":m '<-2<cr>gv=gv"),

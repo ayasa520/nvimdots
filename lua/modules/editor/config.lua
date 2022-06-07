@@ -329,6 +329,14 @@ function config.dap()
             '/.local/share/nvim/dapinstall/python/bin/python',
         args = {'-m', 'debugpy.adapter'}
     }
+	dap.adapters.node2 = {
+		type = 'executable',
+		command = 'node',
+		args = {
+			vim.fn.stdpath("data") .. "/dapinstall/jsnode/" ..
+				'vscode-node-debug2/out/src/nodeDebug.js'
+		}
+	}
     dap.configurations.python = {
         {
             -- The first three options are required by nvim-dap
@@ -355,7 +363,30 @@ function config.dap()
             end
         }
     }
-end
+	dap.configurations.typescript = {
+		{
+		  name = 'Run',
+		  type = 'node2',
+		  request = 'launch',
+		  program = '${file}',
+		  cwd = vim.fn.getcwd(),
+		  sourceMaps = true,
+		  protocol = 'inspector',
+		  console = 'integratedTerminal',
+		  outFiles = {"${workspaceFolder}/build/**/*.js"},
+		},
+		{
+		  name = 'Attach to process',
+		  type = 'node2',
+		  request = 'attach',
+		  processId = require'dap.utils'.pick_process,
+		},
+	}
+	
+	dap.configurations.javascript=dap.configurations.typescript 
+
+
+	end
 
 
 function config.tabout()

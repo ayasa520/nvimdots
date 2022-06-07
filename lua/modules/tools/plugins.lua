@@ -69,4 +69,8 @@ tools["danymat/neogen"] = {
         {"nvim-treesitter/nvim-treesitter"}
     }
 }
+tools["airblade/vim-rooter"] = {
+	opt = false,
+	config = conf.rooter
+}
 return tools
