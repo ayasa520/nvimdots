@@ -6,7 +6,7 @@ require("keymap.config")
 
 local plug_map = {
     -- Format
-    ["n|<C-A-l>"] = map_cmd("<ESC>:FormatEnable<CR>:w<CR>:FormatDisable<CR>"):with_silent(),
+    ["n|<C-A-f>"] = map_cmd(":FormatToggle<CR>:w<CR>:FormatToggle<CR>"):with_silent(),
     -- Bufferline
     ["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
     ["n|<A-j>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
@@ -187,20 +187,13 @@ local plug_map = {
     ["n|<A-g>"] = map_cr("Neogen"):with_noremap():with_silent(),
 
     -- 环绕字符 normal 以及 visual 模式生效
-    ["n|<leader>`"] = map_cmd("<Plug>(sandwich-add)iw`"):with_silent(),
-    ["n|<leader>["]=map_cmd("<Plug>(sandwich-add)iw["):with_silent(),
-    ["n|<leader>{"]=map_cmd("<Plug>(sandwich-add)iw{"):with_silent(),
-    ["n|<leader>("]=map_cmd("<Plug>(sandwich-add)iw("):with_silent(),
-    ["n|<leader>'"]=map_cmd("<Plug>(sandwich-add)iw'"):with_silent(),
-    ["n|<leader>\""]=map_cmd("<Plug>(sandwich-add)iw\""):with_silent(),
-    ["n|<leader><"]=map_cmd("<Plug>(sandwich-add)iw<"):with_silent(),
-    ["v|<leader>`"] = map_cmd("<Plug>(sandwich-add)`"):with_silent(),
-    ["v|<leader>["]=map_cmd("<Plug>(sandwich-add)["):with_silent(),
-    ["v|<leader>{"]=map_cmd("<Plug>(sandwich-add){"):with_silent(),
-    ["v|<leader>'"]=map_cmd("<Plug>(sandwich-add)'"):with_silent(),
-    ["v|<leader>\""]=map_cmd("<Plug>(sandwich-add)\""):with_silent(),
-    ["v|<leader><"]=map_cmd("<Plug>(sandwich-add)<"):with_silent(),
-    ["v|<leader>("]=map_cmd("<Plug>(sandwich-add)("):with_silent(),
+    ["s|`"] = map_cmd("<Plug>(sandwich-add)`"):with_silent(),
+    ["s|["]=map_cmd("<Plug>(sandwich-add)["):with_silent(),
+    ["s|{"]=map_cmd("<Plug>(sandwich-add){"):with_silent(),
+    ["s|'"]=map_cmd("<Plug>(sandwich-add)'"):with_silent(),
+    ["s|\""]=map_cmd("<Plug>(sandwich-add)\""):with_silent(),
+    ["s|<"]=map_cmd("<Plug>(sandwich-add)<"):with_silent(),
+    ["s|("]=map_cmd("<Plug>(sandwich-add)("):with_silent(),
 	-- Plugin Tabout
 	["i|<A-l>"] = map_cmd([[<Plug>(TaboutMulti)]]):with_silent(),
 	["i|<A-h>"] = map_cmd([[<Plug>(TaboutBackMulti)]]):with_silent(),

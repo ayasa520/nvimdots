@@ -256,44 +256,26 @@ flake8 = vim.tbl_extend("force", flake8, {
 	lintCommand = "flake8 --max-line-length 160 --extend-ignore F403,F405 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
 })
 
-clangfmt = vim.tbl_extend('force', clangfmt,{
-    formatCommand = string.format("%s -style='{BasedOnStyle: Google, IndentWidth: 4, AccessModifierOffset: -4}'  ${INPUT}", require('efmls-configs.fs').executable('clang-format')),
-    formatStdin = true
-})
 -- Setup formatter and linter for efmls here
 
-efmls.setup {
-    vim = {formatter = vint},
-    lua = {formatter = luafmt},
-    c = {formatter = clangfmt},
-    cpp = {formatter = clangfmt},
-    go = {formatter = goimports},
-    python = {formatter = black},
-    -- c = {formatter = clangfmt, linter = clangtidy},
-    -- cpp = {formatter = clangfmt, linter = clangtidy},
-    -- go = {formatter = goimports, linter = staticcheck},
-    -- python = {formatter = black, linter = flake8},
-    vue = {formatter = prettier},
-    typescript = {formatter = prettier},
-    javascript = {formatter = prettier},
-    typescriptreact = {formatter = prettier},
-    javascriptreact = {formatter = prettier},
-    -- typescript = {formatter = prettier, linter = eslint},
-    -- javascript = {formatter = prettier, linter = eslint},
-    -- typescriptreact = {formatter = prettier, linter = eslint},
-    -- javascriptreact = {formatter = prettier, linter = eslint},
-    yaml = {formatter = prettier},
-    json = {formatter = prettier},
-    -- json = {formatter = prettier, linter = eslint},
-    html = {formatter = prettier},
-    css = {formatter = prettier},
-    scss = {formatter = prettier},
-    sh = {formatter = shfmt},
-    -- sh = {formatter = shfmt, linter = shellcheck},
-    markdown = {formatter = prettier}
-    -- rust = {formatter = rustfmt},
-}
-
-vim.fn.sign_define("Lsp")
+efmls.setup({
+	vim = { formatter = vint },
+	lua = { formatter = luafmt },
+	c = { formatter = clangfmt, linter = clangtidy },
+	cpp = { formatter = clangfmt, linter = clangtidy },
+	python = { formatter = black },
+	vue = { formatter = prettier },
+	typescript = { formatter = prettier, linter = eslint },
+	javascript = { formatter = prettier, linter = eslint },
+	typescriptreact = { formatter = prettier, linter = eslint },
+	javascriptreact = { formatter = prettier, linter = eslint },
+	yaml = { formatter = prettier },
+	html = { formatter = prettier },
+	css = { formatter = prettier },
+	scss = { formatter = prettier },
+	sh = { formatter = shfmt, linter = shellcheck },
+	markdown = { formatter = prettier },
+	-- rust = {formatter = rustfmt},
+})
 
 formatting.configure_format_on_save()

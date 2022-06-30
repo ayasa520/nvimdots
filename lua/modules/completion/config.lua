@@ -185,7 +185,8 @@ function config.luasnip()
 	require("luasnip").config.set_config({
 		history = true,
 		updateevents = "TextChanged,TextChangedI",
-
+        region_check_events = "InsertEnter",
+        delete_check_events = "TextChanged,InsertLeave",
 		ext_opts = {
 			[require("luasnip.util.types").choiceNode] = {
 				active = {

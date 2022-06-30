@@ -14,14 +14,14 @@ function M.enable_format_on_save(is_configure)
 			require("modules.completion.formatting").format({ timeout_ms = opts.timeout, filter = M.format_filter })
 		end,
 	})
-	if not is_configure then
-		vim.notify("Enabled format-on-save", vim.log.levels.INFO)
-	end
+	-- if not is_configure then
+	-- 	vim.notify("Enabled format-on-save", vim.log.levels.INFO)
+	-- end
 end
 
 function M.disable_format_on_save()
 	pcall(vim.api.nvim_del_augroup_by_name, "format_on_save")
-	vim.notify("Disabled format-on-save", vim.log.levels.INFO)
+	-- vim.notify("Disabled format-on-save", vim.log.levels.INFO)
 end
 
 function M.configure_format_on_save()
