@@ -10,8 +10,15 @@ completion["creativenull/efmls-configs-nvim"] = {
 	opt = false,
 	requires = "neovim/nvim-lspconfig"
 }
-completion["williamboman/nvim-lsp-installer"] = {
-	opt = false,
+completion["williamboman/mason.nvim"] = {
+	--command = {'MasonInstall', 'MasonUninstall', 'MasonLog'},
+	requires = {
+		{
+			"williamboman/mason-lspconfig.nvim",
+		},
+		{ "WhoIsSethDaniel/mason-tool-installer.nvim", config = conf.mason_install },
+	},
+	config = require("mason").setup()
 }
 completion["kevinhwang91/nvim-bqf"] = {
 	opt = true,

@@ -2,75 +2,104 @@ local config = {}
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 
 function config.nvim_treesitter()
-    vim.api.nvim_command("set foldmethod=expr")
-    vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
+	vim.api.nvim_command("set foldmethod=expr")
+	vim.api.nvim_command("set foldexpr=nvim_treesitter#foldexpr()")
 
-    -- 在这里设置 curl 的代理 Set the proxy for curl here
-    require("nvim-treesitter.install").command_extra_args = {
-        curl = {"--proxy", "http://127.0.0.1:7890"}
-    }
+	require("nvim-treesitter.install").command_extra_args = {
+		curl = {"--proxy", "http://127.0.0.1:7890"}
+	}
+	require("nvim-treesitter.configs").setup({
+		ensure_installed = {
+			"bash",
+			"c",
+			"cpp",
+			"lua",
+			"go",
+			"gomod",
+			"json",
+			"yaml",
+			"latex",
+			"make",
+			"python",
+			"rust",
+			"html",
+			"javascript",
+			"typescript",
+			"vue",
+			"css",
+		},
+		highlight = { enable = true, disable = { "vim" } },
+		textobjects = {
+			select = {
+				enable = true,
+				keymaps = {
+					["af"] = "@function.outer",
+					["if"] = "@function.inner",
+					["ac"] = "@class.outer",
+					["ic"] = "@class.inner",
+				},
+			},
+			move = {
+				enable = true,
+				set_jumps = true, -- whether to set jumps in the jumplist
+				goto_next_start = {
+					["]["] = "@function.outer",
+					["]m"] = "@class.outer",
+				},
+				goto_next_end = {
+					["]]"] = "@function.outer",
+					["]M"] = "@class.outer",
+				},
+				goto_previous_start = {
+					["[["] = "@function.outer",
+					["[m"] = "@class.outer",
+				},
+				goto_previous_end = {
+					["[]"] = "@function.outer",
+					["[M"] = "@class.outer",
+				},
+			},
+		},
+		rainbow = {
+			enable = true,
+			extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+			max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+		},
+		context_commentstring = { enable = true, enable_autocmd = false },
+		matchup = { enable = true },
+	})
+	--require("nvim-treesitter.install").prefer_git = true
+	--local parsers = require("nvim-treesitter.parsers").get_parser_configs()
+	--for _, p in pairs(parsers) do
+	--	p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
+	--end
+end
 
-    -- 或者使用 SSH (slow)
-    -- require("nvim-treesitter.install").prefer_git = true
-    -- local parsers = require("nvim-treesitter.parsers").get_parser_configs()
-    -- for _, p in pairs(parsers) do
-    --   p.install_info.url = p.install_info.url:gsub(
-    -- 	"https://github.com/",
-    -- 	"git@github.com:"
-    --   )
-    -- end
+function config.illuminate()
+	vim.g.Illuminate_highlightUnderCursor = 0
+	vim.g.Illuminate_ftblacklist = {
+		"help",
+		"dashboard",
+		"alpha",
+		"packer",
+		"norg",
+		"DoomInfo",
+		"NvimTree",
+		"Outline",
+		"toggleterm",
+	}
+end
 
-    require("nvim-treesitter.configs").setup({
-        ensure_installed = {"bash", "c", "cpp", "lua", "go", "gomod", "json", "yaml", "latex", "make", "python", "rust",
-                            "html", "javascript", "typescript", "vue", "css"},
-        highlight = {
-            enable = true,
-            disable = {"vim"}
-        },
-        textobjects = {
-            select = {
-                enable = true,
-                keymaps = {
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@class.outer",
-                    ["ic"] = "@class.inner"
-                }
-            },
-            move = {
-                enable = true,
-                set_jumps = true, -- whether to set jumps in the jumplist
-                goto_next_start = {
-                    ["]["] = "@function.outer",
-                    ["]m"] = "@class.outer"
-                },
-                goto_next_end = {
-                    ["]]"] = "@function.outer",
-                    ["]M"] = "@class.outer"
-                },
-                goto_previous_start = {
-                    ["[["] = "@function.outer",
-                    ["[m"] = "@class.outer"
-                },
-                goto_previous_end = {
-                    ["[]"] = "@function.outer",
-                    ["[M"] = "@class.outer"
-                }
-            }
-        },
-        rainbow = {
-            enable = true,
-            extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-            max_file_lines = 1000 -- Do not enable for files with more than 1000 lines, int
-        },
-        context_commentstring = {
-            enable = true,
-            enable_autocmd = false
-        },
-        matchup = {
-            enable = true
-        }
-    })
+function config.nvim_comment()
+	require("nvim_comment").setup({
+		hook = function()
+			require("ts_context_commentstring.internal").update_commentstring()
+		end,
+	})
+end
+
+function config.hop()
+	require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 end
 
 function config.matchup()
@@ -78,9 +107,16 @@ function config.matchup()
 end
 
 function config.autotag()
-    require("nvim-ts-autotag").setup({
-        filetypes = {"html", "xml", "javascript", "typescriptreact", "javascriptreact", "vue"}
-    })
+	require("nvim-ts-autotag").setup({
+		filetypes = {
+			"html",
+			"xml",
+			"javascript",
+			"typescriptreact",
+			"javascriptreact",
+			"vue",
+		},
+	})
 end
 
 function config.nvim_colorizer()
@@ -88,92 +124,103 @@ function config.nvim_colorizer()
 end
 
 function config.neoscroll()
-    require("neoscroll").setup({
-        -- All these keys will be mapped to their corresponding default scrolling animation
-        mappings = {"<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb"},
-        hide_cursor = true, -- Hide cursor while scrolling
-        stop_eof = true, -- Stop at <EOF> when scrolling downwards
-        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-        easing_function = nil, -- Default easing function
-        pre_hook = nil, -- Function to run before the scrolling animation starts
-        post_hook = nil -- Function to run after the scrolling animation ends
-    })
+	require("neoscroll").setup({
+		-- All these keys will be mapped to their corresponding default scrolling animation
+		mappings = {
+			"<C-u>",
+			"<C-d>",
+			"<C-b>",
+			"<C-f>",
+			"<C-y>",
+			"<C-e>",
+			"zt",
+			"zz",
+			"zb",
+		},
+		hide_cursor = true, -- Hide cursor while scrolling
+		stop_eof = true, -- Stop at <EOF> when scrolling downwards
+		use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+		respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+		cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+		easing_function = nil, -- Default easing function
+		pre_hook = nil, -- Function to run before the scrolling animation starts
+		post_hook = nil, -- Function to run after the scrolling animation ends
+	})
 end
 
 function config.auto_session()
-    local opts = {
-        log_level = "info",
-        auto_session_enable_last_session = true,
-        auto_session_root_dir = sessions_dir,
-        auto_session_enabled = true,
-        auto_save_enabled = true,
-        auto_restore_enabled = true,
-        auto_session_suppress_dirs = nil
-    }
+	local opts = {
+		log_level = "info",
+		auto_session_enable_last_session = true,
+		auto_session_root_dir = sessions_dir,
+		auto_session_enabled = true,
+		auto_save_enabled = true,
+		auto_restore_enabled = true,
+		auto_session_suppress_dirs = nil,
+	}
 
-    require("auto-session").setup(opts)
+	require("auto-session").setup(opts)
 end
 
 function config.toggleterm()
-    require("toggleterm").setup({
-        -- size can be a number or function which is passed the current terminal
-        size = function(term)
-            if term.direction == "horizontal" then
-                return 15
-            elseif term.direction == "vertical" then
-                return vim.o.columns * 0.40
-            end
-        end,
-        open_mapping = [[<c-\>]],
-        hide_numbers = true, -- hide the number column in toggleterm buffers
-        shade_filetypes = {},
-        shade_terminals = false,
-        shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
-        start_in_insert = true,
-        insert_mappings = true, -- whether or not the open mapping applies in insert mode
-        persist_size = true,
-        direction = "horizontal",
-        close_on_exit = true, -- close the terminal window when the process exits
-        shell = "/bin/zsh" -- change the default shell
-    })
+	require("toggleterm").setup({
+		-- size can be a number or function which is passed the current terminal
+		size = function(term)
+			if term.direction == "horizontal" then
+				return 15
+			elseif term.direction == "vertical" then
+				return vim.o.columns * 0.40
+			end
+		end,
+		open_mapping = [[<c-\>]],
+		hide_numbers = true, -- hide the number column in toggleterm buffers
+		shade_filetypes = {},
+		shade_terminals = false,
+		shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+		start_in_insert = true,
+		insert_mappings = true, -- whether or not the open mapping applies in insert mode
+		persist_size = true,
+		direction = "horizontal",
+		close_on_exit = true, -- close the terminal window when the process exits
+		shell = vim.o.shell, -- change the default shell
+	})
 end
 
 function config.dapui()
-    require("dapui").setup({
-        icons = {
-            expanded = "▾",
-            collapsed = "▸"
-        },
-        mappings = {
-            -- Use a table to apply multiple mappings
-            expand = {"<CR>", "<2-LeftMouse>"},
-            open = "o",
-            remove = "d",
-            edit = "e",
-            repl = "r"
-        },
-        layouts = {{
-            elements = {"scopes", "breakpoints", "stacks", "watches"},
-            size = 40,
-            position = "left"
-        }, {
-            elements = {"repl", "console"},
-            size = 10,
-            position = "bottom"
-        }},
-        floating = {
-            max_height = nil,
-            max_width = nil,
-            mappings = {
-                close = {"q", "<Esc>"}
-            }
-        },
-        windows = {
-            indent = 1
-        }
-    })
+	require("dapui").setup({
+		icons = { expanded = "▾", collapsed = "▸" },
+		mappings = {
+			-- Use a table to apply multiple mappings
+			expand = { "<CR>", "<2-LeftMouse>" },
+			open = "o",
+			remove = "d",
+			edit = "e",
+			repl = "r",
+		},
+		layouts = {
+			{
+				elements = {
+					-- Provide as ID strings or tables with "id" and "size" keys
+					{
+						id = "scopes",
+						size = 0.25, -- Can be float or integer > 1
+					},
+					{ id = "breakpoints", size = 0.25 },
+					{ id = "stacks", size = 0.25 },
+					{ id = "watches", size = 0.25 },
+				},
+				size = 40,
+				position = "left",
+			},
+			{ elements = { "repl" }, size = 10, position = "bottom" },
+		},
+		floating = {
+			max_height = nil,
+			max_width = nil,
+			mappings = { close = { "q", "<Esc>" } },
+		},
+		windows = { indent = 1 },
+	})
 end
 
 function config.dap_virtual_text()
@@ -194,6 +241,7 @@ function config.dap_virtual_text()
 end
 
 function config.dap()
+	vim.cmd([[packadd nvim-dap-ui]])
     vim.cmd([[autocmd FileType dap-float nnoremap <buffer><silent> q <cmd>close!<CR>]])
 
     local dap = require("dap")
@@ -366,40 +414,45 @@ function config.dap()
         request = 'attach',
         processId = require'dap.utils'.pick_process
     }}
+	dap.configurations.javascript = dap.configurations.typescript
+end
 
-    dap.configurations.javascript = dap.configurations.typescript
-
+function config.specs()
+	require("specs").setup({
+		show_jumps = true,
+		min_jump = 10,
+		popup = {
+			delay_ms = 0, -- delay before popup displays
+			inc_ms = 10, -- time increments used for fade/resize effects
+			blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
+			width = 10,
+			winhl = "PMenu",
+			fader = require("specs").pulse_fader,
+			resizer = require("specs").shrink_resizer,
+		},
+		ignore_filetypes = {},
+		ignore_buftypes = { nofile = true },
+	})
 end
 
 function config.tabout()
-    require("tabout").setup({
-        tabkey = "<A-l>",
-        backwards_tabkey = "<A-h>",
-        ignore_beginning = false,
-        act_as_tab = true,
-        enable_backward = true,
-        completion = true,
-        tabouts = {{
-            open = "'",
-            close = "'"
-        }, {
-            open = '"',
-            close = '"'
-        }, {
-            open = "`",
-            close = "`"
-        }, {
-            open = "(",
-            close = ")"
-        }, {
-            open = "[",
-            close = "]"
-        }, {
-            open = "{",
-            close = "}"
-        }},
-        exclude = {}
-    })
+	require("tabout").setup({
+		tabkey = "<A-l>",
+		backwards_tabkey = "<A-h>",
+		ignore_beginning = false,
+		act_as_tab = true,
+		enable_backward = true,
+		completion = true,
+		tabouts = {
+			{ open = "'", close = "'" },
+			{ open = '"', close = '"' },
+			{ open = "`", close = "`" },
+			{ open = "(", close = ")" },
+			{ open = "[", close = "]" },
+			{ open = "{", close = "}" },
+		},
+		exclude = {},
+	})
 end
 
 function config.imselect()
@@ -416,7 +469,20 @@ function config.imselect()
 			\ execute("throw 'invalid im key'")
 			\ }
 			]])
-    end
+	end
+end
+
+function config.better_escape()
+	require("better_escape").setup({
+		mapping = { "jk", "jj" }, -- a table with mappings to use
+		timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+		clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+		keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
+		-- example(recommended)
+		-- keys = function()
+		--   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
+		-- end,
+	})
 end
 
 return config
