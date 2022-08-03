@@ -186,14 +186,13 @@ local plug_map = {
     ["n|<leader>vs"] = map_cr("VimtexStop"):with_noremap():with_silent(),
     ["n|<A-g>"] = map_cr("Neogen"):with_noremap():with_silent(),
 
-    -- 环绕字符 normal 以及 visual 模式生效
-    ["s|`"] = map_cmd("<Plug>(sandwich-add)`"):with_silent(),
-    ["s|["]=map_cmd("<Plug>(sandwich-add)["):with_silent(),
-    ["s|{"]=map_cmd("<Plug>(sandwich-add){"):with_silent(),
-    ["s|'"]=map_cmd("<Plug>(sandwich-add)'"):with_silent(),
-    ["s|\""]=map_cmd("<Plug>(sandwich-add)\""):with_silent(),
-    ["s|<"]=map_cmd("<Plug>(sandwich-add)<"):with_silent(),
-    ["s|("]=map_cmd("<Plug>(sandwich-add)("):with_silent(),
+    ["v|<leader>`"] = map_cmd("<Plug>(sandwich-add)`"):with_silent(),
+    ["v|<leader>["]=map_cmd("<Plug>(sandwich-add)["):with_silent(),
+    ["v|<leader>{"]=map_cmd("<Plug>(sandwich-add){"):with_silent(),
+    ["v|<leader>'"]=map_cmd("<Plug>(sandwich-add)'"):with_silent(),
+    ["v|<leader>\""]=map_cmd("<Plug>(sandwich-add)\""):with_silent(),
+    ["v|<leader><"]=map_cmd("<Plug>(sandwich-add)<"):with_silent(),
+    ["v|<leader>("]=map_cmd("<Plug>(sandwich-add)("):with_silent(),
 	-- Plugin Tabout
 	["i|<A-l>"] = map_cmd([[<Plug>(TaboutMulti)]]):with_silent(),
 	["i|<A-h>"] = map_cmd([[<Plug>(TaboutBackMulti)]]):with_silent(),
